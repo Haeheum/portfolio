@@ -1,0 +1,1 @@
+enum AudioAspect {isPlaying, volume}
