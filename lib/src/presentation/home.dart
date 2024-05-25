@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:resume/src/presentation/audio/audio_manager.dart';
 
-import '../model/audio_model.dart';
 import '../model/enum/language_code_enum.dart';
 import 'app_state_manager.dart';
 
@@ -49,7 +48,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   progress: _animationController),
               onPressed: () {
                 setState(() {
-                  if (AudioModel.isPlayingOf(context)) {
+                  if (AudioWidget.of(context).isPlaying.value) {
                     _animationController.reverse();
                     AudioWidget.of(context).pauseBgm();
                   } else {
@@ -68,10 +67,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ),
           RotatedBox(
             quarterTurns: 3,
-            child: Builder(
-              builder: (context) {
+            child: ValueListenableBuilder(
+              valueListenable: AudioWidget.of(context).volume,
+              builder: (context, volume, _) {
                 return Slider(
-                    value: AudioModel.volumeOf(context),
+                    value: volume,
                     onChanged: (volume) {
                       AudioWidget.of(context).setBgmVolume(volume);
                     });

@@ -4,7 +4,6 @@ import 'dart:developer' as dev;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resume/src/model/audio_model.dart';
 
 import 'background_music.dart';
 
@@ -29,8 +28,8 @@ class AudioWidgetState extends State<AudioWidget> {
   late final AudioPlayer _bgmPlayer;
   late Queue<BackgroundMusic> _bgmPlaylist;
 
-  bool isPlaying = false;
-  double volume = _initialVolume;
+  ValueNotifier<bool> isPlaying = ValueNotifier(false);
+  ValueNotifier<double> volume = ValueNotifier(_initialVolume);
 
   @override
   void initState() {
@@ -38,12 +37,12 @@ class AudioWidgetState extends State<AudioWidget> {
 
     _appLifecycleListener = AppLifecycleListener(
       onResume: () {
-        if (isPlaying) {
+        if (isPlaying.value) {
           _bgmPlayer.resume();
         }
       },
       onInactive: () {
-        if (isPlaying) {
+        if (isPlaying.value) {
           _bgmPlayer.pause();
         }
       },
@@ -68,9 +67,7 @@ class AudioWidgetState extends State<AudioWidget> {
     dev.log(name: 'Audio', 'Play Bgm: ${_bgmPlaylist.first.getInfo()}');
     await _bgmPlayer
         .play(AssetSource('sounds/bgm/${_bgmPlaylist.first.filename}'));
-    setState(() {
-      isPlaying = true;
-    });
+    isPlaying.value = true;
   }
 
   void nextBgm(_) {
@@ -108,9 +105,7 @@ class AudioWidgetState extends State<AudioWidget> {
     if (_bgmPlayer.state == PlayerState.playing) {
       dev.log(name: 'Audio', 'Pause Bgm: ${_bgmPlaylist.first.getInfo()}');
       _bgmPlayer.pause();
-      setState(() {
-        isPlaying = false;
-      });
+      isPlaying.value = false;
     }
   }
 
@@ -120,9 +115,7 @@ class AudioWidgetState extends State<AudioWidget> {
         try {
           dev.log(name: 'Audio', 'Resume Bgm: ${_bgmPlaylist.first.getInfo()}');
           await _bgmPlayer.resume();
-          setState(() {
-            isPlaying = true;
-          });
+          isPlaying.value = true;
         } catch (e) {
           dev.log(name: 'AudioError', e.toString());
           await _playFirstBgm();
@@ -145,14 +138,11 @@ class AudioWidgetState extends State<AudioWidget> {
 
   Future setBgmVolume(double newVolume) async {
     await _bgmPlayer.setVolume(newVolume);
-    setState(() {
-      volume = newVolume;
-    });
+    volume.value = newVolume;
   }
 
   @override
   Widget build(BuildContext context) {
-    return AudioModel(
-        isPlaying: isPlaying, volume: volume, child: widget.child);
+    return widget.child;
   }
 }
