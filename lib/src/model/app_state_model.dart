@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
-@immutable
-class AppState {
-  final String languageCode;
-  final ThemeMode themeMode;
+class AppStateModel extends ChangeNotifier {
+  String languageCode = 'ko';
+  ThemeMode themeMode = ThemeMode.light;
 
-  const AppState({required this.languageCode, required this.themeMode});
+  setLanguageCode(String newLanguageCode) {
+    if (languageCode != newLanguageCode) {
+      languageCode = newLanguageCode;
+      notifyListeners();
+    }
+  }
 
-  AppState copyWith({
-    String? languageCode,
-    ThemeMode? themeMode,
-  }) {
-    return AppState(
-        languageCode: languageCode ?? this.languageCode,
-        themeMode: themeMode ?? this.themeMode);
+  toggleThemeMode() {
+    if (themeMode == ThemeMode.light) {
+      themeMode = ThemeMode.dark;
+    } else {
+      themeMode = ThemeMode.light;
+    }
+    notifyListeners();
   }
 }

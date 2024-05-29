@@ -7,20 +7,20 @@ import 'package:flutter/material.dart';
 
 import 'background_music.dart';
 
-class AudioWidget extends StatefulWidget {
-  const AudioWidget({super.key, required this.child});
+class AudioController extends StatefulWidget {
+  const AudioController({super.key, required this.child});
 
   final Widget child;
 
-  static AudioWidgetState of(BuildContext context) {
-    return context.findAncestorStateOfType<AudioWidgetState>()!;
+  static AudioControllerState of(BuildContext context) {
+    return context.findAncestorStateOfType<AudioControllerState>()!;
   }
 
   @override
-  State<AudioWidget> createState() => AudioWidgetState();
+  State<AudioController> createState() => AudioControllerState();
 }
 
-class AudioWidgetState extends State<AudioWidget> {
+class AudioControllerState extends State<AudioController> {
   static const _bgmPlayerId = 'bgmPlayer';
   static const _initialVolume = 0.2;
 
@@ -30,6 +30,7 @@ class AudioWidgetState extends State<AudioWidget> {
 
   ValueNotifier<bool> isPlaying = ValueNotifier(false);
   ValueNotifier<double> volume = ValueNotifier(_initialVolume);
+  bool _isRunning = false;
 
   @override
   void initState() {
@@ -70,7 +71,7 @@ class AudioWidgetState extends State<AudioWidget> {
     isPlaying.value = true;
   }
 
-  void nextBgm(_) {
+  void nextBgm(void _) {
     dev.log(name: 'Audio', 'End Bgm: ${_bgmPlaylist.first.getInfo()}');
     _bgmPlaylist.addLast(_bgmPlaylist.removeFirst());
 
@@ -85,9 +86,8 @@ class AudioWidgetState extends State<AudioWidget> {
   void previousBgm() async {
     Duration? currentPosition = await _bgmPlayer.getCurrentPosition();
 
-    //While playing,
     if (_bgmPlayer.state == PlayerState.playing) {
-      // When player's position is under 3 seconds, bring last bgm to first.
+      // While in playing state, when player's position is under 3 seconds, bring last bgm to first.
       if (currentPosition == null ||
           currentPosition.compareTo(const Duration(seconds: 3)) <= 0) {
         dev.log(name: 'Audio', 'End Bgm: ${_bgmPlaylist.first.getInfo()}');
@@ -117,7 +117,7 @@ class AudioWidgetState extends State<AudioWidget> {
           await _bgmPlayer.resume();
           isPlaying.value = true;
         } catch (e) {
-          dev.log(name: 'AudioError', e.toString());
+          dev.log(name: 'Audio', 'Failed to resume bgm');
           await _playFirstBgm();
         }
         break;
@@ -126,19 +126,20 @@ class AudioWidgetState extends State<AudioWidget> {
         await _playFirstBgm();
         break;
       case PlayerState.playing:
-        dev.log(
-            name: 'AudioException',
-            'Already playing Bgm: ${_bgmPlaylist.first.getInfo()}');
-        break;
       case PlayerState.disposed:
-        dev.log(name: 'AudioError', 'Player disposed');
+        dev.log(name: 'Audio', 'Unexpected player state', level: 2);
         break;
     }
   }
 
   Future setBgmVolume(double newVolume) async {
-    await _bgmPlayer.setVolume(newVolume);
     volume.value = newVolume;
+    if (!_isRunning) {
+      _isRunning = true;
+      await _bgmPlayer.setVolume(newVolume).whenComplete(() {
+        _isRunning = false;
+      });
+    }
   }
 
   @override

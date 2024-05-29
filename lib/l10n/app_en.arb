@@ -1,5 +1,25 @@
 {
   "language" : "language",
-  "title1": "Frontend Developer Haeheum Jo",
-  "title2": "Haeheum Jo"
+
+  "title1": "Haeheum Jo the Flutter developer",
+  "body1": "Capable of creating business level app with performance and stability",
+
+  "title2": "Solid fundamentals by default",
+  "body2_1": "Sometimes fancy",
+  "body2_2": "Sometimes powerful",
+
+  "title3": "Various Flutter experience",
+  "body3_1": "audio & video",
+  "body3_2": "animation",
+  "body3_3": "responsive UI",
+  "body3_4": "fcm",
+  "body3_5": "pay module",
+  "body3_6": "deep link",
+  "body3_7": "BLE",
+  "body3_8": "localization",
+  "body3_9": "test code",
+  "body3_10": "performance & optimization",
+  "body3_11": "continuous deployment",
+  "body3_12": "architecture pattern",
+  "body3_13": "and more"
 }
