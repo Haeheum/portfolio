@@ -17,9 +17,12 @@ class _AnimatedPlayButtonState extends State<AnimatedPlayButton>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      vsync: this,
       duration: const Duration(milliseconds: 400),
+      vsync: this,
     );
+    if(AudioController.of(context).isPlaying){
+      _animationController.animateTo(1.0, duration: const Duration(seconds: 0));
+    }
   }
 
   @override
@@ -34,15 +37,13 @@ class _AnimatedPlayButtonState extends State<AnimatedPlayButton>
       icon: AnimatedIcon(
           icon: AnimatedIcons.play_pause, progress: _animationController),
       onPressed: () {
-        setState(() {
-          if (AudioController.of(context).isPlaying.value) {
-            _animationController.reverse();
-            AudioController.of(context).pauseBgm();
-          } else {
-            _animationController.forward();
-            AudioController.of(context).playBgm();
-          }
-        });
+        if (AudioController.of(context).isPlaying) {
+          _animationController.reverse();
+          AudioController.of(context).pauseBgm();
+        } else {
+          _animationController.forward();
+          AudioController.of(context).playBgm();
+        }
       },
     );
   }

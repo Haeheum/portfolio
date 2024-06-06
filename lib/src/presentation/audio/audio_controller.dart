@@ -28,7 +28,10 @@ class AudioControllerState extends State<AudioController> {
   late final AudioPlayer _bgmPlayer;
   late Queue<BackgroundMusic> _bgmPlaylist;
 
-  ValueNotifier<bool> isPlaying = ValueNotifier(false);
+  bool isPlaying = false;
+  ValueNotifier<String> artistName = ValueNotifier('');
+  ValueNotifier<String> musicName = ValueNotifier('');
+
   ValueNotifier<double> volume = ValueNotifier(_initialVolume);
   bool _isRunning = false;
 
@@ -38,12 +41,12 @@ class AudioControllerState extends State<AudioController> {
 
     _appLifecycleListener = AppLifecycleListener(
       onResume: () {
-        if (isPlaying.value) {
+        if (isPlaying) {
           _bgmPlayer.resume();
         }
       },
       onInactive: () {
-        if (isPlaying.value) {
+        if (isPlaying) {
           _bgmPlayer.pause();
         }
       },
@@ -55,6 +58,8 @@ class AudioControllerState extends State<AudioController> {
     _bgmPlaylist =
         Queue.of(List<BackgroundMusic>.of(backgroundMusics)..shuffle());
     _bgmPlayer.onPlayerComplete.listen(nextBgm);
+    artistName.value = _bgmPlaylist.first.artistName;
+    musicName.value = _bgmPlaylist.first.musicName;
   }
 
   @override
@@ -64,16 +69,19 @@ class AudioControllerState extends State<AudioController> {
     super.dispose();
   }
 
-  Future _playFirstBgm() async {
+  Future<void> _playFirstBgm() async {
+    await _bgmPlayer.stop();
     dev.log(name: 'Audio', 'Play Bgm: ${_bgmPlaylist.first.getInfo()}');
     await _bgmPlayer
         .play(AssetSource('sounds/bgm/${_bgmPlaylist.first.filename}'));
-    isPlaying.value = true;
+    isPlaying = true;
   }
 
   void nextBgm(void _) {
     dev.log(name: 'Audio', 'End Bgm: ${_bgmPlaylist.first.getInfo()}');
     _bgmPlaylist.addLast(_bgmPlaylist.removeFirst());
+    artistName.value = _bgmPlaylist.first.artistName;
+    musicName.value = _bgmPlaylist.first.musicName;
 
     if (_bgmPlayer.state == PlayerState.playing ||
         _bgmPlayer.state == PlayerState.completed) {
@@ -92,12 +100,17 @@ class AudioControllerState extends State<AudioController> {
           currentPosition.compareTo(const Duration(seconds: 3)) <= 0) {
         dev.log(name: 'Audio', 'End Bgm: ${_bgmPlaylist.first.getInfo()}');
         _bgmPlaylist.addFirst(_bgmPlaylist.removeLast());
+        artistName.value = _bgmPlaylist.first.artistName;
+        musicName.value = _bgmPlaylist.first.musicName;
       }
 
       _playFirstBgm();
     } else {
+      _bgmPlayer.stop();
       dev.log(name: 'Audio', 'End Bgm: ${_bgmPlaylist.first.getInfo()}');
       _bgmPlaylist.addFirst(_bgmPlaylist.removeLast());
+      artistName.value = _bgmPlaylist.first.artistName;
+      musicName.value = _bgmPlaylist.first.musicName;
     }
   }
 
@@ -105,17 +118,17 @@ class AudioControllerState extends State<AudioController> {
     if (_bgmPlayer.state == PlayerState.playing) {
       dev.log(name: 'Audio', 'Pause Bgm: ${_bgmPlaylist.first.getInfo()}');
       _bgmPlayer.pause();
-      isPlaying.value = false;
+      isPlaying = false;
     }
   }
 
-  Future playBgm() async {
+  Future<void> playBgm() async {
     switch (_bgmPlayer.state) {
       case PlayerState.paused:
         try {
           dev.log(name: 'Audio', 'Resume Bgm: ${_bgmPlaylist.first.getInfo()}');
           await _bgmPlayer.resume();
-          isPlaying.value = true;
+          isPlaying = true;
         } catch (e) {
           dev.log(name: 'Audio', 'Failed to resume bgm');
           await _playFirstBgm();
@@ -127,17 +140,20 @@ class AudioControllerState extends State<AudioController> {
         break;
       case PlayerState.playing:
       case PlayerState.disposed:
-        dev.log(name: 'Audio', 'Unexpected player state', level: 2);
+        dev.log(name: 'Audio', 'Unexpected player state');
         break;
     }
   }
 
-  Future setBgmVolume(double newVolume) async {
+  Future<void> setBgmVolume(double newVolume) async {
     volume.value = newVolume;
     if (!_isRunning) {
       _isRunning = true;
       await _bgmPlayer.setVolume(newVolume).whenComplete(() {
         _isRunning = false;
+        if(volume.value != newVolume){
+          setBgmVolume(volume.value);
+        }
       });
     }
   }

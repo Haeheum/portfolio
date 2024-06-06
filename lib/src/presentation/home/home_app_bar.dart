@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:resume/src/presentation/home/animated_play_button.dart';
 
 import '../../../main.dart';
 import '../../model/enum/language_code_enum.dart';
@@ -10,23 +9,13 @@ import '../audio/audio_controller.dart';
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
 
-  static const double _myAppbarHeight = 88;
+  static const double _myAppbarHeight = 88.0;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       actions: [
-        IconButton(
-          onPressed: AudioController.of(context).previousBgm,
-          icon: const Icon(Icons.skip_previous),
-        ),
-        const AnimatedPlayButton(),
-        IconButton(
-          onPressed: () {
-            AudioController.of(context).nextBgm(null);
-          },
-          icon: const Icon(Icons.skip_next),
-        ),
+        const Icon(Icons.volume_down_rounded),
         RotatedBox(
           quarterTurns: 3,
           child: ValueListenableBuilder(
@@ -48,10 +37,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? Icons.nightlight
               : Icons.wb_sunny),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width: 12.0),
         DropdownMenu(
           label: Text(AppLocalizations.of(context)!.language),
-          initialSelection: LanguageLabel.korean,
+          initialSelection: LanguageLabel.english,
           requestFocusOnTap: false,
           onSelected: (LanguageLabel? language) {
             if (language != null) {
@@ -63,14 +52,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             return DropdownMenuEntry<LanguageLabel>(
               value: language,
               label: language.label,
-              leadingIcon: Image(width: 32, height: 32, image: language.image),
+              leadingIcon: Image(width: 32.0, height: 32.0, image: language.image),
             );
           }).toList(),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width: 12.0),
       ],
       toolbarHeight: _myAppbarHeight,
-      forceMaterialTransparency: true,
     );
   }
 

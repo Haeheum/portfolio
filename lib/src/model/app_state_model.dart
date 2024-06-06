@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppStateModel extends ChangeNotifier {
-  String languageCode = 'ko';
+  String languageCode = 'en';
   ThemeMode themeMode = ThemeMode.light;
 
   setLanguageCode(String newLanguageCode) {

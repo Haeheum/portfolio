@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/widgets.dart';
 
+import 'vector.dart';
+
 class Confetti extends StatefulWidget {
   static const _defaultColors = [
     Color(0xffee9cf6),
@@ -24,6 +26,54 @@ class Confetti extends StatefulWidget {
 
   @override
   State<Confetti> createState() => _ConfettiState();
+}
+
+class _ConfettiState extends State<Confetti>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: ConfettiPainter(
+        colors: widget.colors,
+        animation: _controller,
+      ),
+      willChange: true,
+      child: const SizedBox.expand(),
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant Confetti oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isStopped && !widget.isStopped) {
+      _controller.repeat();
+    } else if (!oldWidget.isStopped && widget.isStopped) {
+      _controller.stop(canceled: false);
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      // We don't really care about the duration, since we're going to
+      // use the controller on loop anyway.
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+
+    if (!widget.isStopped) {
+      _controller.repeat();
+    }
+  }
 }
 
 class ConfettiPainter extends CustomPainter {
@@ -77,54 +127,6 @@ class ConfettiPainter extends CustomPainter {
   }
 }
 
-class _ConfettiState extends State<Confetti>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: ConfettiPainter(
-        colors: widget.colors,
-        animation: _controller,
-      ),
-      willChange: true,
-      child: const SizedBox.expand(),
-    );
-  }
-
-  @override
-  void didUpdateWidget(covariant Confetti oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.isStopped && !widget.isStopped) {
-      _controller.repeat();
-    } else if (!oldWidget.isStopped && widget.isStopped) {
-      _controller.stop(canceled: false);
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      // We don't really care about the duration, since we're going to
-      // use the controller on loop anyway.
-      duration: const Duration(seconds: 1),
-      vsync: this,
-    );
-
-    if (!widget.isStopped) {
-      _controller.repeat();
-    }
-  }
-}
-
 class _PaperSnipping {
   static final Random _random = Random();
 
@@ -134,7 +136,7 @@ class _PaperSnipping {
 
   Size _bounds;
 
-  late final _Vector position = _Vector(
+  late final Vector position = Vector(
     _random.nextDouble() * _bounds.width,
     _random.nextDouble() * _bounds.height,
   );
@@ -158,9 +160,9 @@ class _PaperSnipping {
 
   final double ySpeed = 50 + _random.nextDouble() * 60;
 
-  late List<_Vector> corners = List.generate(4, (i) {
+  late List<Vector> corners = List.generate(4, (i) {
     final angle = this.angle + degToRad * (45 + i * 90);
-    return _Vector(cos(angle), sin(angle));
+    return Vector(cos(angle), sin(angle));
   });
 
   double time = _random.nextDouble();
@@ -218,7 +220,3 @@ class _PaperSnipping {
   }
 }
 
-class _Vector {
-  double x, y;
-  _Vector(this.x, this.y);
-}

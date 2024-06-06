@@ -13,6 +13,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  url_launcher: ^6.3.0
+  web: ^0.5.1
 
 dev_dependencies:
   flutter_test:
@@ -20,9 +22,14 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
+  uses-material-design: true
+  generate: true
+
   assets:
     - assets/images/
     - assets/sounds/bgm/
-
-  generate: true
-  uses-material-design: true
+  fonts:
+    - family: Exo
+      fonts:
+        - asset: assets/fonts/Exo-Bold.ttf
+        - asset: assets/fonts/Exo-Medium.ttf

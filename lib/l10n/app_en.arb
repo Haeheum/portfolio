@@ -1,7 +1,8 @@
 {
   "language" : "language",
+  "comment" : "Listen to one of my favorite singer's playlist",
 
-  "title1": "Haeheum Jo the Flutter developer",
+  "title1": "Developer Haeheum Jo",
   "body1": "Capable of creating business level app with performance and stability",
 
   "title2": "Solid fundamentals by default",
