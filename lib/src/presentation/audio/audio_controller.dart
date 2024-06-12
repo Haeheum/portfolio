@@ -22,7 +22,7 @@ class AudioController extends StatefulWidget {
 
 class AudioControllerState extends State<AudioController> {
   static const _bgmPlayerId = 'bgmPlayer';
-  static const _initialVolume = 0.2;
+  static const kDefaultVolume = 0.2;
 
   late final AppLifecycleListener _appLifecycleListener;
   late final AudioPlayer _bgmPlayer;
@@ -31,8 +31,8 @@ class AudioControllerState extends State<AudioController> {
   bool isPlaying = false;
   ValueNotifier<String> artistName = ValueNotifier('');
   ValueNotifier<String> musicName = ValueNotifier('');
+  ValueNotifier<double> volume = ValueNotifier(kDefaultVolume);
 
-  ValueNotifier<double> volume = ValueNotifier(_initialVolume);
   bool _isRunning = false;
 
   @override
@@ -54,7 +54,7 @@ class AudioControllerState extends State<AudioController> {
           dev.log(name: 'OnAppStateChange', newState.name),
     );
 
-    _bgmPlayer = AudioPlayer(playerId: _bgmPlayerId)..setVolume(_initialVolume);
+    _bgmPlayer = AudioPlayer(playerId: _bgmPlayerId)..setVolume(kDefaultVolume);
     _bgmPlaylist =
         Queue.of(List<BackgroundMusic>.of(backgroundMusics)..shuffle());
     _bgmPlayer.onPlayerComplete.listen(nextBgm);
@@ -151,7 +151,7 @@ class AudioControllerState extends State<AudioController> {
       _isRunning = true;
       await _bgmPlayer.setVolume(newVolume).whenComplete(() {
         _isRunning = false;
-        if(volume.value != newVolume){
+        if (volume.value != newVolume) {
           setBgmVolume(volume.value);
         }
       });

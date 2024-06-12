@@ -1,4 +1,3 @@
-import 'dart:developer' as dev;
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -73,7 +72,6 @@ class _SunMoonSwitchState extends State<SunMoonSwitch>
             },
             child: MouseRegion(
               onEnter: (_) {
-                dev.log('onEnter');
                 if (_isSun) {
                   _sunController.repeat(
                     max: 0.20,
@@ -87,7 +85,6 @@ class _SunMoonSwitchState extends State<SunMoonSwitch>
                 }
               },
               onExit: (_) {
-                dev.log('onExit');
                 if (_isSun) {
                   _sunController.reset();
                 } else {

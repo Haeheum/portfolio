@@ -1,18 +1,15 @@
-import 'dart:collection';
+import 'dart:core';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:resume/src/config/theme_extension.dart';
 
-import '../scope/app_state_scope.dart';
-import 'vector.dart';
+import '../../model/vector.dart';
 
 class DigitalRain extends StatefulWidget {
   const DigitalRain({
     super.key,
-    this.isStopped = false,
   });
-
-  final bool isStopped;
 
   @override
   State<DigitalRain> createState() => _RainingTextsState();
@@ -22,66 +19,13 @@ class _RainingTextsState extends State<DigitalRain>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
-  static const Iterable<String> _ko = [
-    '오\n디\n오',
-    '비\n디\n오',
-    '에\n니\n메\n이\n션',
-    '화\n면\n전\n환',
-    '라\n우\n트\n관\n리',
-    '웹\n뷰',
-    '반\n응\n형\n&\n적\n응\n형',
-    '푸\n시\n메\n세\n지',
-    '결\n제',
-    '딥\n링\n크',
-    '블\n루\n투\n스',
-    '국\n제\n화\n지\n원',
-    '테\n스\n트\n코\n드',
-    '성\n능\n최\n적\n화',
-    '자\n동\n배\n포',
-    '아\n키\n텍\n쳐\n패\n턴',
-    'R\nE\nS\nT\nA\nP\nI',
-    '리\n팩\n토\n링',
-    '난\n독\n화',
-    '상\n태\n관\n리',
-    '비\n동\n기\n프\n로\n그\n래\n밍',
-    '예\n외\n처\n리'
-  ];
-  static const Iterable<String> _en = [
-    'audio',
-    'video',
-    'animation',
-    'transition',
-    'route management',
-    'web view',
-    'responsive & adaptive',
-    'push message',
-    'payment',
-    'deeplink',
-    'bluetooth',
-    'internationalization',
-    'test code',
-    'performance & optimization',
-    'continuous deployment',
-    'architecture pattern',
-    'RESTAPI',
-    'refactoring',
-    'obfuscation',
-    'state management',
-    'asynchronous programming'
-    'exception handling'
-  ];
-
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
-    );
-
-    if (!widget.isStopped) {
-      _controller.repeat();
-    }
+    )..repeat();
   }
 
   @override
@@ -91,68 +35,123 @@ class _RainingTextsState extends State<DigitalRain>
   }
 
   @override
-  void didUpdateWidget(covariant DigitalRain oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.isStopped && !widget.isStopped) {
-      _controller.repeat();
-    } else if (!oldWidget.isStopped && widget.isStopped) {
-      _controller.stop(canceled: false);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: RainingTextsPainter(
-        animation: _controller,
-        textsData: switch (AppStateScope.of(context).languageCode) {
-          'ko' => _ko,
-          'en' => _en,
-          _ => throw UnimplementedError('Unsupported language')
-        },
-      ),
+          animation: _controller,
+          skyColor: Theme.of(context).extension<ExtensionColors>()!.skyColor!,
+          rainColor: Theme.of(context).extension<ExtensionColors>()!.rainColor!,
+          backgroundColor:
+              Theme.of(context).extension<ExtensionColors>()!.backgroundColor!),
       willChange: true,
       child: const SizedBox.expand(),
     );
   }
+
+  void stopAnimation() {
+    _controller.stop();
+  }
+
+  void resumeAnimation() {
+    _controller.repeat();
+  }
 }
 
 class RainingTextsPainter extends CustomPainter {
-  final defaultPaint = Paint();
+  final Color _skyColor;
+  final Color _rainColor;
+  final Color _backgroundColor;
 
-  final int rainingTextsCount = 100;
-  late List<_RainingText> _rainingTexts;
+  late Rect _canvasRectangle;
+  final _skyPaint = Paint();
+  late final LinearGradient _skyGradient;
 
+  late int _rainCount;
+  late List<_SingleRainDrop> _rain;
   Size? _size;
   DateTime _lastTime = DateTime.now();
 
-  final _texts = Queue<String>();
-
   RainingTextsPainter(
-      {required Listenable animation, required Iterable<String> textsData})
-      : super(repaint: animation) {
-    _texts.addAll(textsData);
+      {required Listenable animation,
+      required Color skyColor,
+      required Color rainColor,
+      required Color backgroundColor})
+      : _skyColor = skyColor,
+        _rainColor = rainColor,
+        _backgroundColor = backgroundColor,
+        super(repaint: animation) {
+    _skyGradient = LinearGradient(
+      colors: [_skyColor, _backgroundColor],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+    );
   }
 
   @override
   void paint(Canvas canvas, Size size) {
     if (_size == null) {
-      _rainingTexts = List.generate(rainingTextsCount, (i) {
-        return _RainingText(
-            text: _texts.elementAt(Random().nextInt(_texts.length)),
-            bounds: size);
+      _canvasRectangle = Rect.fromLTWH(
+          0, -kToolbarHeight, size.width, size.height + kToolbarHeight);
+      _skyPaint.shader = _skyGradient.createShader(_canvasRectangle);
+
+      _rainCount = (size.width * size.height / 2500).round();
+      _rain = List.generate(_rainCount, (i) {
+        return _SingleRainDrop(
+          rainColor: _rainColor,
+          bounds: size,
+        );
       });
     }
+
     final didResize = _size != null && _size != size;
     final now = DateTime.now();
     final dt = now.difference(_lastTime);
 
-    for (final rainingText in _rainingTexts) {
-      if (didResize) {
-        rainingText.updateBounds(size);
+    if (didResize) {
+      // New background
+      _canvasRectangle = Rect.fromLTWH(
+          0, -kToolbarHeight, size.width, size.height + kToolbarHeight);
+      _skyPaint.shader = _skyGradient.createShader(_canvasRectangle);
+
+      // New rain count
+      _rainCount = (size.width * size.height / 2500).round();
+      // Add rainDrops
+      if (_rainCount > _rain.length) {
+        int difference = _rainCount - _rain.length;
+
+        List<_SingleRainDrop> additionalRain = List.generate(difference, (i) {
+          return _SingleRainDrop(
+            rainColor: _rainColor,
+            bounds: size,
+          );
+        });
+
+        _rain.addAll(additionalRain);
       }
-      rainingText.update(dt.inMilliseconds / 1000);
-      rainingText.draw(canvas);
+    }
+    // Draw background
+    canvas.drawRect(_canvasRectangle, _skyPaint);
+
+    List<int> removeIndex = [];
+    for (int i = 0; i < _rain.length; i++) {
+      if (didResize) {
+        bool shouldRemove = _rain[i].updateBounds(size, _rainCount, _rain);
+        if (shouldRemove) {
+          removeIndex.add(i);
+          continue;
+        }
+      }
+      bool shouldRemove =
+          _rain[i].update(size, dt.inMilliseconds / 1000, _rainCount, _rain);
+      if (shouldRemove) {
+        removeIndex.add(i);
+        continue;
+      }
+      _rain[i].draw(canvas);
+    }
+    removeIndex.sort((b, a) => a.compareTo(b));
+    for (int index in removeIndex) {
+      _rain.removeAt(index);
     }
 
     _size = size;
@@ -165,79 +164,73 @@ class RainingTextsPainter extends CustomPainter {
   }
 }
 
-class _RainingText {
+class _SingleRainDrop {
   static final Random _random = Random();
 
-  final String _text;
   Size _bounds;
 
-  late final Vector position = Vector(
+  late final Vector _position = Vector(
     _random.nextDouble() * _bounds.width,
-    _random.nextDouble() * _bounds.height,
+    _random.nextDouble() * _bounds.height -
+        (_bounds.height + kToolbarHeight + kToolbarHeight),
   );
+  final double _length = 5 + _random.nextDouble() * 20;
 
-  final double _ySpeed = 50 + _random.nextDouble() * 80;
+  bool _useReducedLength = false;
+  late double _reducedLength;
 
-  late final TextPainter _textPainter;
+  late final double _ySpeed = sqrt(_length) * 70 + _random.nextDouble() * 70;
 
-  _RainingText({
-    required String text,
+  final _rainPaint = Paint();
+
+  _SingleRainDrop({
+    required Color rainColor,
     required Size bounds,
-  })  : _text = text,
-        _bounds = bounds {
-    _textPainter = TextPainter(
-      text: TextSpan(children: [
-        TextSpan(
-          text: _text.substring(0, _text.length - 1),
-          style: const TextStyle(
-            color: Colors.green,
-            fontSize: 20.0,
-            shadows: [
-              Shadow(
-                color: Colors.green,
-                blurRadius: 3.0,
-              ),
-            ],
-          ),
-        ),
-        TextSpan(
-          text: _text.substring(_text.length - 1, _text.length),
-          style: const TextStyle(
-            color: Colors.blueGrey,
-            fontSize: 20.0,
-            shadows: [
-              Shadow(
-                color: Colors.blueGrey,
-                blurRadius: 3.0,
-              ),
-            ],
-          ),
-        )
-      ]),
-      textDirection: TextDirection.ltr,
-    )..layout();
+  }) : _bounds = bounds {
+    _rainPaint.color = rainColor;
   }
 
   void draw(Canvas canvas) {
-    _textPainter.paint(canvas, Offset(position.x, position.y));
+    Rect rainRect = Rect.fromPoints(
+        Offset(_position.x - _length / 50, _position.y),
+        _useReducedLength
+            ? Offset(_position.x + _length / 50, _position.y + _reducedLength)
+            : Offset(_position.x + _length / 50, _position.y + _length));
+    canvas.drawRect(rainRect, _rainPaint);
   }
 
-  void update(double dt) {
-    position.y += _ySpeed * dt;
-    if (position.y > _bounds.height) {
-      position.x = _random.nextDouble() * _bounds.width;
-      position.y = -_textPainter.height;
+  bool update(
+      Size newBounds, double dt, int rainCount, List<_SingleRainDrop> rain) {
+    if (_position.y + _length > _bounds.height) {
+      _useReducedLength = true;
+      _reducedLength = _bounds.height - _position.y;
     }
+
+    if (_position.y > _bounds.height) {
+      if (rainCount < rain.length) {
+        return true;
+      }
+      _useReducedLength = false;
+      _position.x = _random.nextDouble() * _bounds.width;
+      _position.y = -_length - kToolbarHeight;
+    }
+    _position.y += _ySpeed * dt;
+    return false;
   }
 
-  void updateBounds(Size newBounds) {
-    if (!newBounds.contains(Offset(position.x, position.y))) {
-      if (!newBounds
-          .contains(Offset(position.x, position.y + _textPainter.height))) {
-        position.x = _random.nextDouble() * newBounds.width;
-        position.y = -_textPainter.height;
+  bool updateBounds(Size newBounds, int rainCount, List<_SingleRainDrop> rain) {
+    if (!newBounds.contains(Offset(_position.x, _position.y))) {
+      if (!newBounds.contains(
+          Offset(_position.x, _position.y + _length + kToolbarHeight))) {
+        if (rainCount < rain.length) {
+          return true;
+        } else {
+          _position.x = _random.nextDouble() * newBounds.width;
+          _position.y = (-_length - kToolbarHeight);
+        }
       }
     }
     _bounds = newBounds;
+    return false;
   }
 }

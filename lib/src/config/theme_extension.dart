@@ -2,19 +2,34 @@ import 'package:flutter/material.dart';
 
 class ExtensionColors extends ThemeExtension<ExtensionColors> {
   const ExtensionColors({
-    required this.matrixTitleColor,
-    required this.matrixShadowColor,
+    required this.skyColor,
+    required this.rainColor,
+    required this.cardBackgroundColor,
+    required this.backgroundColor,
+    required this.textColor,
   });
 
-  final Color? matrixTitleColor;
-  final Color? matrixShadowColor;
+  final Color? skyColor;
+  final Color? rainColor;
+  final Color? cardBackgroundColor;
+  final Color? backgroundColor;
+  final Color? textColor;
 
   @override
-  ExtensionColors copyWith(
-      {Color? matrixTitleColor, Color? matrixShadowColor}) {
+  ExtensionColors copyWith({
+    Color? skyColor,
+    Color? rainColor,
+    Color? cardBackgroundColor,
+    Color? backgroundColor,
+    Color? textColor,
+    Color? matrixShadowColor,
+  }) {
     return ExtensionColors(
-      matrixTitleColor: matrixTitleColor ?? this.matrixTitleColor,
-      matrixShadowColor: matrixShadowColor ?? this.matrixShadowColor,
+      skyColor: skyColor ?? this.skyColor,
+      rainColor: rainColor ?? this.rainColor,
+      cardBackgroundColor: cardBackgroundColor ?? this.cardBackgroundColor,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      textColor: textColor ?? this.textColor,
     );
   }
 
@@ -24,9 +39,11 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
       return this;
     }
     return ExtensionColors(
-      matrixTitleColor: Color.lerp(matrixTitleColor, other.matrixTitleColor, t),
-      matrixShadowColor:
-          Color.lerp(matrixShadowColor, other.matrixShadowColor, t),
+      skyColor: Color.lerp(skyColor, other.skyColor, t),
+      rainColor: Color.lerp(rainColor, other.rainColor, t),
+      cardBackgroundColor: Color.lerp(cardBackgroundColor, other.cardBackgroundColor, t),
+      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      textColor: Color.lerp(textColor, other.textColor, t),
     );
   }
 }

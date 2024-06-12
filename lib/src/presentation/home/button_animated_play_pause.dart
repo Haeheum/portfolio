@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../audio/audio_controller.dart';
 
-class AnimatedPlayButton extends StatefulWidget {
-  const AnimatedPlayButton({super.key});
+class AnimatedPlayPauseButton extends StatefulWidget {
+  const AnimatedPlayPauseButton({super.key});
 
   @override
-  State<AnimatedPlayButton> createState() => _AnimatedPlayButtonState();
+  State<AnimatedPlayPauseButton> createState() => _AnimatedPlayPauseButtonState();
 }
 
-class _AnimatedPlayButtonState extends State<AnimatedPlayButton>
+class _AnimatedPlayPauseButtonState extends State<AnimatedPlayPauseButton>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
 

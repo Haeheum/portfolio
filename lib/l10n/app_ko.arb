@@ -1,13 +1,31 @@
 {
   "language" : "언어",
-  "comment" : "개발자가 좋아하는 가수 노래 듣기",
+  "musicTooltip" : "내가 좋아하는 가수 노래 듣기",
+
+  "developer": "개발자",
+  "myName": "조해흠",
+
+  "milestoneTooltip": "내 여정표 보기",
+  "strengthTooltip": "내 강점 보기",
+  "projectsTooltip": "내 프로젝트 보기",
+
+  "myBirthdate": "{date}",
+  "@myBirthdate": {
+    "description": "내 생일날",
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMd"
+      }
+    }
+  },
 
 
-  "title1": "개발자 조해흠",
-  "body1": "성능과 안정성을 겸비한 비즈니스 레벨 앱 제작 가능",
+
+  "body1": "비즈니스 레벨 앱 제작 가능",
 
   "title2": "충실한 기본기는 기본",
-  "body2_1": "복잡한 커스텀 위젯 제작 가능",
+  "body2_1": "정교한 커스텀 위젯 제작 가능",
   "body2_2": "(화제의 밈 위젯)"
 
 }
