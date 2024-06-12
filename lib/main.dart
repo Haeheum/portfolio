@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:resume/src/config/theme.dart';
 
+import 'src/config/theme.dart';
 import 'src/model/app_state_model.dart';
 import 'src/presentation/scope/app_state_scope.dart';
 import 'src/presentation/audio/audio_controller.dart';
-import 'src/presentation/home/home.dart';
+import 'src/presentation/home/page_home.dart';
 
 void main() {
   runApp(
@@ -47,7 +47,7 @@ class MainAppState extends State<MainApp> {
           locale: Locale(AppStateScope.of(context).languageCode),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          home: const Home(),
+          home: const HomePage(),
           theme: lightTheme,
           darkTheme: darkTheme,
           themeMode: AppStateScope.of(context).themeMode,

@@ -6,11 +6,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../config/theme_extension.dart';
 import '../common/scale_on_hover.dart';
 import '../custom/digital_rain.dart';
+import '../strength/page_strength.dart';
 import 'appBar/app_bar_home.dart';
 import 'music_control_panel.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +99,16 @@ class Home extends StatelessWidget {
                                     alignment: Alignment.center,
                                     color: Colors.transparent,
                                     padding: const EdgeInsets.fromLTRB(
-                                        0, 16.0, 16.0, 16.0),
+                                        0.0, 16.0, 16.0, 16.0),
                                     child: ScaleOnHover(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const StrengthPage()),
+                                        );
+                                      },
                                       tooltipMessage:
                                           AppLocalizations.of(context)!
                                               .strengthTooltip,

@@ -2,8 +2,8 @@ import 'dart:core';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:resume/src/config/theme_extension.dart';
 
+import '../../config/theme_extension.dart';
 import '../../model/vector.dart';
 
 class DigitalRain extends StatefulWidget {
