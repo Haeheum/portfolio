@@ -18,10 +18,5 @@
         "format": "yMd"
       }
     }
-  },
-  "asdf": "Capable of creating business level app with performance and stability",
-  "title2": "Solid fundamentals by default",
-  "body2_1": "Sometimes fancy",
-  "body2_2": "Sometimes powerful",
-  "title3": "Various Flutter experience"
+  }
 }
