@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:collection';
 import 'dart:developer' as dev;
 
@@ -28,38 +29,55 @@ class AudioControllerState extends State<AudioController> {
   late final AudioPlayer _bgmPlayer;
   late Queue<BackgroundMusic> _bgmPlaylist;
 
-  bool isPlaying = false;
+  bool shouldPlay = false;
   ValueNotifier<String> artistName = ValueNotifier('');
   ValueNotifier<String> musicName = ValueNotifier('');
   ValueNotifier<double> volume = ValueNotifier(kDefaultVolume);
 
   bool _isRunning = false;
+  Timer? _debounceTimer;
 
-  @override
-  void initState() {
-    super.initState();
-
+  void attachLifecycleChangeHandler() {
     _appLifecycleListener = AppLifecycleListener(
       onResume: () {
-        if (isPlaying) {
+        if (shouldPlay) {
           _bgmPlayer.resume();
         }
       },
       onInactive: () {
-        if (isPlaying) {
+        if (_bgmPlayer.state == PlayerState.playing) {
           _bgmPlayer.pause();
         }
       },
       onStateChange: (AppLifecycleState newState) =>
           dev.log(name: 'OnAppStateChange', newState.name),
     );
+  }
 
+  void initializeAudio() {
+    AudioCache.instance.loadAll(backgroundMusics
+        .map((music) => 'sounds/bgm/${music.filename}')
+        .toList());
     _bgmPlayer = AudioPlayer(playerId: _bgmPlayerId)..setVolume(kDefaultVolume);
     _bgmPlaylist =
         Queue.of(List<BackgroundMusic>.of(backgroundMusics)..shuffle());
-    _bgmPlayer.onPlayerComplete.listen(nextBgm);
+
     artistName.value = _bgmPlaylist.first.artistName;
     musicName.value = _bgmPlaylist.first.musicName;
+
+    _bgmPlayer.onPlayerStateChanged.listen((data) {
+      dev.log(name: 'AudioState', data.toString());
+    }, onError: (e) {
+      dev.log(name: 'AudioError', e.toString());
+    });
+    _bgmPlayer.onPlayerComplete.listen(nextBgm);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    attachLifecycleChangeHandler();
+    initializeAudio();
   }
 
   @override
@@ -69,74 +87,83 @@ class AudioControllerState extends State<AudioController> {
     super.dispose();
   }
 
-  Future<void> _playFirstBgm() async {
-    await _bgmPlayer.stop();
-    dev.log(name: 'Audio', 'Play Bgm: ${_bgmPlaylist.first.getInfo()}');
-    await _bgmPlayer
-        .play(AssetSource('sounds/bgm/${_bgmPlaylist.first.filename}'));
-    isPlaying = true;
+  Future<void> _playFirstBgm(String filename) async {
+    if (!_isRunning) {
+      shouldPlay = true;
+      _isRunning = true;
+      await _bgmPlayer
+          .play(AssetSource('sounds/bgm/$filename'))
+          .whenComplete(() {
+        _isRunning = false;
+        if (_bgmPlaylist.first.filename != filename) {
+          _playFirstBgm(_bgmPlaylist.first.filename);
+        }
+      });
+    }
   }
 
   void nextBgm(void _) {
-    dev.log(name: 'Audio', 'End Bgm: ${_bgmPlaylist.first.getInfo()}');
     _bgmPlaylist.addLast(_bgmPlaylist.removeFirst());
     artistName.value = _bgmPlaylist.first.artistName;
     musicName.value = _bgmPlaylist.first.musicName;
 
-    if (_bgmPlayer.state == PlayerState.playing ||
-        _bgmPlayer.state == PlayerState.completed) {
-      _playFirstBgm();
-    } else {
-      _bgmPlayer.stop();
+    if (shouldPlay) {
+      if (_bgmPlayer.state == PlayerState.playing) {
+        _bgmPlayer.stop();
+      }
+      debounce(() {
+        _playFirstBgm(_bgmPlaylist.first.filename);
+      });
     }
   }
 
   void previousBgm() async {
     Duration? currentPosition = await _bgmPlayer.getCurrentPosition();
 
-    if (_bgmPlayer.state == PlayerState.playing) {
-      // While in playing state, when player's position is under 3 seconds, bring last bgm to first.
-      if (currentPosition == null ||
-          currentPosition.compareTo(const Duration(seconds: 3)) <= 0) {
-        dev.log(name: 'Audio', 'End Bgm: ${_bgmPlaylist.first.getInfo()}');
-        _bgmPlaylist.addFirst(_bgmPlaylist.removeLast());
-        artistName.value = _bgmPlaylist.first.artistName;
-        musicName.value = _bgmPlaylist.first.musicName;
-      }
-
-      _playFirstBgm();
-    } else {
-      _bgmPlayer.stop();
-      dev.log(name: 'Audio', 'End Bgm: ${_bgmPlaylist.first.getInfo()}');
+    if (currentPosition == null ||
+        currentPosition.compareTo(const Duration(seconds: 2)) <= 0) {
       _bgmPlaylist.addFirst(_bgmPlaylist.removeLast());
       artistName.value = _bgmPlaylist.first.artistName;
       musicName.value = _bgmPlaylist.first.musicName;
+    }
+
+    if (shouldPlay) {
+      if (_bgmPlayer.state == PlayerState.playing) {
+        _bgmPlayer.stop();
+      }
+      debounce(() {
+        _playFirstBgm(_bgmPlaylist.first.filename);
+      });
     }
   }
 
   void pauseBgm() {
     if (_bgmPlayer.state == PlayerState.playing) {
-      dev.log(name: 'Audio', 'Pause Bgm: ${_bgmPlaylist.first.getInfo()}');
       _bgmPlayer.pause();
-      isPlaying = false;
+    } else {
+      _bgmPlayer.stop();
     }
+    shouldPlay = false;
   }
 
   Future<void> playBgm() async {
     switch (_bgmPlayer.state) {
       case PlayerState.paused:
         try {
-          dev.log(name: 'Audio', 'Resume Bgm: ${_bgmPlaylist.first.getInfo()}');
           await _bgmPlayer.resume();
-          isPlaying = true;
+          shouldPlay = true;
         } catch (e) {
           dev.log(name: 'Audio', 'Failed to resume bgm');
-          await _playFirstBgm();
+          debounce(() {
+            _playFirstBgm(_bgmPlaylist.first.filename);
+          });
         }
         break;
       case PlayerState.stopped:
       case PlayerState.completed:
-        await _playFirstBgm();
+        debounce(() {
+          _playFirstBgm(_bgmPlaylist.first.filename);
+        });
         break;
       case PlayerState.playing:
       case PlayerState.disposed:
@@ -156,6 +183,14 @@ class AudioControllerState extends State<AudioController> {
         }
       });
     }
+  }
+
+  void debounce(
+    VoidCallback action, {
+    Duration duration = const Duration(milliseconds: 300),
+  }) {
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(duration, action);
   }
 
   @override

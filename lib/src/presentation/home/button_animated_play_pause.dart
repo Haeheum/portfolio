@@ -20,7 +20,7 @@ class _AnimatedPlayPauseButtonState extends State<AnimatedPlayPauseButton>
       duration: const Duration(milliseconds: 400),
       vsync: this,
     );
-    if(AudioController.of(context).isPlaying){
+    if(AudioController.of(context).shouldPlay){
       _animationController.animateTo(1.0, duration: const Duration(seconds: 0));
     }
   }
@@ -37,7 +37,7 @@ class _AnimatedPlayPauseButtonState extends State<AnimatedPlayPauseButton>
       icon: AnimatedIcon(
           icon: AnimatedIcons.play_pause, progress: _animationController),
       onPressed: () {
-        if (AudioController.of(context).isPlaying) {
+        if (AudioController.of(context).shouldPlay) {
           _animationController.reverse();
           AudioController.of(context).pauseBgm();
         } else {
