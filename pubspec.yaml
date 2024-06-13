@@ -29,3 +29,5 @@ flutter:
   assets:
     - assets/images/
     - assets/sounds/bgm/
+flutter_intl:
+  enabled: true

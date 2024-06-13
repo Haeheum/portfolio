@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
 import '../common/scale_on_hover.dart';
 import '../custom/digital_rain.dart';
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                                     color: Colors.transparent,
                                     child: ScaleOnHover(
                                       tooltipMessage:
-                                          AppLocalizations.of(context)!
+                                          S.of(context)
                                               .milestoneTooltip,
                                       child: FittedBox(
                                         child: Column(
@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              AppLocalizations.of(context)!
+                                              S.of(context)
                                                   .myName,
                                               style: Theme.of(context)
                                                   .textTheme
@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                                                           .textColor),
                                             ),
                                             Text(
-                                              AppLocalizations.of(context)!
+                                              S.of(context)
                                                   .myBirthdate(
                                                       DateTime(1994, 7, 25)),
                                               style: Theme.of(context)
@@ -110,7 +110,7 @@ class HomePage extends StatelessWidget {
                                         );
                                       },
                                       tooltipMessage:
-                                          AppLocalizations.of(context)!
+                                          S.of(context)
                                               .strengthTooltip,
                                       child: Image.asset(
                                         'assets/images/haeheumjo.jpeg',
@@ -133,7 +133,7 @@ class HomePage extends StatelessWidget {
                               child: LayoutBuilder(
                                   builder: (context, constraints) {
                                 return ScaleOnHover(
-                                  tooltipMessage: AppLocalizations.of(context)!
+                                  tooltipMessage: S.of(context)
                                       .projectsTooltip,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -145,7 +145,7 @@ class HomePage extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 8),
                                       Text(
-                                        AppLocalizations.of(context)!.developer,
+                                        S.of(context).developer,
                                         style: TextStyle(
                                             fontSize: constraints.maxHeight / 2,
                                             color: Theme.of(context)
@@ -169,7 +169,7 @@ class HomePage extends StatelessWidget {
         ),
       ]),
       floatingActionButton: FloatingActionButton(
-          tooltip: AppLocalizations.of(context)!.musicTooltip,
+          tooltip: S.of(context).musicTooltip,
           onPressed: () {
             showModalBottomSheet(
               context: context,

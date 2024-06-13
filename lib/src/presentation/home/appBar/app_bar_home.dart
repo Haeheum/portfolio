@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../../main.dart';
 import '../../../config/theme_extension.dart';
 import '../../../model/enum/language_code_enum.dart';
@@ -35,7 +35,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: DropdownMenu(
             width: 120,
             label: Text(
-              AppLocalizations.of(context)!.language,
+              S.of(context).language,
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 color: Theme.of(context).extension<ExtensionColors>()!.textColor,
               ),

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
+import 'generated/l10n.dart';
 import 'src/config/theme.dart';
 import 'src/model/app_state_model.dart';
 import 'src/presentation/scope/app_state_scope.dart';
 import 'src/presentation/audio/audio_controller.dart';
 import 'src/presentation/home/page_home.dart';
 
-void main() {
+void main() async {
+  await initializeDateFormatting();
   runApp(
     const AudioController(
       child: MainApp(),
@@ -45,8 +48,11 @@ class MainAppState extends State<MainApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           locale: Locale(AppStateScope.of(context).languageCode),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: const [S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate],
+          supportedLocales: S.delegate.supportedLocales,
           home: const HomePage(),
           theme: lightTheme,
           darkTheme: darkTheme,
