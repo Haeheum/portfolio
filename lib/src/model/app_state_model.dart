@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppStateModel extends ChangeNotifier {
-  String languageCode = 'en';
+  AppStateModel({required this.appLocale, this.themeMode = ThemeMode.light});
+
+  Locale appLocale;
   ThemeMode themeMode = ThemeMode.light;
 
   setLanguageCode(String newLanguageCode) {
-    if (languageCode != newLanguageCode) {
-      languageCode = newLanguageCode;
+    if (appLocale.languageCode != newLanguageCode) {
+      appLocale = Locale(newLanguageCode);
       notifyListeners();
     }
   }

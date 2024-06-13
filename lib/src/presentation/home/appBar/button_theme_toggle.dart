@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../main.dart';
-import '../../scope/app_state_scope.dart';
 
 class ThemeToggleButton extends StatefulWidget {
   const ThemeToggleButton({super.key});
@@ -11,7 +10,6 @@ class ThemeToggleButton extends StatefulWidget {
 }
 
 class _ThemeToggleButtonState extends State<ThemeToggleButton> {
-
   bool _isHover = false;
 
   @override
@@ -38,9 +36,10 @@ class _ThemeToggleButtonState extends State<ThemeToggleButton> {
           width: 40.0,
           height: 40.0,
           duration: const Duration(milliseconds: 200),
-          child: Icon(AppStateScope.of(context).themeMode == ThemeMode.light
-              ? Icons.nightlight
-              : Icons.wb_sunny),
+          child: Icon(switch (Theme.of(context).brightness) {
+            Brightness.light => Icons.nightlight_round,
+            Brightness.dark => Icons.wb_sunny_rounded
+          }),
         ),
       ),
     );

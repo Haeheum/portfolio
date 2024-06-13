@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Haeheum Jo`
   String get myName {
     return Intl.message(
@@ -115,6 +125,16 @@ class S {
     return Intl.message(
       'My projects',
       name: 'projectsTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of birth`
+  String get dateOfBirth {
+    return Intl.message(
+      'Date of birth',
+      name: 'dateOfBirth',
       desc: '',
       args: [],
     );

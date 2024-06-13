@@ -3,11 +3,15 @@
   "musicTooltip" : "내가 좋아하는 가수 노래 듣기",
 
   "developer": "개발자",
+
+  "name": "이름",
   "myName": "조해흠",
 
   "milestoneTooltip": "내 여정표 보기",
   "strengthTooltip": "내 강점 보기",
   "projectsTooltip": "내 프로젝트 보기",
+
+  "dateOfBirth": "생일",
 
   "myBirthdate": "{date}",
   "@myBirthdate": {

@@ -3,11 +3,15 @@
   "musicTooltip": "My playlist",
 
   "developer": "DEVELOPER",
+
+  "name": "Name",
   "myName": "Haeheum Jo",
 
   "milestoneTooltip": "My milestone",
   "strengthTooltip": "My strength",
   "projectsTooltip": "My projects",
+
+  "dateOfBirth": "Date of birth",
 
   "myBirthdate": "{date}",
   "@myBirthdate": {

@@ -6,6 +6,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../util/global_constants.dart';
+import '../../util/global_methods.dart';
 import 'background_music.dart';
 
 class AudioController extends StatefulWidget {
@@ -23,7 +25,6 @@ class AudioController extends StatefulWidget {
 
 class AudioControllerState extends State<AudioController> {
   static const _bgmPlayerId = 'bgmPlayer';
-  static const kDefaultVolume = 0.2;
 
   late final AppLifecycleListener _appLifecycleListener;
   late final AudioPlayer _bgmPlayer;
@@ -111,9 +112,9 @@ class AudioControllerState extends State<AudioController> {
       if (_bgmPlayer.state == PlayerState.playing) {
         _bgmPlayer.stop();
       }
-      debounce(() {
+      kDebounce(action: () {
         _playFirstBgm(_bgmPlaylist.first.filename);
-      });
+      }, debounceTimer: _debounceTimer);
     }
   }
 
@@ -131,9 +132,9 @@ class AudioControllerState extends State<AudioController> {
       if (_bgmPlayer.state == PlayerState.playing) {
         _bgmPlayer.stop();
       }
-      debounce(() {
+      kDebounce(action: () {
         _playFirstBgm(_bgmPlaylist.first.filename);
-      });
+      }, debounceTimer: _debounceTimer);
     }
   }
 
@@ -154,16 +155,16 @@ class AudioControllerState extends State<AudioController> {
           shouldPlay = true;
         } catch (e) {
           dev.log(name: 'Audio', 'Failed to resume bgm');
-          debounce(() {
+          kDebounce(action: () {
             _playFirstBgm(_bgmPlaylist.first.filename);
-          });
+          }, debounceTimer: _debounceTimer);
         }
         break;
       case PlayerState.stopped:
       case PlayerState.completed:
-        debounce(() {
-          _playFirstBgm(_bgmPlaylist.first.filename);
-        });
+      kDebounce(action: () {
+        _playFirstBgm(_bgmPlaylist.first.filename);
+      }, debounceTimer: _debounceTimer);
         break;
       case PlayerState.playing:
       case PlayerState.disposed:
@@ -185,13 +186,6 @@ class AudioControllerState extends State<AudioController> {
     }
   }
 
-  void debounce(
-    VoidCallback action, {
-    Duration duration = const Duration(milliseconds: 300),
-  }) {
-    _debounceTimer?.cancel();
-    _debounceTimer = Timer(duration, action);
-  }
 
   @override
   Widget build(BuildContext context) {

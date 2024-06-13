@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../custom/sun_moon_switch.dart';
-
-class StrengthPage extends StatelessWidget {
-  const StrengthPage({super.key});
+class ProjectsPage extends StatelessWidget {
+  const ProjectsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +10,7 @@ class StrengthPage extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(24),
-        child: SunMoonSwitch(
-          onChanged: (bool value) {},
-        ),
+        child: Placeholder(),
       ),
     );
   }

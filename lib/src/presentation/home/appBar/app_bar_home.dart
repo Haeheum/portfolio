@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/presentation/scope/app_state_scope.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../main.dart';
@@ -37,10 +38,17 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             label: Text(
               S.of(context).language,
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: Theme.of(context).extension<ExtensionColors>()!.textColor,
-              ),
+                    color: Theme.of(context)
+                        .extension<ExtensionColors>()!
+                        .textColor,
+                  ),
             ),
-            initialSelection: LanguageLabel.english,
+            initialSelection: switch (
+                AppStateScope.of(context).appLocale.languageCode) {
+              'en' => LanguageLabel.english,
+              'ko' => LanguageLabel.korean,
+              _ => throw UnsupportedError('Unsupported Language')
+            },
             onSelected: (LanguageLabel? language) {
               if (language != null) {
                 MainApp.of(context).setLanguageCode(language.code);

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../../../util/global_constants.dart';
 import '../../audio/audio_controller.dart';
 
 class AudioVolumeControlButton extends StatefulWidget {
@@ -50,7 +51,7 @@ class _AudioVolumeControllerButtonState
                       onTap: () {
                         if (volume == 0) {
                           AudioController.of(context).setBgmVolume(
-                              AudioControllerState.kDefaultVolume);
+                              kDefaultVolume);
                         } else {
                           AudioController.of(context).setBgmVolume(0.0);
                         }
