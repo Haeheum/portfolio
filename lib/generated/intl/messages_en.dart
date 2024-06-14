@@ -27,13 +27,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of birth"),
         "developer": MessageLookupByLibrary.simpleMessage("DEVELOPER"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
-        "milestoneTooltip":
-            MessageLookupByLibrary.simpleMessage("My milestone"),
+        "milestone": MessageLookupByLibrary.simpleMessage("Milestone"),
         "musicTooltip": MessageLookupByLibrary.simpleMessage("My playlist"),
         "myBirthdate": m0,
-        "myName": MessageLookupByLibrary.simpleMessage("Haeheum Jo"),
+        "myName": MessageLookupByLibrary.simpleMessage("HAEHEUM JO"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
-        "projectsTooltip": MessageLookupByLibrary.simpleMessage("My projects"),
-        "strengthTooltip": MessageLookupByLibrary.simpleMessage("My strength")
+        "projects": MessageLookupByLibrary.simpleMessage("Projects"),
+        "skillSet": MessageLookupByLibrary.simpleMessage("Skill set")
       };
 }

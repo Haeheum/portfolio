@@ -90,41 +90,41 @@ class S {
     );
   }
 
-  /// `Haeheum Jo`
+  /// `HAEHEUM JO`
   String get myName {
     return Intl.message(
-      'Haeheum Jo',
+      'HAEHEUM JO',
       name: 'myName',
       desc: '',
       args: [],
     );
   }
 
-  /// `My milestone`
-  String get milestoneTooltip {
+  /// `Milestone`
+  String get milestone {
     return Intl.message(
-      'My milestone',
-      name: 'milestoneTooltip',
+      'Milestone',
+      name: 'milestone',
       desc: '',
       args: [],
     );
   }
 
-  /// `My strength`
-  String get strengthTooltip {
+  /// `Skill set`
+  String get skillSet {
     return Intl.message(
-      'My strength',
-      name: 'strengthTooltip',
+      'Skill set',
+      name: 'skillSet',
       desc: '',
       args: [],
     );
   }
 
-  /// `My projects`
-  String get projectsTooltip {
+  /// `Projects`
+  String get projects {
     return Intl.message(
-      'My projects',
-      name: 'projectsTooltip',
+      'Projects',
+      name: 'projects',
       desc: '',
       args: [],
     );

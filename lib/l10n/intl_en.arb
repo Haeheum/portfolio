@@ -1,18 +1,13 @@
 {
   "language": "language",
   "musicTooltip": "My playlist",
-
   "developer": "DEVELOPER",
-
   "name": "Name",
-  "myName": "Haeheum Jo",
-
-  "milestoneTooltip": "My milestone",
-  "strengthTooltip": "My strength",
-  "projectsTooltip": "My projects",
-
+  "myName": "HAEHEUM JO",
+  "milestone": "Milestone",
+  "skillSet": "Skill set",
+  "projects": "Projects",
   "dateOfBirth": "Date of birth",
-
   "myBirthdate": "{date}",
   "@myBirthdate": {
     "description": "My birthdate",

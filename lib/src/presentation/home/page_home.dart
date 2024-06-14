@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/projects/page_projects.dart';
 
 import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
 import '../common/scale_on_hover.dart';
 import '../custom/digital_rain.dart';
-import '../strength/page_strength.dart';
+import '../projects/page_projects.dart';
+import '../skill_set/page_skill_set.dart';
 import 'appBar/app_bar_home.dart';
 import 'music_control_panel.dart';
 
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                                   color: Colors.transparent,
                                   child: ScaleOnHover(
                                     tooltipMessage:
-                                        S.of(context).milestoneTooltip,
+                                        S.of(context).milestone,
                                     child: FittedBox(
                                       child: Column(
                                         mainAxisAlignment:
@@ -122,10 +122,10 @@ class HomePage extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const StrengthPage()),
+                                                const SkillSetPage()),
                                       );
                                     },
-                                    tooltipMessage: S.of(context).strengthTooltip,
+                                    tooltipMessage: S.of(context).skillSet,
                                     child: Image.asset(
                                       'assets/images/haeheumjo.jpeg',
                                     ),
@@ -153,7 +153,7 @@ class HomePage extends StatelessWidget {
                                         const ProjectsPage()),
                                   );
                                 },
-                                tooltipMessage: S.of(context).projectsTooltip,
+                                tooltipMessage: S.of(context).projects,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [

@@ -19,10 +19,11 @@ class GridItem extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(paddingValue),
         child: Center(
-            child: child ??
-                Container(
-                  color: Colors.transparent,
-                )),
+          child: child ??
+              Container(
+                color: Colors.transparent,
+              ),
+        ),
       ),
     );
   }

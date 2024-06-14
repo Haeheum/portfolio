@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/custom/target_plate.dart';
 
 import '../custom/confetti.dart';
 import '../custom/shimmer_effect.dart';
 import '../custom/sun_moon_switch.dart';
+import '../custom/target_plate.dart';
 import 'grid_item.dart';
 
-class StrengthPage extends StatelessWidget {
-  const StrengthPage({super.key});
+class SkillSetPage extends StatelessWidget {
+  const SkillSetPage({super.key});
 
   @override
   Widget build(BuildContext context) {
