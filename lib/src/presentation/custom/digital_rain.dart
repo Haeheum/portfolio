@@ -94,7 +94,7 @@ class RainingTextsPainter extends CustomPainter {
           0, -kToolbarHeight, size.width, size.height + kToolbarHeight);
       _skyPaint.shader = _skyGradient.createShader(_canvasRectangle);
 
-      _rainCount = (size.width * size.height / 2500).round();
+      _rainCount = (size.width * size.height / 25000).round();
       _rain = List.generate(_rainCount, (i) {
         return _SingleRainDrop(
           rainColor: _rainColor,
@@ -114,7 +114,7 @@ class RainingTextsPainter extends CustomPainter {
       _skyPaint.shader = _skyGradient.createShader(_canvasRectangle);
 
       // New rain count
-      _rainCount = (size.width * size.height / 2500).round();
+      _rainCount = (size.width * size.height / 25000).round();
       // Add rainDrops
       if (_rainCount > _rain.length) {
         int difference = _rainCount - _rain.length;
