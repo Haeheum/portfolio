@@ -7,11 +7,11 @@ import '../../model/vector.dart';
 
 class Confetti extends StatefulWidget {
   static const _defaultColors = [
-    Color(0xffee9cf6),
+    Color(0xffff3232),
+    Color(0xffff9c38),
+    Color(0xffffea34),
+    Color(0xff2eff60),
     Color(0xff1d75fb),
-    Color(0xff0050bc),
-    Color(0xffa2dcc7),
-    Color(0xff162803),
   ];
 
   final bool isStopped;
@@ -64,8 +64,6 @@ class _ConfettiState extends State<Confetti>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      // We don't really care about the duration, since we're going to
-      // use the controller on loop anyway.
       duration: const Duration(seconds: 1),
       vsync: this,
     );
@@ -79,7 +77,7 @@ class _ConfettiState extends State<Confetti>
 class ConfettiPainter extends CustomPainter {
   final defaultPaint = Paint();
 
-  final int snippingsCount = 200;
+  final int _snippingCount = 100;
 
   late final List<_PaperSnipping> _snippings;
 
@@ -99,11 +97,11 @@ class ConfettiPainter extends CustomPainter {
     if (_size == null) {
       // First time we have a size.
       _snippings = List.generate(
-          snippingsCount,
-              (i) => _PaperSnipping(
-            frontColor: colors[i % colors.length],
-            bounds: size,
-          ));
+          _snippingCount,
+          (i) => _PaperSnipping(
+                frontColor: colors[i % colors.length],
+                bounds: size,
+              ));
     }
 
     final didResize = _size != null && _size != size;
@@ -130,93 +128,80 @@ class ConfettiPainter extends CustomPainter {
 class _PaperSnipping {
   static final Random _random = Random();
 
-  static const degToRad = pi / 180;
+  static const _degToRad = pi / 180;
 
-  static const backSideBlend = Color(0x70EEEEEE);
+  static const _backSideBlend = Color(0x70EEEEEE);
 
   Size _bounds;
 
-  late final Vector position = Vector(
+  late final Vector _position = Vector(
     _random.nextDouble() * _bounds.width,
     _random.nextDouble() * _bounds.height,
   );
 
-  final double rotationSpeed = 800 + _random.nextDouble() * 600;
+  final double _rotationSpeed = 800 + _random.nextDouble() * 600;
+  final double _angle = _random.nextDouble() * 360 * _degToRad;
+  double _rotation = _random.nextDouble() * 360 * _degToRad;
+  double _cosA = 1.0;
 
-  final double angle = _random.nextDouble() * 360 * degToRad;
+  final double _size = 7.0;
+  final double _oscillationSpeed = 0.5 + _random.nextDouble() * 1.5;
+  final double _xSpeed = 40;
+  final double _ySpeed = 50 + _random.nextDouble() * 60;
 
-  double rotation = _random.nextDouble() * 360 * degToRad;
-
-  double cosA = 1.0;
-
-  final double petalWidth = 10.0;
-  final double petalHeight = 20.0;
-
-  final double size = 7.0;
-
-  final double oscillationSpeed = 0.5 + _random.nextDouble() * 1.5;
-
-  final double xSpeed = 40;
-
-  final double ySpeed = 50 + _random.nextDouble() * 60;
-
-  late List<Vector> corners = List.generate(4, (i) {
-    final angle = this.angle + degToRad * (45 + i * 90);
+  late final List<Vector> _corners = List.generate(4, (i) {
+    final angle = _angle + _degToRad * (45 + i * 90);
     return Vector(cos(angle), sin(angle));
   });
 
-  double time = _random.nextDouble();
-
+  double _time = _random.nextDouble();
   final Color frontColor;
-
-  late final Color backColor = Color.alphaBlend(backSideBlend, frontColor);
-
-  final paint = Paint()..style = PaintingStyle.fill;
+  late final Color _backColor = Color.alphaBlend(_backSideBlend, frontColor);
+  final _snippingPaint = Paint()..style = PaintingStyle.fill;
 
   _PaperSnipping({
     required this.frontColor,
     required Size bounds,
-  }) : _bounds = bounds;
+  })  :
+        _bounds = bounds;
 
   void draw(Canvas canvas) {
-    if (cosA > 0) {
-      paint.color = frontColor;
+    if (_cosA > 0) {
+      _snippingPaint.color = frontColor;
     } else {
-      paint.color = backColor;
+      _snippingPaint.color = _backColor;
     }
 
     final path = Path()
       ..addPolygon(
         List.generate(
             4,
-                (index) => Offset(
-              position.x + corners[index].x * size,
-              position.y + corners[index].y * size * cosA,
-            )),
+            (index) => Offset(
+              _position.x + _corners[index].x * _size,
+              _position.y + _corners[index].y * _size * _cosA,
+                )),
         true,
       );
-    canvas.drawPath(path, paint);
+    canvas.drawPath(path, _snippingPaint);
   }
 
   void update(double dt) {
-    time += dt;
-    rotation += rotationSpeed * dt;
-    cosA = cos(degToRad * rotation);
-    position.x += cos(time * oscillationSpeed) * xSpeed * dt;
-    position.y += ySpeed * dt;
-    if (position.y > _bounds.height) {
-      // Move the snipping back to the top.
-      position.x = _random.nextDouble() * _bounds.width;
-      position.y = 0;
+    _time += dt;
+    _rotation += _rotationSpeed * dt;
+    _cosA = cos(_degToRad * _rotation);
+    _position.x += cos(_time * _oscillationSpeed) * _xSpeed * dt;
+    _position.y += _ySpeed * dt;
+    if (_position.y > _bounds.height) {
+      _position.x = _random.nextDouble() * _bounds.width;
+      _position.y = 0;
     }
   }
 
   void updateBounds(Size newBounds) {
-    if (!newBounds.contains(Offset(position.x, position.y))) {
-      position.x = _random.nextDouble() * newBounds.width;
-      position.y = _random.nextDouble() * newBounds.height;
+    if (!newBounds.contains(Offset(_position.x, _position.y))) {
+      _position.x = _random.nextDouble() * newBounds.width;
+      _position.y = _random.nextDouble() * newBounds.height;
     }
     _bounds = newBounds;
   }
 }
-

@@ -50,8 +50,6 @@ class AudioControllerState extends State<AudioController> {
           _bgmPlayer.pause();
         }
       },
-      onStateChange: (AppLifecycleState newState) =>
-          dev.log(name: 'OnAppStateChange', newState.name),
     );
   }
 
@@ -66,11 +64,6 @@ class AudioControllerState extends State<AudioController> {
     artistName.value = _bgmPlaylist.first.artistName;
     musicName.value = _bgmPlaylist.first.musicName;
 
-    _bgmPlayer.onPlayerStateChanged.listen((data) {
-      dev.log(name: 'AudioState', data.toString());
-    }, onError: (e) {
-      dev.log(name: 'AudioError', e.toString());
-    });
     _bgmPlayer.onPlayerComplete.listen(nextBgm);
   }
 
@@ -112,9 +105,11 @@ class AudioControllerState extends State<AudioController> {
       if (_bgmPlayer.state == PlayerState.playing) {
         _bgmPlayer.stop();
       }
-      kDebounce(action: () {
-        _playFirstBgm(_bgmPlaylist.first.filename);
-      }, debounceTimer: _debounceTimer);
+      kDebounce(
+          action: () {
+            _playFirstBgm(_bgmPlaylist.first.filename);
+          },
+          debounceTimer: _debounceTimer);
     }
   }
 
@@ -132,9 +127,11 @@ class AudioControllerState extends State<AudioController> {
       if (_bgmPlayer.state == PlayerState.playing) {
         _bgmPlayer.stop();
       }
-      kDebounce(action: () {
-        _playFirstBgm(_bgmPlaylist.first.filename);
-      }, debounceTimer: _debounceTimer);
+      kDebounce(
+          action: () {
+            _playFirstBgm(_bgmPlaylist.first.filename);
+          },
+          debounceTimer: _debounceTimer);
     }
   }
 
@@ -154,21 +151,25 @@ class AudioControllerState extends State<AudioController> {
           await _bgmPlayer.resume();
           shouldPlay = true;
         } catch (e) {
-          dev.log(name: 'Audio', 'Failed to resume bgm');
-          kDebounce(action: () {
-            _playFirstBgm(_bgmPlaylist.first.filename);
-          }, debounceTimer: _debounceTimer);
+          dev.log(name: 'AudioError', 'Failed to resume bgm');
+          kDebounce(
+              action: () {
+                _playFirstBgm(_bgmPlaylist.first.filename);
+              },
+              debounceTimer: _debounceTimer);
         }
         break;
       case PlayerState.stopped:
       case PlayerState.completed:
-      kDebounce(action: () {
-        _playFirstBgm(_bgmPlaylist.first.filename);
-      }, debounceTimer: _debounceTimer);
+        kDebounce(
+            action: () {
+              _playFirstBgm(_bgmPlaylist.first.filename);
+            },
+            debounceTimer: _debounceTimer);
         break;
       case PlayerState.playing:
       case PlayerState.disposed:
-        dev.log(name: 'Audio', 'Unexpected player state');
+        dev.log(name: 'AudioError', 'Bad audio player state');
         break;
     }
   }
@@ -185,7 +186,6 @@ class AudioControllerState extends State<AudioController> {
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) {

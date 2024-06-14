@@ -86,9 +86,9 @@ class _SunMoonSwitchState extends State<SunMoonSwitch>
               },
               onExit: (_) {
                 if (_isSun) {
-                  _sunController.reset();
+                  _sunController.animateTo(0);
                 } else {
-                  _moonController.reset();
+                  _moonController.animateTo(0);
                 }
               },
               child: ClipRRect(

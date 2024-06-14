@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/find_locale.dart';
@@ -47,10 +49,13 @@ class MainAppState extends State<MainApp> {
     super.initState();
 
     Locale appLocale = kGetLocaleFromLocaleInfo(Intl.systemLocale);
-    debugPrint('defaultLocale: (${appLocale.languageCode},${appLocale.countryCode})');
+    log(
+      name: 'System',
+      'Locale: (${appLocale.languageCode},${appLocale.countryCode})',
+    );
 
-    _appState = AppStateModel(appLocale: appLocale, themeMode: ThemeMode.system);
-
+    _appState =
+        AppStateModel(appLocale: appLocale, themeMode: ThemeMode.system);
   }
 
   @override

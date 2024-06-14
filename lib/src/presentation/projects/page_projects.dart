@@ -7,10 +7,11 @@ class ProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(24),
-        child: Placeholder(),
+      body: Hero(
+        tag: 'card',
+        child: Container(
+          color: Colors.transparent,
+        ),
       ),
     );
   }
