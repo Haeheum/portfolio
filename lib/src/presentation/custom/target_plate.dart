@@ -17,32 +17,35 @@ class _TargetPlateState extends State<TargetPlate> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
+    return Material(
       borderRadius: BorderRadius.circular(16.0),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        color: _hasTouchedEdge
-            ? Theme.of(context).extension<ExtensionColors>()!.warningColor
-            : Theme.of(context)
-                .extension<ExtensionColors>()!
-                .cardBackgroundColor,
-        child: MouseRegion(
-          onHover: (mouseEvent) {
-            setState(() {
-              _mouseOffset = mouseEvent.localPosition;
-            });
-          },
-          onExit: (_) {
-            setState(() {
-              _mouseOffset = null;
-            });
-          },
-          child: CustomPaint(
-            painter: TargetPlatePainter(
-              mouseOffset: _mouseOffset,
-              toggleBackgroundColor: toggleBackgroundColor,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16.0),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          color: _hasTouchedEdge
+              ? Theme.of(context).extension<ExtensionColors>()!.warningColor
+              : Theme.of(context)
+                  .extension<ExtensionColors>()!
+                  .cardBackgroundColor,
+          child: MouseRegion(
+            onHover: (mouseEvent) {
+              setState(() {
+                _mouseOffset = mouseEvent.localPosition;
+              });
+            },
+            onExit: (_) {
+              setState(() {
+                _mouseOffset = null;
+              });
+            },
+            child: CustomPaint(
+              painter: TargetPlatePainter(
+                mouseOffset: _mouseOffset,
+                toggleBackgroundColor: toggleBackgroundColor,
+              ),
+              size: Size.infinite,
             ),
-            size: Size.infinite,
           ),
         ),
       ),

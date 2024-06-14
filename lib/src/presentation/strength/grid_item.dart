@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../config/theme_extension.dart';
 
 class GridItem extends StatelessWidget {
-  const GridItem({super.key, required this.child, this.paddingValue = 24.0});
+  const GridItem({super.key, this.child, this.paddingValue = 24.0});
 
-  final Widget child;
+  final Widget? child;
   final double paddingValue;
 
   @override
@@ -18,7 +18,11 @@ class GridItem extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.all(paddingValue),
-        child: Center(child: child),
+        child: Center(
+            child: child ??
+                Container(
+                  color: Colors.transparent,
+                )),
       ),
     );
   }
