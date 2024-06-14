@@ -21,8 +21,11 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   ),
   textTheme: GoogleFonts.juaTextTheme(),
   tooltipTheme: TooltipThemeData(
-      textStyle: GoogleFonts.jua()
-          .copyWith(fontSize: 20, color: const Color(0xFFEDEBEE))),
+    textStyle: GoogleFonts.jua().copyWith(
+      fontSize: 20,
+      color: const Color(0xFFEDEBEE),
+    ),
+  ),
   extensions: const [
     ExtensionColors(
       skyColor: Color(0xFF51A4D6),
@@ -30,6 +33,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
       cardBackgroundColor: Color(0xFFF5CE56),
       backgroundColor: Color(0xFFFFE9A6),
       textColor: Color(0xFF2F2E36),
+      warningColor: Color(0xFFE53935),
     ),
   ],
 );
@@ -51,8 +55,11 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   textTheme: GoogleFonts.juaTextTheme(),
   tooltipTheme: TooltipThemeData(
-      textStyle: GoogleFonts.jua()
-          .copyWith(fontSize: 20, color: const Color(0xFF2F2E36))),
+    textStyle: GoogleFonts.jua().copyWith(
+      fontSize: 20,
+      color: const Color(0xFF2F2E36),
+    ),
+  ),
   extensions: const [
     ExtensionColors(
       skyColor: Color(0xFF152F52),
@@ -60,6 +67,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       cardBackgroundColor: Color(0xFF466C93),
       backgroundColor: Color(0xFF151319),
       textColor: Color(0xFFEDEBEE),
+      warningColor: Color(0xFFEF9A9A),
     ),
   ],
 );

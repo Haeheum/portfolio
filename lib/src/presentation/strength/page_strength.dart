@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/presentation/custom/target_plate.dart';
 
 import '../custom/confetti.dart';
 import '../custom/sun_moon_switch.dart';
@@ -20,8 +21,9 @@ class StrengthPage extends StatelessWidget {
               mainAxisSpacing: 12.0,
               crossAxisSpacing: 12.0,
               children: [
-                GridItem(child: SunMoonSwitch(onChanged: (_){})),
+                GridItem(child: SunMoonSwitch(onChanged: (_) {})),
                 const GridItem(child: Confetti()),
+                const GridItem(paddingValue: 0, child: TargetPlate()),
               ],
             ),
           ],

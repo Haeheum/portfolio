@@ -7,6 +7,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
     required this.cardBackgroundColor,
     required this.backgroundColor,
     required this.textColor,
+    required this.warningColor,
   });
 
   final Color? skyColor;
@@ -14,6 +15,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
   final Color? cardBackgroundColor;
   final Color? backgroundColor;
   final Color? textColor;
+  final Color? warningColor;
 
   @override
   ExtensionColors copyWith({
@@ -23,6 +25,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
     Color? backgroundColor,
     Color? textColor,
     Color? matrixShadowColor,
+    Color? warningColor,
   }) {
     return ExtensionColors(
       skyColor: skyColor ?? this.skyColor,
@@ -30,6 +33,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
       cardBackgroundColor: cardBackgroundColor ?? this.cardBackgroundColor,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       textColor: textColor ?? this.textColor,
+      warningColor: warningColor ?? this.warningColor,
     );
   }
 
@@ -41,9 +45,11 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
     return ExtensionColors(
       skyColor: Color.lerp(skyColor, other.skyColor, t),
       rainColor: Color.lerp(rainColor, other.rainColor, t),
-      cardBackgroundColor: Color.lerp(cardBackgroundColor, other.cardBackgroundColor, t),
+      cardBackgroundColor:
+          Color.lerp(cardBackgroundColor, other.cardBackgroundColor, t),
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
       textColor: Color.lerp(textColor, other.textColor, t),
+      warningColor: Color.lerp(warningColor, other.warningColor, t),
     );
   }
 }

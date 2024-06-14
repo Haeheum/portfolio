@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/config/theme_extension.dart';
+
+import '../../config/theme_extension.dart';
 
 class GridItem extends StatelessWidget {
-  const GridItem({super.key, required this.child});
+  const GridItem({super.key, required this.child, this.paddingValue = 24.0});
 
   final Widget child;
+  final double paddingValue;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Theme.of(context).extension<ExtensionColors>()?.cardBackgroundColor,
-      margin: const EdgeInsets.all(24.0),
+    return Container(
+      decoration: BoxDecoration(
+        color:
+            Theme.of(context).extension<ExtensionColors>()?.cardBackgroundColor,
+        borderRadius: BorderRadius.circular(16.0),
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(24.0),
+        padding: EdgeInsets.all(paddingValue),
         child: Center(child: child),
       ),
     );
