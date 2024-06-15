@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../generated/l10n.dart';
 import '../common_widgets/app_bar_terminal.dart';
 
-class PageProjects extends StatelessWidget {
-  const PageProjects({super.key});
+class PageAboutMe extends StatelessWidget {
+  const PageAboutMe({super.key});
 
   @override
   Widget build(BuildContext context) {

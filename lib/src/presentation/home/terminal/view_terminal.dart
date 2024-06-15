@@ -105,7 +105,14 @@ class _TerminalViewState extends State<TerminalView> {
                               Flexible(
                                 child: Text(
                                   S.of(context).myName,
-                                  style: TextStyle(),
+                                  style: const TextStyle().copyWith(
+                                      color: _onHover
+                                          ? Theme.of(context)
+                                              .extension<ExtensionColors>()!
+                                              .terminalAppBarTextColor
+                                          : Theme.of(context)
+                                              .extension<ExtensionColors>()!
+                                              .terminalUnfocusedAppBarTextColor),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),

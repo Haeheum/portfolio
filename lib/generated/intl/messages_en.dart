@@ -25,8 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutMe": MessageLookupByLibrary.simpleMessage("About me"),
-        "aboutMeMessage":
-            MessageLookupByLibrary.simpleMessage("Check out my milestone"),
+        "aboutMeMessage": MessageLookupByLibrary.simpleMessage("About me"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of birth"),
         "developer": MessageLookupByLibrary.simpleMessage("DEVELOPER"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
@@ -38,9 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),
         "projectsMessage":
-            MessageLookupByLibrary.simpleMessage("Check out my projects"),
+            MessageLookupByLibrary.simpleMessage("Project experiences"),
         "skillSet": MessageLookupByLibrary.simpleMessage("Skill set"),
-        "skillSetMessage":
-            MessageLookupByLibrary.simpleMessage("Check out my skill set")
+        "skillSetMessage": MessageLookupByLibrary.simpleMessage("Skill set")
       };
 }

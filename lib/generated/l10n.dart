@@ -163,30 +163,30 @@ class S {
     );
   }
 
-  /// `Check out my milestone`
+  /// `About me`
   String get aboutMeMessage {
     return Intl.message(
-      'Check out my milestone',
+      'About me',
       name: 'aboutMeMessage',
       desc: '',
       args: [],
     );
   }
 
-  /// `Check out my skill set`
+  /// `Skill set`
   String get skillSetMessage {
     return Intl.message(
-      'Check out my skill set',
+      'Skill set',
       name: 'skillSetMessage',
       desc: '',
       args: [],
     );
   }
 
-  /// `Check out my projects`
+  /// `Project experiences`
   String get projectsMessage {
     return Intl.message(
-      'Check out my projects',
+      'Project experiences',
       name: 'projectsMessage',
       desc: '',
       args: [],

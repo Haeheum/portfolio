@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../generated/l10n.dart';
 import '../common_widgets/app_bar_terminal.dart';
 import '../custom/confetti.dart';
 import '../custom/shimmer_effect.dart';
@@ -15,7 +16,7 @@ class SkillSetPage extends StatelessWidget {
     return Hero(
       tag: 'hero',
       child: Scaffold(
-        appBar: const AppBarTerminal(),
+        appBar: AppBarTerminal(appBarTitle: S.of(context).skillSet),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Shimmer(

@@ -5,7 +5,9 @@ import '../../config/theme_extension.dart';
 import '../home/appBar/button_theme_toggle.dart';
 
 class AppBarTerminal extends StatefulWidget implements PreferredSizeWidget {
-  const AppBarTerminal({super.key});
+  final String appBarTitle;
+
+  const AppBarTerminal({super.key, required this.appBarTitle});
 
   @override
   State<AppBarTerminal> createState() => _AppBarTerminalState();
@@ -17,6 +19,7 @@ class AppBarTerminal extends StatefulWidget implements PreferredSizeWidget {
 class _AppBarTerminalState extends State<AppBarTerminal> {
   bool _onHover = false;
   bool _onHoverBackButton = false;
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -70,7 +73,7 @@ class _AppBarTerminalState extends State<AppBarTerminal> {
                     child: _onHoverBackButton
                         ? const Icon(
                             CupertinoIcons.clear_thick,
-                      size: 18.0,
+                            size: 18.0,
                             color: Colors.black,
                           )
                         : null,
@@ -78,6 +81,20 @@ class _AppBarTerminalState extends State<AppBarTerminal> {
                 )),
             const SizedBox(width: 12),
             const ThemeToggleButton(),
+            const Spacer(),
+            Text(
+              widget.appBarTitle,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: _onHover
+                      ? Theme.of(context)
+                          .extension<ExtensionColors>()!
+                          .terminalAppBarTextColor
+                      : Theme.of(context)
+                          .extension<ExtensionColors>()!
+                          .terminalUnfocusedAppBarTextColor),
+            ),
+            const Spacer(),
+            const SizedBox(width: 98.0)
           ],
         ),
       ),

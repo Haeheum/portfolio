@@ -19,7 +19,7 @@
     }
   },
   "myMessage": "주의) 이 포트폴리오는 데스크탑 웹 환경을 대상으로 제작되었습니다. 이 웹앱은 반응형으로 다양한 화면 크기를 지원하지만 모바일 웹 환경에 대응한 적응형 앱은 아닙니다.",
-  "aboutMeMessage": "내 정보 보기",
+  "aboutMeMessage": "내정보 보기",
   "skillSetMessage": "스킬셋 보기",
   "projectsMessage": "프로젝트 경험 보기"
 }

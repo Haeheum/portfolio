@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/presentation/about_me/page_about_me.dart';
 
 import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
@@ -18,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ValueNotifier<String?> _consoleMessage = ValueNotifier(null);
+  final ValueNotifier<String?> _consoleMessage = ValueNotifier(null);
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +65,14 @@ class _HomePageState extends State<HomePage> {
                                           } else {
                                             _consoleMessage.value = null;
                                           }
+                                        },
+                                        onTap: (){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                const PageAboutMe()),
+                                          );
                                         },
                                         child: FittedBox(
                                           child: Column(
@@ -179,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const ProjectsPage()),
+                                              const PageProjects()),
                                     );
                                   },
                                   child: FittedBox(
