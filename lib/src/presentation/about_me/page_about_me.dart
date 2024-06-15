@@ -11,7 +11,7 @@ class PageAboutMe extends StatelessWidget {
     return Hero(
       tag: 'hero',
       child: Scaffold(
-        appBar: AppBarTerminal(appBarTitle: S.of(context).projects),
+        appBar: AppBarTerminal(appBarTitle: S.of(context).aboutMe),
         body: Container(
           color: Colors.transparent,
         ),
