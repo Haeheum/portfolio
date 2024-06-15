@@ -4,7 +4,7 @@
   "developer": "개발자",
   "name": "이름",
   "myName": "조해흠",
-  "milestone": "여정표",
+  "aboutMe": "내정보",
   "skillSet": "스킬셋",
   "projects": "프로젝트",
   "dateOfBirth": "생일",
@@ -18,9 +18,8 @@
       }
     }
   },
-  "myMessage": "안녕하세요 개발자 조해흠입니다.",
-  "milestoneMessage": "여정표를 확인합니다.",
-  "skillSetMessage": "스킬셋을 확인합니다.",
-  "projectsMessage": "프로젝트를 확인합니다."
-
+  "myMessage": "주의) 이 포트폴리오는 데스크탑 웹 환경을 대상으로 제작되었습니다. 이 웹앱은 반응형으로 다양한 화면 크기를 지원하지만 모바일 웹 환경에 대응한 적응형 앱은 아닙니다.",
+  "aboutMeMessage": "내 정보 보기",
+  "skillSetMessage": "스킬셋 보기",
+  "projectsMessage": "프로젝트 경험 보기"
 }

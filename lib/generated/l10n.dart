@@ -100,11 +100,11 @@ class S {
     );
   }
 
-  /// `Milestone`
-  String get milestone {
+  /// `About me`
+  String get aboutMe {
     return Intl.message(
-      'Milestone',
-      name: 'milestone',
+      'About me',
+      name: 'aboutMe',
       desc: '',
       args: [],
     );
@@ -153,10 +153,10 @@ class S {
     );
   }
 
-  /// `Hi 개발자 조해흠입니다.`
+  /// `Warning) This portfolio is created for the desktop web environment. It is responsive supporting various screen sizes, but it is not adaptive thus will not function properly in mobile web environment.`
   String get myMessage {
     return Intl.message(
-      'Hi 개발자 조해흠입니다.',
+      'Warning) This portfolio is created for the desktop web environment. It is responsive supporting various screen sizes, but it is not adaptive thus will not function properly in mobile web environment.',
       name: 'myMessage',
       desc: '',
       args: [],
@@ -164,10 +164,10 @@ class S {
   }
 
   /// `Check out my milestone`
-  String get milestoneMessage {
+  String get aboutMeMessage {
     return Intl.message(
       'Check out my milestone',
-      name: 'milestoneMessage',
+      name: 'aboutMeMessage',
       desc: '',
       args: [],
     );

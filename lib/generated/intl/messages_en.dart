@@ -24,15 +24,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutMe": MessageLookupByLibrary.simpleMessage("About me"),
+        "aboutMeMessage":
+            MessageLookupByLibrary.simpleMessage("Check out my milestone"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of birth"),
         "developer": MessageLookupByLibrary.simpleMessage("DEVELOPER"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
-        "milestone": MessageLookupByLibrary.simpleMessage("Milestone"),
-        "milestoneMessage":
-            MessageLookupByLibrary.simpleMessage("Check out my milestone"),
         "musicTooltip": MessageLookupByLibrary.simpleMessage("My playlist"),
         "myBirthdate": m0,
-        "myMessage": MessageLookupByLibrary.simpleMessage("Hi 개발자 조해흠입니다."),
+        "myMessage": MessageLookupByLibrary.simpleMessage(
+            "Warning) This portfolio is created for the desktop web environment. It is responsive supporting various screen sizes, but it is not adaptive thus will not function properly in mobile web environment."),
         "myName": MessageLookupByLibrary.simpleMessage("HAEHEUM JO"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),

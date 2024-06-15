@@ -24,20 +24,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutMe": MessageLookupByLibrary.simpleMessage("내정보"),
+        "aboutMeMessage": MessageLookupByLibrary.simpleMessage("내 정보 보기"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("생일"),
         "developer": MessageLookupByLibrary.simpleMessage("개발자"),
         "language": MessageLookupByLibrary.simpleMessage("언어"),
-        "milestone": MessageLookupByLibrary.simpleMessage("여정표"),
-        "milestoneMessage": MessageLookupByLibrary.simpleMessage("여정표를 확인합니다."),
         "musicTooltip":
             MessageLookupByLibrary.simpleMessage("내가 좋아하는 가수 노래 듣기"),
         "myBirthdate": m0,
-        "myMessage": MessageLookupByLibrary.simpleMessage("안녕하세요 개발자 조해흠입니다."),
+        "myMessage": MessageLookupByLibrary.simpleMessage(
+            "주의) 이 포트폴리오는 데스크탑 웹 환경을 대상으로 제작되었습니다. 이 웹앱은 반응형으로 다양한 화면 크기를 지원하지만 모바일 웹 환경에 대응한 적응형 앱은 아닙니다."),
         "myName": MessageLookupByLibrary.simpleMessage("조해흠"),
         "name": MessageLookupByLibrary.simpleMessage("이름"),
         "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
-        "projectsMessage": MessageLookupByLibrary.simpleMessage("프로젝트를 확인합니다."),
+        "projectsMessage": MessageLookupByLibrary.simpleMessage("프로젝트 경험 보기"),
         "skillSet": MessageLookupByLibrary.simpleMessage("스킬셋"),
-        "skillSetMessage": MessageLookupByLibrary.simpleMessage("스킬셋을 확인합니다.")
+        "skillSetMessage": MessageLookupByLibrary.simpleMessage("스킬셋 보기")
       };
 }

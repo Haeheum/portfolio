@@ -5,7 +5,6 @@ const shimmerGradient = LinearGradient(
     Color(0xFFDBDBE0),
     Color(0xFFF4F4F4),
     Color(0xFFDBDBE0),
-
   ],
   stops: [
     0.35,
@@ -52,13 +51,14 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  LinearGradient get gradient => LinearGradient(
+  LinearGradient get gradient =>
+      LinearGradient(
         colors: widget.linearGradient.colors,
         stops: widget.linearGradient.stops,
         begin: widget.linearGradient.begin,
         end: widget.linearGradient.end,
         transform:
-            _SlidingGradientTransform(slidePercent: _shimmerController.value),
+        _SlidingGradientTransform(slidePercent: _shimmerController.value),
       );
 
   bool get isSized =>
@@ -114,7 +114,9 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _shimmerChanges?.removeListener(_onShimmerChange);
-    _shimmerChanges = Shimmer.of(context)?.shimmerChanges;
+    _shimmerChanges = Shimmer
+        .of(context)
+        ?.shimmerChanges;
     if (_shimmerChanges != null) {
       _shimmerChanges!.addListener(_onShimmerChange);
     }
@@ -161,6 +163,47 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
         );
       },
       child: widget.child,
+    );
+  }
+}
+
+class SampleShimmerWidget extends StatelessWidget {
+  const SampleShimmerWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer(
+      child: Container(
+          alignment: Alignment.center,
+          child: GridView.builder(
+            itemCount: 4,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
+            itemBuilder: (BuildContext context, int index) {
+              return ShimmerLoading(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Flexible(flex: 3, child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25.0)
+                        ),
+                      )),
+                      const SizedBox(height: 24.0),
+                      Flexible(flex: 1, child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(25.0)
+                        ),
+                      )),
+                    ],
+                  ),
+                ),
+              );
+            },
+          )),
     );
   }
 }

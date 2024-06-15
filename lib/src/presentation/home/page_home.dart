@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
-import '../common/scale_on_hover.dart';
+import '../common_widgets/scale_on_hover.dart';
 import '../custom/digital_rain.dart';
 import '../projects/page_projects.dart';
 import '../skill_set/page_skill_set.dart';
@@ -61,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                                         onHover: (onHover) {
                                           if (onHover) {
                                             _consoleMessage.value =
-                                                S.of(context).milestoneMessage;
+                                                S.of(context).aboutMeMessage;
                                           } else {
                                             _consoleMessage.value = null;
                                           }
@@ -180,18 +179,18 @@ class _HomePageState extends State<HomePage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                          const ProjectsPage()),
+                                              const ProjectsPage()),
                                     );
                                   },
                                   child: FittedBox(
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                       children: [
-                                        FlutterLogo(
+                                        const FlutterLogo(
                                           size: 50,
                                           style: FlutterLogoStyle.markOnly,
-                                          duration: const Duration(seconds: 0),
+                                          duration: Duration(seconds: 0),
                                         ),
                                         const SizedBox(width: 8),
                                         Text(
@@ -200,10 +199,10 @@ class _HomePageState extends State<HomePage> {
                                               .textTheme
                                               .displaySmall
                                               ?.copyWith(
-                                              color: Theme.of(context)
-                                                  .extension<
-                                                  ExtensionColors>()!
-                                                  .textColor),
+                                                  color: Theme.of(context)
+                                                      .extension<
+                                                          ExtensionColors>()!
+                                                      .textColor),
                                         ),
                                       ],
                                     ),
