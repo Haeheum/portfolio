@@ -7,15 +7,16 @@ class ScaleOnHover extends StatefulWidget {
     this.defaultScale = 1.0,
     this.targetScale = 1.1,
     this.duration = const Duration(milliseconds: 300),
-    this.tooltipMessage ='',
     this.onTap,
+    this.onHover,
   });
+
   final Widget child;
   final double defaultScale;
   final double targetScale;
   final Duration duration;
-  final String tooltipMessage;
   final VoidCallback? onTap;
+  final ValueSetter<bool>? onHover;
 
   @override
   State<ScaleOnHover> createState() => _ScaleOnHoverState();
@@ -38,19 +39,19 @@ class _ScaleOnHoverState extends State<ScaleOnHover> {
 
   @override
   Widget build(BuildContext context) {
-    return Tooltip(
-      message: widget.tooltipMessage,
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: FocusableActionDetector(
-          onShowHoverHighlight: (isHovering) {
-            _changeScale(isHovering);
-          },
-          child: AnimatedScale(
-              scale: _currentScale,
-              duration: widget.duration,
-              child: widget.child),
-        ),
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: FocusableActionDetector(
+        onShowHoverHighlight: (isHovering) {
+          _changeScale(isHovering);
+          if (widget.onHover != null) {
+            widget.onHover!(isHovering);
+          }
+        },
+        child: AnimatedScale(
+            scale: _currentScale,
+            duration: widget.duration,
+            child: widget.child),
       ),
     );
   }

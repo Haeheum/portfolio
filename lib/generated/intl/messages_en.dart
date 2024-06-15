@@ -28,11 +28,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "developer": MessageLookupByLibrary.simpleMessage("DEVELOPER"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
         "milestone": MessageLookupByLibrary.simpleMessage("Milestone"),
+        "milestoneMessage":
+            MessageLookupByLibrary.simpleMessage("Check out my milestone"),
         "musicTooltip": MessageLookupByLibrary.simpleMessage("My playlist"),
         "myBirthdate": m0,
+        "myMessage": MessageLookupByLibrary.simpleMessage("Hi 개발자 조해흠입니다."),
         "myName": MessageLookupByLibrary.simpleMessage("HAEHEUM JO"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),
-        "skillSet": MessageLookupByLibrary.simpleMessage("Skill set")
+        "projectsMessage":
+            MessageLookupByLibrary.simpleMessage("Check out my projects"),
+        "skillSet": MessageLookupByLibrary.simpleMessage("Skill set"),
+        "skillSetMessage":
+            MessageLookupByLibrary.simpleMessage("Check out my skill set")
       };
 }

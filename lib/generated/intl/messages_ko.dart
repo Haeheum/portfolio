@@ -28,12 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "developer": MessageLookupByLibrary.simpleMessage("개발자"),
         "language": MessageLookupByLibrary.simpleMessage("언어"),
         "milestone": MessageLookupByLibrary.simpleMessage("여정표"),
+        "milestoneMessage": MessageLookupByLibrary.simpleMessage("여정표를 확인합니다."),
         "musicTooltip":
             MessageLookupByLibrary.simpleMessage("내가 좋아하는 가수 노래 듣기"),
         "myBirthdate": m0,
+        "myMessage": MessageLookupByLibrary.simpleMessage("안녕하세요 개발자 조해흠입니다."),
         "myName": MessageLookupByLibrary.simpleMessage("조해흠"),
         "name": MessageLookupByLibrary.simpleMessage("이름"),
         "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
-        "skillSet": MessageLookupByLibrary.simpleMessage("스킬셋")
+        "projectsMessage": MessageLookupByLibrary.simpleMessage("프로젝트를 확인합니다."),
+        "skillSet": MessageLookupByLibrary.simpleMessage("스킬셋"),
+        "skillSetMessage": MessageLookupByLibrary.simpleMessage("스킬셋을 확인합니다.")
       };
 }

@@ -152,6 +152,46 @@ class S {
       args: [dateString],
     );
   }
+
+  /// `Hi 개발자 조해흠입니다.`
+  String get myMessage {
+    return Intl.message(
+      'Hi 개발자 조해흠입니다.',
+      name: 'myMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check out my milestone`
+  String get milestoneMessage {
+    return Intl.message(
+      'Check out my milestone',
+      name: 'milestoneMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check out my skill set`
+  String get skillSetMessage {
+    return Intl.message(
+      'Check out my skill set',
+      name: 'skillSetMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check out my projects`
+  String get projectsMessage {
+    return Intl.message(
+      'Check out my projects',
+      name: 'projectsMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

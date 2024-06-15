@@ -17,5 +17,9 @@
         "format": "yMd"
       }
     }
-  }
+  },
+  "myMessage": "Hi 개발자 조해흠입니다.",
+  "milestoneMessage": "Check out my milestone",
+  "skillSetMessage": "Check out my skill set",
+  "projectsMessage": "Check out my projects"
 }

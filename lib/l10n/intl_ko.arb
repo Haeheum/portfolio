@@ -17,5 +17,10 @@
         "format": "yMd"
       }
     }
-  }
+  },
+  "myMessage": "안녕하세요 개발자 조해흠입니다.",
+  "milestoneMessage": "여정표를 확인합니다.",
+  "skillSetMessage": "스킬셋을 확인합니다.",
+  "projectsMessage": "프로젝트를 확인합니다."
+
 }

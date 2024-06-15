@@ -8,6 +8,13 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
     required this.backgroundColor,
     required this.textColor,
     required this.warningColor,
+    required this.terminalAppBarColor,
+    required this.terminalAppBarTextColor,
+    required this.terminalUnfocusedAppBarColor,
+    required this.terminalUnfocusedAppBarTextColor,
+    required this.terminalBackgroundColor,
+    required this.terminalTextColor,
+    required this.terminalCursorColor,
   });
 
   final Color? skyColor;
@@ -16,6 +23,15 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
   final Color? backgroundColor;
   final Color? textColor;
   final Color? warningColor;
+
+  final Color? terminalAppBarColor;
+  final Color? terminalAppBarTextColor;
+  final Color? terminalUnfocusedAppBarColor;
+  final Color? terminalUnfocusedAppBarTextColor;
+
+  final Color? terminalBackgroundColor;
+  final Color? terminalTextColor;
+  final Color? terminalCursorColor;
 
   @override
   ExtensionColors copyWith({
@@ -26,6 +42,13 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
     Color? textColor,
     Color? matrixShadowColor,
     Color? warningColor,
+    Color? terminalAppBarColor,
+    Color? terminalAppBarTextColor,
+    Color? terminalUnfocusedAppBarColor,
+    Color? terminalUnfocusedAppBarTextColor,
+    Color? terminalBackgroundColor,
+    Color? terminalTextColor,
+    Color? terminalCursorColor,
   }) {
     return ExtensionColors(
       skyColor: skyColor ?? this.skyColor,
@@ -34,6 +57,17 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
       backgroundColor: backgroundColor ?? this.backgroundColor,
       textColor: textColor ?? this.textColor,
       warningColor: warningColor ?? this.warningColor,
+      terminalAppBarColor: terminalAppBarColor ?? this.terminalAppBarColor,
+      terminalAppBarTextColor:
+          terminalAppBarTextColor ?? this.terminalAppBarTextColor,
+      terminalUnfocusedAppBarColor:
+          terminalUnfocusedAppBarColor ?? this.terminalUnfocusedAppBarColor,
+      terminalUnfocusedAppBarTextColor: terminalUnfocusedAppBarTextColor ??
+          this.terminalUnfocusedAppBarTextColor,
+      terminalBackgroundColor:
+          terminalBackgroundColor ?? this.terminalBackgroundColor,
+      terminalTextColor: terminalTextColor ?? this.terminalTextColor,
+      terminalCursorColor: terminalCursorColor ?? this.terminalCursorColor,
     );
   }
 
@@ -50,6 +84,22 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
       textColor: Color.lerp(textColor, other.textColor, t),
       warningColor: Color.lerp(warningColor, other.warningColor, t),
+      terminalAppBarColor:
+          Color.lerp(terminalAppBarColor, other.terminalAppBarColor, t),
+      terminalAppBarTextColor:
+          Color.lerp(terminalAppBarTextColor, other.terminalAppBarTextColor, t),
+      terminalUnfocusedAppBarColor: Color.lerp(
+          terminalUnfocusedAppBarColor, other.terminalUnfocusedAppBarColor, t),
+      terminalUnfocusedAppBarTextColor: Color.lerp(
+          terminalUnfocusedAppBarTextColor,
+          other.terminalUnfocusedAppBarTextColor,
+          t),
+      terminalBackgroundColor:
+          Color.lerp(terminalBackgroundColor, other.terminalBackgroundColor, t),
+      terminalTextColor:
+          Color.lerp(terminalTextColor, other.terminalTextColor, t),
+      terminalCursorColor:
+          Color.lerp(terminalCursorColor, other.terminalCursorColor, t),
     );
   }
 }
