@@ -166,48 +166,49 @@ class _HomePageState extends State<HomePage> {
                                 color: Theme.of(context)
                                     .extension<ExtensionColors>()!
                                     .cardBackgroundColor,
-                                child: LayoutBuilder(
-                                    builder: (context, constraints) {
-                                  return ScaleOnHover(
-                                    onHover: (onHover) {
-                                      if (onHover) {
-                                        _consoleMessage.value =
-                                            S.of(context).projectsMessage;
-                                      } else {
-                                        _consoleMessage.value = null;
-                                      }
-                                    },
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const ProjectsPage()),
-                                      );
-                                    },
+                                child: ScaleOnHover(
+                                  onHover: (onHover) {
+                                    if (onHover) {
+                                      _consoleMessage.value =
+                                          S.of(context).projectsMessage;
+                                    } else {
+                                      _consoleMessage.value = null;
+                                    }
+                                  },
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const ProjectsPage()),
+                                    );
+                                  },
+                                  child: FittedBox(
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         FlutterLogo(
-                                          size: constraints.maxHeight / 2,
+                                          size: 50,
                                           style: FlutterLogoStyle.markOnly,
                                           duration: const Duration(seconds: 0),
                                         ),
                                         const SizedBox(width: 8),
                                         Text(
                                           S.of(context).developer,
-                                          style: TextStyle(
-                                              fontSize:
-                                                  constraints.maxHeight / 2,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                              ?.copyWith(
                                               color: Theme.of(context)
-                                                  .extension<ExtensionColors>()!
+                                                  .extension<
+                                                  ExtensionColors>()!
                                                   .textColor),
                                         ),
                                       ],
                                     ),
-                                  );
-                                }),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -229,21 +230,28 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ]),
-      floatingActionButton: FloatingActionButton(
-          tooltip: S.of(context).musicTooltip,
-          onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              enableDrag: false,
-              builder: (BuildContext context) {
-                return const MusicControlPanel();
-              },
-              backgroundColor: Theme.of(context)
-                  .extension<ExtensionColors>()!
-                  .cardBackgroundColor,
-            );
-          },
-          child: const Icon(Icons.music_note_rounded)),
+      floatingActionButton: MouseRegion(
+        onEnter: (_) {
+          _consoleMessage.value = S.of(context).musicTooltip;
+        },
+        onExit: (_) {
+          _consoleMessage.value = null;
+        },
+        child: FloatingActionButton(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                enableDrag: false,
+                builder: (BuildContext context) {
+                  return const MusicControlPanel();
+                },
+                backgroundColor: Theme.of(context)
+                    .extension<ExtensionColors>()!
+                    .cardBackgroundColor,
+              );
+            },
+            child: const Icon(Icons.music_note_rounded)),
+      ),
     );
   }
 }

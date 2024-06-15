@@ -66,7 +66,7 @@ class RainingTextsPainter extends CustomPainter {
   final _skyPaint = Paint();
   late final LinearGradient _skyGradient;
 
-  late int _rainCount;
+  final int _rainCount = 100;
   late List<_SingleRainDrop> _rain;
   Size? _size;
   DateTime _lastTime = DateTime.now();
@@ -94,7 +94,6 @@ class RainingTextsPainter extends CustomPainter {
           0, -kToolbarHeight, size.width, size.height + kToolbarHeight);
       _skyPaint.shader = _skyGradient.createShader(_canvasRectangle);
 
-      _rainCount = (size.width * size.height / 25000).round();
       _rain = List.generate(_rainCount, (i) {
         return _SingleRainDrop(
           rainColor: _rainColor,
@@ -112,46 +111,17 @@ class RainingTextsPainter extends CustomPainter {
       _canvasRectangle = Rect.fromLTWH(
           0, -kToolbarHeight, size.width, size.height + kToolbarHeight);
       _skyPaint.shader = _skyGradient.createShader(_canvasRectangle);
-
-      // New rain count
-      _rainCount = (size.width * size.height / 25000).round();
-      // Add rainDrops
-      if (_rainCount > _rain.length) {
-        int difference = _rainCount - _rain.length;
-
-        List<_SingleRainDrop> additionalRain = List.generate(difference, (i) {
-          return _SingleRainDrop(
-            rainColor: _rainColor,
-            bounds: size,
-          );
-        });
-
-        _rain.addAll(additionalRain);
-      }
     }
     // Draw background
     canvas.drawRect(_canvasRectangle, _skyPaint);
 
-    List<int> removeIndex = [];
-    for (int i = 0; i < _rain.length; i++) {
+    for (final raindrop in _rain) {
       if (didResize) {
-        bool shouldRemove = _rain[i].updateBounds(size, _rainCount, _rain);
-        if (shouldRemove) {
-          removeIndex.add(i);
-          continue;
-        }
+        raindrop.updateBounds(size);
       }
-      bool shouldRemove =
-          _rain[i].update(size, dt.inMilliseconds / 1000, _rainCount, _rain);
-      if (shouldRemove) {
-        removeIndex.add(i);
-        continue;
-      }
-      _rain[i].draw(canvas);
-    }
-    removeIndex.sort((b, a) => a.compareTo(b));
-    for (int index in removeIndex) {
-      _rain.removeAt(index);
+
+      raindrop.update(dt.inMilliseconds / 1000);
+      raindrop.draw(canvas);
     }
 
     _size = size;
@@ -199,38 +169,28 @@ class _SingleRainDrop {
     canvas.drawRect(rainRect, _rainPaint);
   }
 
-  bool update(
-      Size newBounds, double dt, int rainCount, List<_SingleRainDrop> rain) {
+  void update(double dt) {
     if (_position.y + _length > _bounds.height) {
       _useReducedLength = true;
       _reducedLength = _bounds.height - _position.y;
     }
 
     if (_position.y > _bounds.height) {
-      if (rainCount < rain.length) {
-        return true;
-      }
       _useReducedLength = false;
       _position.x = _random.nextDouble() * _bounds.width;
       _position.y = -_length - kToolbarHeight;
     }
     _position.y += _ySpeed * dt;
-    return false;
   }
 
-  bool updateBounds(Size newBounds, int rainCount, List<_SingleRainDrop> rain) {
+  void updateBounds(Size newBounds) {
     if (!newBounds.contains(Offset(_position.x, _position.y))) {
       if (!newBounds.contains(
           Offset(_position.x, _position.y + _length + kToolbarHeight))) {
-        if (rainCount < rain.length) {
-          return true;
-        } else {
-          _position.x = _random.nextDouble() * newBounds.width;
-          _position.y = (-_length - kToolbarHeight);
-        }
+        _position.x = _random.nextDouble() * newBounds.width;
+        _position.y = (-_length - kToolbarHeight);
       }
     }
     _bounds = newBounds;
-    return false;
   }
 }
