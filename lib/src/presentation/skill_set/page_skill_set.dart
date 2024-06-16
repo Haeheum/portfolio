@@ -6,7 +6,7 @@ import '../custom/confetti.dart';
 import '../custom/shimmer_effect.dart';
 import '../custom/sun_moon_switch.dart';
 import '../custom/target_plate.dart';
-import 'grid_item.dart';
+import 'grid_item_skill_set.dart';
 
 class SkillSetPage extends StatelessWidget {
   const SkillSetPage({super.key});
@@ -19,22 +19,20 @@ class SkillSetPage extends StatelessWidget {
         appBar: AppBarTerminal(appBarTitle: S.of(context).skillSet),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Shimmer(
-            child: CustomScrollView(
-              slivers: [
-                SliverGrid.extent(
-                  maxCrossAxisExtent: 600,
-                  mainAxisSpacing: 12.0,
-                  crossAxisSpacing: 12.0,
-                  children: [
-                    const GridItem(child: SampleShimmerWidget()),
-                    GridItem(child: SunMoonSwitch(onChanged: (_) {})),
-                    const GridItem(child: Confetti()),
-                    const GridItem(paddingValue: 0, child: TargetPlate()),
-                  ],
-                ),
-              ],
-            ),
+          child: CustomScrollView(
+            slivers: [
+              SliverGrid.extent(
+                maxCrossAxisExtent: 600,
+                mainAxisSpacing: 12.0,
+                crossAxisSpacing: 12.0,
+                children: [
+                  const GridItemSkillSet(child: SampleShimmerWidget()),
+                  GridItemSkillSet(child: SunMoonSwitch(onChanged: (_) {})),
+                  const GridItemSkillSet(child: Confetti()),
+                  const GridItemSkillSet(paddingValue: 0, child: TargetPlate()),
+                ],
+              ),
+            ],
           ),
         ),
       ),

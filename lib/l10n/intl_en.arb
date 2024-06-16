@@ -18,7 +18,7 @@
       }
     }
   },
-  "myMessage": "Warning) This portfolio is created for the desktop web environment. It is responsive supporting various screen sizes, but it is not adaptive thus will not function properly in mobile web environment.",
+  "myMessage": "Warning) This portfolio is created for the desktop web environment. This app is responsive, supporting various screen sizes, but is not adaptive thus will not function properly in mobile web environment.",
   "aboutMeMessage": "About me",
   "skillSetMessage": "Skill set",
   "projectsMessage": "Project experiences"

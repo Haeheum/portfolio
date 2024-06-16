@@ -153,10 +153,10 @@ class S {
     );
   }
 
-  /// `Warning) This portfolio is created for the desktop web environment. It is responsive supporting various screen sizes, but it is not adaptive thus will not function properly in mobile web environment.`
+  /// `Warning) This portfolio is created for the desktop web environment. This app is responsive, supporting various screen sizes, but is not adaptive thus will not function properly in mobile web environment.`
   String get myMessage {
     return Intl.message(
-      'Warning) This portfolio is created for the desktop web environment. It is responsive supporting various screen sizes, but it is not adaptive thus will not function properly in mobile web environment.',
+      'Warning) This portfolio is created for the desktop web environment. This app is responsive, supporting various screen sizes, but is not adaptive thus will not function properly in mobile web environment.',
       name: 'myMessage',
       desc: '',
       args: [],

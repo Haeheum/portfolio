@@ -83,8 +83,8 @@ class AudioControllerState extends State<AudioController> {
 
   Future<void> _playFirstBgm(String filename) async {
     if (!_isRunning) {
-      shouldPlay = true;
       _isRunning = true;
+      shouldPlay = true;
       await _bgmPlayer
           .play(AssetSource('sounds/bgm/$filename'))
           .whenComplete(() {
@@ -97,14 +97,13 @@ class AudioControllerState extends State<AudioController> {
   }
 
   void nextBgm(void _) {
+    _bgmPlayer.stop();
+
     _bgmPlaylist.addLast(_bgmPlaylist.removeFirst());
     artistName.value = _bgmPlaylist.first.artistName;
     musicName.value = _bgmPlaylist.first.musicName;
 
     if (shouldPlay) {
-      if (_bgmPlayer.state == PlayerState.playing) {
-        _bgmPlayer.stop();
-      }
       kDebounce(
           action: () {
             _playFirstBgm(_bgmPlaylist.first.filename);
@@ -115,6 +114,7 @@ class AudioControllerState extends State<AudioController> {
 
   void previousBgm() async {
     Duration? currentPosition = await _bgmPlayer.getCurrentPosition();
+    _bgmPlayer.stop();
 
     if (currentPosition == null ||
         currentPosition.compareTo(const Duration(seconds: 2)) <= 0) {
@@ -124,9 +124,6 @@ class AudioControllerState extends State<AudioController> {
     }
 
     if (shouldPlay) {
-      if (_bgmPlayer.state == PlayerState.playing) {
-        _bgmPlayer.stop();
-      }
       kDebounce(
           action: () {
             _playFirstBgm(_bgmPlaylist.first.filename);
@@ -138,8 +135,6 @@ class AudioControllerState extends State<AudioController> {
   void pauseBgm() {
     if (_bgmPlayer.state == PlayerState.playing) {
       _bgmPlayer.pause();
-    } else {
-      _bgmPlayer.stop();
     }
     shouldPlay = false;
   }

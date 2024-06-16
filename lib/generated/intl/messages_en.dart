@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "musicTooltip": MessageLookupByLibrary.simpleMessage("My playlist"),
         "myBirthdate": m0,
         "myMessage": MessageLookupByLibrary.simpleMessage(
-            "Warning) This portfolio is created for the desktop web environment. It is responsive supporting various screen sizes, but it is not adaptive thus will not function properly in mobile web environment."),
+            "Warning) This portfolio is created for the desktop web environment. This app is responsive, supporting various screen sizes, but is not adaptive thus will not function properly in mobile web environment."),
         "myName": MessageLookupByLibrary.simpleMessage("HAEHEUM JO"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),
