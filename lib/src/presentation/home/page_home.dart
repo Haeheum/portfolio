@@ -48,7 +48,6 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.sizeOf(context).height;
     proceedTo(context: context, stageLevel: _currentStageLevel);
 
     return Scaffold(
@@ -73,7 +72,7 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                             duration: _currentStageLevel.level < 3
                                 ? const Duration(seconds: 1)
                                 : const Duration(milliseconds: 300),
-                            child: Image.asset('images/hero.png'),
+                            child: Image.asset('assets/images/hero.png'),
                           ),
                         ),
                       ),

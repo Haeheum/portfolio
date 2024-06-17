@@ -39,7 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "messageOption1Hover":
             MessageLookupByLibrary.simpleMessage("> 제 정보가 적힌 프로필 카드를 드리겠습니다."),
         "messageOption2Hover": MessageLookupByLibrary.simpleMessage(
-            "> 저는 플러터에 대한 높은 이해도를 바탕으로 다양한 경험을 가지고 있습니다. 요즘 인터렉션에 관심을 가지고 있는데 관련된 아름다운 뷰들을 소개해드리죠."),
+            "> 저는 플러터에 대한 높은 이해도를 바탕으로 다양한 경험을 가지고 있습니다. 요즘 인터렉션에 관심을 가지고 있는데 관련된 아름다운 뷰들을 보여드리죠."),
         "messageOption3Hover": MessageLookupByLibrary.simpleMessage(
             "> 제 프로젝트 경험을 간단히 소개드리겠습니다. 상세 내용은 이력서를 참고해주시기 바랍니다."),
         "myBirthdate": m0,
