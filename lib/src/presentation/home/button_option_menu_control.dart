@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
-import '../../../../main.dart';
+class ButtonOptionMenuControl extends StatefulWidget {
+  const ButtonOptionMenuControl(
+      {super.key, required this.isLeft, required this.onTap});
 
-class ButtonThemeToggle extends StatefulWidget {
-  const ButtonThemeToggle({super.key});
+  final bool isLeft;
+  final VoidCallback onTap;
 
   @override
-  State<ButtonThemeToggle> createState() => _ButtonThemeToggleState();
+  State<ButtonOptionMenuControl> createState() =>
+      _ButtonOptionMenuControlState();
 }
 
-class _ButtonThemeToggleState extends State<ButtonThemeToggle> {
+class _ButtonOptionMenuControlState extends State<ButtonOptionMenuControl> {
   bool _isHover = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: MainApp.of(context).toggleThemeMode,
+      onTap: widget.onTap,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         onEnter: (_) {
@@ -37,10 +40,9 @@ class _ButtonThemeToggleState extends State<ButtonThemeToggle> {
           width: 40.0,
           height: 40.0,
           duration: const Duration(milliseconds: 200),
-          child: Icon(switch (Theme.of(context).brightness) {
-            Brightness.light => Icons.nightlight_round,
-            Brightness.dark => Icons.wb_sunny_rounded
-          }),
+          child: Icon(widget.isLeft
+              ? Icons.chevron_left_rounded
+              : Icons.chevron_right_rounded),
         ),
       ),
     );

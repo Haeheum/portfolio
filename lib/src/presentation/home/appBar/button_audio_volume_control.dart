@@ -3,18 +3,18 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../../util/global_constants.dart';
-import '../../audio/audio_controller.dart';
+import '../../audio/widget_audio_controller.dart';
 
-class AudioVolumeControlButton extends StatefulWidget {
-  const AudioVolumeControlButton({super.key});
+class ButtonAudioVolumeControl extends StatefulWidget {
+  const ButtonAudioVolumeControl({super.key});
 
   @override
-  State<AudioVolumeControlButton> createState() =>
+  State<ButtonAudioVolumeControl> createState() =>
       _AudioVolumeControllerButtonState();
 }
 
 class _AudioVolumeControllerButtonState
-    extends State<AudioVolumeControlButton> {
+    extends State<ButtonAudioVolumeControl> {
   bool _isHover = false;
 
   @override
@@ -43,30 +43,33 @@ class _AudioVolumeControllerButtonState
             height: 40.0,
             duration: const Duration(milliseconds: 200),
             child: ValueListenableBuilder(
-              valueListenable: AudioController.of(context).volume,
+              valueListenable: WidgetAudioController.of(context).volume,
               builder: (context, volume, _) {
                 return Row(
                   children: [
                     GestureDetector(
                       onTap: () {
                         if (volume == 0) {
-                          AudioController.of(context).setBgmVolume(
+                          WidgetAudioController.of(context).setBgmVolume(
                               kDefaultVolume);
                         } else {
-                          AudioController.of(context).setBgmVolume(0.0);
+                          WidgetAudioController.of(context).setBgmVolume(0.0);
                         }
                       },
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: 40.0,
-                        height: 40.0,
-                        child: switch (volume) {
-                          0.0 => const Icon(Icons.volume_mute_rounded),
-                          >= 0.0 && < 0.5 =>
-                            const Icon(Icons.volume_down_rounded),
-                          >= 0.5 => const Icon(Icons.volume_up_rounded),
-                          _ => throw RangeError('Volume cannot be negative'),
-                        },
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: 40.0,
+                          height: 40.0,
+                          child: switch (volume) {
+                            0.0 => const Icon(Icons.volume_mute_rounded),
+                            >= 0.0 && < 0.5 =>
+                              const Icon(Icons.volume_down_rounded),
+                            >= 0.5 => const Icon(Icons.volume_up_rounded),
+                            _ => throw RangeError('Volume cannot be negative'),
+                          },
+                        ),
                       ),
                     ),
                     if (_isHover)
@@ -74,7 +77,7 @@ class _AudioVolumeControllerButtonState
                         child: Slider(
                           value: volume,
                           onChanged: (newVolume) {
-                            AudioController.of(context).setBgmVolume(newVolume);
+                            WidgetAudioController.of(context).setBgmVolume(newVolume);
                           },
                         ),
                       ),

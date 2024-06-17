@@ -1,6 +1,5 @@
 {
   "language": "language",
-  "musicTooltip": "My playlist",
   "developer": "DEVELOPER",
   "name": "Name",
   "myName": "HAEHEUM JO",
@@ -18,8 +17,19 @@
       }
     }
   },
-  "myMessage": "Warning) This portfolio is created for the desktop web environment. This app is responsive, supporting various screen sizes, but is not adaptive thus will not function properly in mobile web environment.",
-  "aboutMeMessage": "About me",
-  "skillSetMessage": "Skill set",
-  "projectsMessage": "Project experiences"
+  "messageMusicHover": "> Let me introduce you my favorite singer!",
+
+
+  "messageLevelOne": "> Good day. Thank you for visiting my portfolio website. This portfolio has been designed and optimized for the desktop web environment. In order to provide you with the best user experience, please access from a desktop web browser. [Press]",
+  "messageLevelTwo": "> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume on top appbar. You can also edit language and theme mode. [Press]",
+  "messageLevelThree": "> What would you like to know?",
+
+
+  "option1": "Tell me about you",
+  "option2": "Show some flutter skills",
+  "option3": "Project experience?",
+
+  "messageOption1Hover": "> Here, take my profile card.",
+  "messageOption2Hover": "> I have deep understanding of Flutter and various experiences. Let me introduce you to some beautiful views that i've been interested in lately.",
+  "messageOption3Hover": "> I will show you my project experiences. Details will be on my resume."
 }

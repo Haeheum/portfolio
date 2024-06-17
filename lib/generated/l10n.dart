@@ -60,16 +60,6 @@ class S {
     );
   }
 
-  /// `My playlist`
-  String get musicTooltip {
-    return Intl.message(
-      'My playlist',
-      name: 'musicTooltip',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `DEVELOPER`
   String get developer {
     return Intl.message(
@@ -153,41 +143,101 @@ class S {
     );
   }
 
-  /// `Warning) This portfolio is created for the desktop web environment. This app is responsive, supporting various screen sizes, but is not adaptive thus will not function properly in mobile web environment.`
-  String get myMessage {
+  /// `> Let me introduce you my favorite singer!`
+  String get messageMusicHover {
     return Intl.message(
-      'Warning) This portfolio is created for the desktop web environment. This app is responsive, supporting various screen sizes, but is not adaptive thus will not function properly in mobile web environment.',
-      name: 'myMessage',
+      '> Let me introduce you my favorite singer!',
+      name: 'messageMusicHover',
       desc: '',
       args: [],
     );
   }
 
-  /// `About me`
-  String get aboutMeMessage {
+  /// `> Good day. Thank you for visiting my portfolio website. This portfolio has been designed and optimized for the desktop web environment. In order to provide you with the best user experience, please access from a desktop web browser. [Press]`
+  String get messageLevelOne {
     return Intl.message(
-      'About me',
-      name: 'aboutMeMessage',
+      '> Good day. Thank you for visiting my portfolio website. This portfolio has been designed and optimized for the desktop web environment. In order to provide you with the best user experience, please access from a desktop web browser. [Press]',
+      name: 'messageLevelOne',
       desc: '',
       args: [],
     );
   }
 
-  /// `Skill set`
-  String get skillSetMessage {
+  /// `> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume on top appbar. You can also edit language and theme mode. [Press]`
+  String get messageLevelTwo {
     return Intl.message(
-      'Skill set',
-      name: 'skillSetMessage',
+      '> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume on top appbar. You can also edit language and theme mode. [Press]',
+      name: 'messageLevelTwo',
       desc: '',
       args: [],
     );
   }
 
-  /// `Project experiences`
-  String get projectsMessage {
+  /// `> What would you like to know?`
+  String get messageLevelThree {
     return Intl.message(
-      'Project experiences',
-      name: 'projectsMessage',
+      '> What would you like to know?',
+      name: 'messageLevelThree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tell me about you`
+  String get option1 {
+    return Intl.message(
+      'Tell me about you',
+      name: 'option1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show some flutter skills`
+  String get option2 {
+    return Intl.message(
+      'Show some flutter skills',
+      name: 'option2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Project experience?`
+  String get option3 {
+    return Intl.message(
+      'Project experience?',
+      name: 'option3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `> Here, take my profile card.`
+  String get messageOption1Hover {
+    return Intl.message(
+      '> Here, take my profile card.',
+      name: 'messageOption1Hover',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `> I have deep understanding of Flutter and various experiences. Let me introduce you to some beautiful views that i've been interested in lately.`
+  String get messageOption2Hover {
+    return Intl.message(
+      '> I have deep understanding of Flutter and various experiences. Let me introduce you to some beautiful views that i\'ve been interested in lately.',
+      name: 'messageOption2Hover',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `> I will show you my project experiences. Details will be on my resume.`
+  String get messageOption3Hover {
+    return Intl.message(
+      '> I will show you my project experiences. Details will be on my resume.',
+      name: 'messageOption3Hover',
       desc: '',
       args: [],
     );

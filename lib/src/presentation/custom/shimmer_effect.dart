@@ -167,8 +167,8 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
   }
 }
 
-class SampleShimmerWidget extends StatelessWidget {
-  const SampleShimmerWidget({super.key});
+class WidgetSampleShimmer extends StatelessWidget {
+  const WidgetSampleShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

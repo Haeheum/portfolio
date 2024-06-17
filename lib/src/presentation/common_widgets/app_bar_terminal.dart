@@ -80,7 +80,7 @@ class _AppBarTerminalState extends State<AppBarTerminal> {
                   ),
                 )),
             const SizedBox(width: 12),
-            const ThemeToggleButton(),
+            const ButtonThemeToggle(),
             const Spacer(),
             Text(
               widget.appBarTitle,

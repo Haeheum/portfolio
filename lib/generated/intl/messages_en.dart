@@ -25,20 +25,31 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutMe": MessageLookupByLibrary.simpleMessage("About me"),
-        "aboutMeMessage": MessageLookupByLibrary.simpleMessage("About me"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of birth"),
         "developer": MessageLookupByLibrary.simpleMessage("DEVELOPER"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
-        "musicTooltip": MessageLookupByLibrary.simpleMessage("My playlist"),
+        "messageLevelOne": MessageLookupByLibrary.simpleMessage(
+            "> Good day. Thank you for visiting my portfolio website. This portfolio has been designed and optimized for the desktop web environment. In order to provide you with the best user experience, please access from a desktop web browser. [Press]"),
+        "messageLevelThree": MessageLookupByLibrary.simpleMessage(
+            "> What would you like to know?"),
+        "messageLevelTwo": MessageLookupByLibrary.simpleMessage(
+            "> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume on top appbar. You can also edit language and theme mode. [Press]"),
+        "messageMusicHover": MessageLookupByLibrary.simpleMessage(
+            "> Let me introduce you my favorite singer!"),
+        "messageOption1Hover": MessageLookupByLibrary.simpleMessage(
+            "> Here, take my profile card."),
+        "messageOption2Hover": MessageLookupByLibrary.simpleMessage(
+            "> I have deep understanding of Flutter and various experiences. Let me introduce you to some beautiful views that i\'ve been interested in lately."),
+        "messageOption3Hover": MessageLookupByLibrary.simpleMessage(
+            "> I will show you my project experiences. Details will be on my resume."),
         "myBirthdate": m0,
-        "myMessage": MessageLookupByLibrary.simpleMessage(
-            "Warning) This portfolio is created for the desktop web environment. This app is responsive, supporting various screen sizes, but is not adaptive thus will not function properly in mobile web environment."),
         "myName": MessageLookupByLibrary.simpleMessage("HAEHEUM JO"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "option1": MessageLookupByLibrary.simpleMessage("Tell me about you"),
+        "option2":
+            MessageLookupByLibrary.simpleMessage("Show some flutter skills"),
+        "option3": MessageLookupByLibrary.simpleMessage("Project experience?"),
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),
-        "projectsMessage":
-            MessageLookupByLibrary.simpleMessage("Project experiences"),
-        "skillSet": MessageLookupByLibrary.simpleMessage("Skill set"),
-        "skillSetMessage": MessageLookupByLibrary.simpleMessage("Skill set")
+        "skillSet": MessageLookupByLibrary.simpleMessage("Skill set")
       };
 }

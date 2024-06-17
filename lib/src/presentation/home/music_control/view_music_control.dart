@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../config/theme_extension.dart';
-import '../audio/audio_controller.dart';
+import '../../../config/theme_extension.dart';
+import '../../audio/widget_audio_controller.dart';
 import 'button_animated_play_pause.dart';
 
-class MusicControlPanel extends StatelessWidget {
-  const MusicControlPanel({super.key});
+class ViewMusicControl extends StatelessWidget {
+  const ViewMusicControl({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class MusicControlPanel extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ValueListenableBuilder(
-                    valueListenable: AudioController.of(context).musicName,
+                    valueListenable: WidgetAudioController.of(context).musicName,
                     builder: (_, musicName, ___) {
                       return Text(
                         musicName,
@@ -39,7 +39,7 @@ class MusicControlPanel extends StatelessWidget {
                     },
                   ),
                   ValueListenableBuilder(
-                      valueListenable: AudioController.of(context).artistName,
+                      valueListenable: WidgetAudioController.of(context).artistName,
                       builder: (_, artistName, ___) {
                         return Text(
                           artistName,
@@ -58,13 +58,13 @@ class MusicControlPanel extends StatelessWidget {
           ),
           const SizedBox(width: 24),
           IconButton(
-            onPressed: AudioController.of(context).previousBgm,
+            onPressed: WidgetAudioController.of(context).previousBgm,
             icon: const Icon(Icons.skip_previous),
           ),
-          const AnimatedPlayPauseButton(),
+          const ButtonAnimatedPlayPause(),
           IconButton(
             onPressed: () {
-              AudioController.of(context).nextBgm(null);
+              WidgetAudioController.of(context).nextBgm(null);
             },
             icon: const Icon(Icons.skip_next),
           ),

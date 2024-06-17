@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ScaleOnHover extends StatefulWidget {
-  const ScaleOnHover({
+class WidgetScaleOnHover extends StatefulWidget {
+  const WidgetScaleOnHover({
     super.key,
     required this.child,
     this.defaultScale = 1.0,
@@ -19,10 +19,10 @@ class ScaleOnHover extends StatefulWidget {
   final ValueSetter<bool>? onHover;
 
   @override
-  State<ScaleOnHover> createState() => _ScaleOnHoverState();
+  State<WidgetScaleOnHover> createState() => _WidgetScaleOnHoverState();
 }
 
-class _ScaleOnHoverState extends State<ScaleOnHover> {
+class _WidgetScaleOnHoverState extends State<WidgetScaleOnHover> {
   late double _currentScale;
 
   void _changeScale(bool isHovering) {
@@ -42,6 +42,7 @@ class _ScaleOnHoverState extends State<ScaleOnHover> {
     return GestureDetector(
       onTap: widget.onTap,
       child: FocusableActionDetector(
+        mouseCursor: SystemMouseCursors.click,
         onShowHoverHighlight: (isHovering) {
           _changeScale(isHovering);
           if (widget.onHover != null) {

@@ -13,7 +13,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     backgroundColor: Color(0xFFF5CE56),
   ),
   iconTheme: const IconThemeData(color: Color(0xFF2F2E36)),
-  iconButtonTheme: const IconButtonThemeData(),
+  scaffoldBackgroundColor: const Color(0xFFCFCFCF),
   sliderTheme: const SliderThemeData(
     activeTrackColor: Color(0xFFF5CE56),
     inactiveTrackColor: Color(0xFFA9A9A9),
@@ -55,6 +55,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     backgroundColor: Color(0xFF466C93),
   ),
   iconTheme: const IconThemeData(color: Color(0xFFEDEBEE)),
+  scaffoldBackgroundColor: const Color(0xFF323232),
   sliderTheme: const SliderThemeData(
     activeTrackColor: Color(0xFF466C93),
     inactiveTrackColor: Color(0xFFA9A9A9),

@@ -25,20 +25,30 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutMe": MessageLookupByLibrary.simpleMessage("내정보"),
-        "aboutMeMessage": MessageLookupByLibrary.simpleMessage("내정보 보기"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("생일"),
         "developer": MessageLookupByLibrary.simpleMessage("개발자"),
         "language": MessageLookupByLibrary.simpleMessage("언어"),
-        "musicTooltip":
-            MessageLookupByLibrary.simpleMessage("내가 좋아하는 가수 노래 듣기"),
+        "messageLevelOne": MessageLookupByLibrary.simpleMessage(
+            "> 저의 포트폴리오 웹사이트를 방문해 주셔서 감사합니다. 이 포트폴리오는 데스크탑 웹 환경에 최적화되어 있습니다. 보다 나은 사용자 경험을 위해 데스크탑 웹에서 접속해 주시기 바랍니다. [클릭]"),
+        "messageLevelThree":
+            MessageLookupByLibrary.simpleMessage("> 무엇에 대해 알고 싶으신가요?"),
+        "messageLevelTwo": MessageLookupByLibrary.simpleMessage(
+            "> 안녕하세요 저는 개발자 조해흠입니다. 화면 우측 하단 음표 아이콘을 통해 노래를 들을 수 있습니다. 상단에서 언어 설정, 밝기 모드 토글, 볼륨 조절이 가능합니다. [클릭]"),
+        "messageMusicHover":
+            MessageLookupByLibrary.simpleMessage("> 제가 좋아하는 가수의 노래를 들려드리죠!"),
+        "messageOption1Hover":
+            MessageLookupByLibrary.simpleMessage("> 제 정보가 적힌 프로필 카드를 드리겠습니다."),
+        "messageOption2Hover": MessageLookupByLibrary.simpleMessage(
+            "> 저는 플러터에 대한 높은 이해도를 바탕으로 다양한 경험을 가지고 있습니다. 요즘 인터렉션에 관심을 가지고 있는데 관련된 아름다운 뷰들을 소개해드리죠."),
+        "messageOption3Hover": MessageLookupByLibrary.simpleMessage(
+            "> 제 프로젝트 경험을 간단히 소개드리겠습니다. 상세 내용은 이력서를 참고해주시기 바랍니다."),
         "myBirthdate": m0,
-        "myMessage": MessageLookupByLibrary.simpleMessage(
-            "주의) 이 포트폴리오는 데스크탑 웹 환경을 대상으로 제작되었습니다. 이 웹앱은 반응형으로 다양한 화면 크기를 지원하지만 모바일 웹 환경에 대응한 적응형 앱은 아닙니다."),
         "myName": MessageLookupByLibrary.simpleMessage("조해흠"),
         "name": MessageLookupByLibrary.simpleMessage("이름"),
+        "option1": MessageLookupByLibrary.simpleMessage("너에 대해 알고싶어"),
+        "option2": MessageLookupByLibrary.simpleMessage("너의 플러터 스킬이 궁금해"),
+        "option3": MessageLookupByLibrary.simpleMessage("어떤 프로젝트들을 해봤니?"),
         "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
-        "projectsMessage": MessageLookupByLibrary.simpleMessage("프로젝트 경험 보기"),
-        "skillSet": MessageLookupByLibrary.simpleMessage("스킬셋"),
-        "skillSetMessage": MessageLookupByLibrary.simpleMessage("스킬셋 보기")
+        "skillSet": MessageLookupByLibrary.simpleMessage("스킬셋")
       };
 }

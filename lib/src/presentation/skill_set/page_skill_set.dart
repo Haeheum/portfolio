@@ -8,8 +8,8 @@ import '../custom/sun_moon_switch.dart';
 import '../custom/target_plate.dart';
 import 'grid_item_skill_set.dart';
 
-class SkillSetPage extends StatelessWidget {
-  const SkillSetPage({super.key});
+class PageSkillSet extends StatelessWidget {
+  const PageSkillSet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SkillSetPage extends StatelessWidget {
                 mainAxisSpacing: 12.0,
                 crossAxisSpacing: 12.0,
                 children: [
-                  const GridItemSkillSet(child: SampleShimmerWidget()),
+                  const GridItemSkillSet(child: WidgetSampleShimmer()),
                   GridItemSkillSet(child: SunMoonSwitch(onChanged: (_) {})),
                   const GridItemSkillSet(child: Confetti()),
                   const GridItemSkillSet(paddingValue: 0, child: TargetPlate()),

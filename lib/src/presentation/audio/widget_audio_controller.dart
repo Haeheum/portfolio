@@ -10,20 +10,20 @@ import '../../util/global_constants.dart';
 import '../../util/global_methods.dart';
 import 'background_music.dart';
 
-class AudioController extends StatefulWidget {
-  const AudioController({super.key, required this.child});
+class WidgetAudioController extends StatefulWidget {
+  const WidgetAudioController({super.key, required this.child});
 
   final Widget child;
 
-  static AudioControllerState of(BuildContext context) {
-    return context.findAncestorStateOfType<AudioControllerState>()!;
+  static WidgetAudioControllerState of(BuildContext context) {
+    return context.findAncestorStateOfType<WidgetAudioControllerState>()!;
   }
 
   @override
-  State<AudioController> createState() => AudioControllerState();
+  State<WidgetAudioController> createState() => WidgetAudioControllerState();
 }
 
-class AudioControllerState extends State<AudioController> {
+class WidgetAudioControllerState extends State<WidgetAudioController> {
   static const _bgmPlayerId = 'bgmPlayer';
 
   late final AppLifecycleListener _appLifecycleListener;

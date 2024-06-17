@@ -9,14 +9,14 @@ import 'package:portfolio/src/util/global_methods.dart';
 import 'generated/l10n.dart';
 import 'src/config/theme.dart';
 import 'src/model/app_state_model.dart';
-import 'src/presentation/scope/app_state_scope.dart';
-import 'src/presentation/audio/audio_controller.dart';
+import 'src/presentation/audio/widget_audio_controller.dart';
 import 'src/presentation/home/page_home.dart';
+import 'src/presentation/state_management/app_state_scope.dart';
 
 void main() async {
   await findSystemLocale();
   runApp(
-    const AudioController(
+    const WidgetAudioController(
       child: MainApp(),
     ),
   );
@@ -73,7 +73,7 @@ class MainAppState extends State<MainApp> {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
-          home: const HomePage(),
+          home: const PageHome(),
           theme: lightTheme,
           darkTheme: darkTheme,
           themeMode: AppStateScope.of(context).themeMode,

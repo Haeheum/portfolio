@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../audio/audio_controller.dart';
+import '../../audio/widget_audio_controller.dart';
 
-class AnimatedPlayPauseButton extends StatefulWidget {
-  const AnimatedPlayPauseButton({super.key});
+
+class ButtonAnimatedPlayPause extends StatefulWidget {
+  const ButtonAnimatedPlayPause({super.key});
 
   @override
-  State<AnimatedPlayPauseButton> createState() => _AnimatedPlayPauseButtonState();
+  State<ButtonAnimatedPlayPause> createState() => _ButtonAnimatedPlayPauseState();
 }
 
-class _AnimatedPlayPauseButtonState extends State<AnimatedPlayPauseButton>
+class _ButtonAnimatedPlayPauseState extends State<ButtonAnimatedPlayPause>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
 
@@ -20,7 +21,7 @@ class _AnimatedPlayPauseButtonState extends State<AnimatedPlayPauseButton>
       duration: const Duration(milliseconds: 400),
       vsync: this,
     );
-    if(AudioController.of(context).shouldPlay){
+    if(WidgetAudioController.of(context).shouldPlay){
       _animationController.animateTo(1.0, duration: const Duration(seconds: 0));
     }
   }
@@ -37,12 +38,12 @@ class _AnimatedPlayPauseButtonState extends State<AnimatedPlayPauseButton>
       icon: AnimatedIcon(
           icon: AnimatedIcons.play_pause, progress: _animationController),
       onPressed: () {
-        if (AudioController.of(context).shouldPlay) {
+        if (WidgetAudioController.of(context).shouldPlay) {
           _animationController.reverse();
-          AudioController.of(context).pauseBgm();
+          WidgetAudioController.of(context).pauseBgm();
         } else {
           _animationController.forward();
-          AudioController.of(context).playBgm();
+          WidgetAudioController.of(context).playBgm();
         }
       },
     );

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/scope/app_state_scope.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../main.dart';
 import '../../../config/theme_extension.dart';
-import '../../../model/enum/language_code_enum.dart';
+import '../../../model/enum/language_options.dart';
+import '../../state_management/app_state_scope.dart';
 import 'button_audio_volume_control.dart';
 import 'button_theme_toggle.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({super.key});
+class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarHome({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +45,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             initialSelection: switch (
                 AppStateScope.of(context).appLocale.languageCode) {
-              'en' => LanguageLabel.english,
-              'ko' => LanguageLabel.korean,
+              'en' => LanguageOptions.english,
+              'ko' => LanguageOptions.korean,
               _ => throw UnsupportedError('Unsupported Language')
             },
-            onSelected: (LanguageLabel? language) {
+            onSelected: (LanguageOptions? language) {
               if (language != null) {
                 MainApp.of(context).setLanguageCode(language.code);
               }
@@ -58,10 +58,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color:
                     Theme.of(context).extension<ExtensionColors>()!.textColor),
-            dropdownMenuEntries: LanguageLabel.values
-                .map<DropdownMenuEntry<LanguageLabel>>(
-                    (LanguageLabel language) {
-              return DropdownMenuEntry<LanguageLabel>(
+            dropdownMenuEntries: LanguageOptions.values
+                .map<DropdownMenuEntry<LanguageOptions>>(
+                    (LanguageOptions language) {
+              return DropdownMenuEntry<LanguageOptions>(
                 value: language,
                 label: language.label,
                 leadingIcon:
@@ -72,8 +72,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       const SizedBox(width: 4.0),
-      const ThemeToggleButton(),
-      const Expanded(child: AudioVolumeControlButton()),
+      const ButtonThemeToggle(),
+      const Expanded(child: ButtonAudioVolumeControl()),
       const SizedBox(width: 12.0),
     ]);
   }
