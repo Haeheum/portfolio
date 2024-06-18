@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/theme_extension.dart';
-import '../home/appBar/button_theme_toggle.dart';
+import '../home/app_bar/button_theme_toggle.dart';
 
 class AppBarTerminal extends StatefulWidget implements PreferredSizeWidget {
   final String appBarTitle;

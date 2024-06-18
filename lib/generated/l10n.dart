@@ -213,30 +213,30 @@ class S {
     );
   }
 
-  /// `> Here, take my profile card.`
+  /// `> I would like to be with you. Let me tell you more. `
   String get messageOption1Hover {
     return Intl.message(
-      '> Here, take my profile card.',
+      '> I would like to be with you. Let me tell you more. ',
       name: 'messageOption1Hover',
       desc: '',
       args: [],
     );
   }
 
-  /// `> I have deep understanding of Flutter and various experiences. Let me introduce you to some beautiful views that i've been interested in lately.`
+  /// `> I have a diverse set of skills required for app development, and I have experience in the entire process from system design to deployment. Lately, I have been particularly interested in interaction design. I would be happy to show you some of the beautiful UI views I have implemented.`
   String get messageOption2Hover {
     return Intl.message(
-      '> I have deep understanding of Flutter and various experiences. Let me introduce you to some beautiful views that i\'ve been interested in lately.',
+      '> I have a diverse set of skills required for app development, and I have experience in the entire process from system design to deployment. Lately, I have been particularly interested in interaction design. I would be happy to show you some of the beautiful UI views I have implemented.',
       name: 'messageOption2Hover',
       desc: '',
       args: [],
     );
   }
 
-  /// `> I will show you my project experiences. Details will be on my resume.`
+  /// `> I will show you my project experiences. Please check my resume for details.`
   String get messageOption3Hover {
     return Intl.message(
-      '> I will show you my project experiences. Details will be on my resume.',
+      '> I will show you my project experiences. Please check my resume for details.',
       name: 'messageOption3Hover',
       desc: '',
       args: [],

@@ -37,11 +37,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "messageMusicHover": MessageLookupByLibrary.simpleMessage(
             "> Let me introduce you my favorite singer!"),
         "messageOption1Hover": MessageLookupByLibrary.simpleMessage(
-            "> Here, take my profile card."),
+            "> I would like to be with you. Let me tell you more. "),
         "messageOption2Hover": MessageLookupByLibrary.simpleMessage(
-            "> I have deep understanding of Flutter and various experiences. Let me introduce you to some beautiful views that i\'ve been interested in lately."),
+            "> I have a diverse set of skills required for app development, and I have experience in the entire process from system design to deployment. Lately, I have been particularly interested in interaction design. I would be happy to show you some of the beautiful UI views I have implemented."),
         "messageOption3Hover": MessageLookupByLibrary.simpleMessage(
-            "> I will show you my project experiences. Details will be on my resume."),
+            "> I will show you my project experiences. Please check my resume for details."),
         "myBirthdate": m0,
         "myName": MessageLookupByLibrary.simpleMessage("HAEHEUM JO"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
