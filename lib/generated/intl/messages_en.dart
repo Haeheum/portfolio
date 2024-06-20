@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "> What would you like to know?"),
         "messageLevelTwo": MessageLookupByLibrary.simpleMessage(
             "> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume, edit language and theme mode on the top app bar. [Press]"),
+        "messageLoading": MessageLookupByLibrary.simpleMessage("loading"),
         "messageMusicHover": MessageLookupByLibrary.simpleMessage(
             "> Let me introduce you my favorite singer!"),
         "messageOption1Hover": MessageLookupByLibrary.simpleMessage(

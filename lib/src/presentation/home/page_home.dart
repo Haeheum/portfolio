@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/data/image_repository.dart';
 import 'package:portfolio/src/presentation/about_me/page_about_me.dart';
 import 'package:portfolio/src/presentation/home/button_option_menu_control.dart';
 import 'package:portfolio/src/presentation/projects/page_projects.dart';
 
 import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
+import '../../data/audio_repository.dart';
 import '../custom/sitting_me.dart';
 import '../skill_set/page_skill_set.dart';
 import 'app_bar/app_bar_home.dart';
@@ -38,17 +40,12 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(const Duration(seconds: 2), () {
-      if (_currentStageLevel == StageLevel.justEntered) {
-        proceedTo(context: context, stageLevel: StageLevel.gavePrecautions);
-      }
-    });
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    loadResources(context);
     proceedTo(context: context, stageLevel: _currentStageLevel);
   }
 
@@ -324,12 +321,23 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
     );
   }
 
+  void loadResources(BuildContext context) async {
+    await Future.wait([
+      ImageRepository().preCacheImages(context)..then((_)=> debugPrint('Image loading completed')),
+      AudioRepository().preCacheAudios()..then((_) => debugPrint('Audio loading completed')),
+    ]).whenComplete(() {
+      proceedTo(context: context, stageLevel: StageLevel.gavePrecautions);
+    });
+  }
+
   void proceedTo(
       {required BuildContext context, required StageLevel stageLevel}) {
     setState(() {
       _currentStageLevel = stageLevel;
       switch (stageLevel) {
         case StageLevel.justEntered:
+          _defaultMessage = S.of(context).messageLoading;
+          _consoleMessage.value = _defaultMessage;
           break;
         case StageLevel.gavePrecautions:
           _defaultMessage = S.of(context).messageLevelOne;
@@ -352,246 +360,3 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
     });
   }
 }
-/*
-Column(
-                  children: [
-                    Flexible(flex: 1, child: Container()),
-                    Flexible(
-                      flex: 2,
-                      child: Center(
-                        child: AnimatedOpacity(
-                          opacity: _heroOpacity,
-                          duration: const Duration(seconds: 1),
-                          child: AnimatedSlide(
-                            offset: _heroOffset,
-                            duration: _currentStageLevel.level < 3
-                                ? const Duration(seconds: 1)
-                                : const Duration(milliseconds: 300),
-                            child: const SittingMe(),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-
-* */
-/*
-Stack(children: [
-        const DigitalRain(),
-        Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(24.0),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 800,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Center(
-                    child: AspectRatio(
-                      aspectRatio: 16 / 10,
-                      child: Card(
-                        color: Colors.white.withOpacity(0.3),
-                        elevation: 2,
-                        clipBehavior: Clip.hardEdge,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              flex: 8,
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    flex: 10,
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      padding: const EdgeInsets.all(16.0),
-                                      color: Colors.transparent,
-                                      child: WidgetScaleOnHover(
-                                        onHover: (onHover) {
-                                          if (onHover) {
-                                            _consoleMessage.value =
-                                                S.of(context).aboutMeMessage;
-                                          } else {
-                                            _consoleMessage.value = null;
-                                          }
-                                        },
-                                        onTap: (){
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                const PageAboutMe()),
-                                          );
-                                        },
-                                        child: FittedBox(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                S.of(context).name,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .labelLarge
-                                                    ?.copyWith(
-                                                        color: Theme.of(context)
-                                                            .extension<
-                                                                ExtensionColors>()!
-                                                            .textColor),
-                                              ),
-                                              Text(
-                                                S.of(context).myName,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .headlineLarge
-                                                    ?.copyWith(
-                                                        color: Theme.of(context)
-                                                            .extension<
-                                                                ExtensionColors>()!
-                                                            .textColor),
-                                              ),
-                                              Text(
-                                                S.of(context).dateOfBirth,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .labelLarge
-                                                    ?.copyWith(
-                                                        color: Theme.of(context)
-                                                            .extension<
-                                                                ExtensionColors>()!
-                                                            .textColor),
-                                              ),
-                                              Text(
-                                                S.of(context).myBirthdate(
-                                                    DateTime(1994, 7, 25)),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall
-                                                    ?.copyWith(
-                                                        color: Theme.of(context)
-                                                            .extension<
-                                                                ExtensionColors>()!
-                                                            .textColor),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 6,
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      color: Colors.transparent,
-                                      padding: const EdgeInsets.fromLTRB(
-                                          0.0, 16.0, 16.0, 16.0),
-                                      child: WidgetScaleOnHover(
-                                        onHover: (onHover) {
-                                          if (onHover) {
-                                            _consoleMessage.value =
-                                                S.of(context).skillSetMessage;
-                                          } else {
-                                            _consoleMessage.value = null;
-                                          }
-                                        },
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const PageSkillSet()),
-                                          );
-                                        },
-                                        child: Image.asset(
-                                          'assets/images/haeheumjo.jpeg',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                alignment: Alignment.center,
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 12.0),
-                                color: Theme.of(context)
-                                    .extension<ExtensionColors>()!
-                                    .cardBackgroundColor,
-                                child: WidgetScaleOnHover(
-                                  onHover: (onHover) {
-                                    if (onHover) {
-                                      _consoleMessage.value =
-                                          S.of(context).projectsMessage;
-                                    } else {
-                                      _consoleMessage.value = null;
-                                    }
-                                  },
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const PageProjects()),
-                                    );
-                                  },
-                                  child: FittedBox(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const FlutterLogo(
-                                          size: 50,
-                                          style: FlutterLogoStyle.markOnly,
-                                          duration: Duration(seconds: 0),
-                                        ),
-                                        const SizedBox(width: 8),
-                                        Text(
-                                          S.of(context).developer,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displaySmall
-                                              ?.copyWith(
-                                                  color: Theme.of(context)
-                                                      .extension<
-                                                          ExtensionColors>()!
-                                                      .textColor),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
-                ValueListenableBuilder(
-                    valueListenable: _consoleMessage,
-                    builder: (_, consoleMessage, ___) {
-                      return ViewTerminal(
-                        message: consoleMessage,
-                      );
-                    }),
-              ],
-            ),
-          ),
-        ),
-      ]),
-
-
-
- */

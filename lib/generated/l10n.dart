@@ -143,6 +143,16 @@ class S {
     );
   }
 
+  /// `loading`
+  String get messageLoading {
+    return Intl.message(
+      'loading',
+      name: 'messageLoading',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `> Let me introduce you my favorite singer!`
   String get messageMusicHover {
     return Intl.message(

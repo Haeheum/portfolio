@@ -17,6 +17,7 @@
       }
     }
   },
+  "messageLoading" : "로딩중",
 
   "messageMusicHover": "> 제가 좋아하는 가수의 노래를 들려드리죠!",
 

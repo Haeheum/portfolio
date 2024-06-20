@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("> 무엇에 대해 알고 싶으신가요?"),
         "messageLevelTwo": MessageLookupByLibrary.simpleMessage(
             "> 안녕하세요 저는 개발자 조해흠입니다. 화면 우측 하단 음표 아이콘을 통해 노래를 들을 수 있습니다. 상단에서 언어 설정, 밝기 모드 토글, 볼륨 조절이 가능합니다. [클릭]"),
+        "messageLoading": MessageLookupByLibrary.simpleMessage("로딩중"),
         "messageMusicHover":
             MessageLookupByLibrary.simpleMessage("> 제가 좋아하는 가수의 노래를 들려드리죠!"),
         "messageOption1Hover":

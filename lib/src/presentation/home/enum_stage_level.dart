@@ -1,5 +1,5 @@
 enum StageLevel {
-  justEntered(level: 0, clickable: true),
+  justEntered(level: 0, clickable: false),
   gavePrecautions(level: 1,clickable: true),
   heroArrives(level: 2,clickable: true),
   introduceMyself(level: 3, clickable: false);

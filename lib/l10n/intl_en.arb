@@ -17,6 +17,8 @@
       }
     }
   },
+  "messageLoading" : "loading",
+
   "messageMusicHover": "> Let me introduce you my favorite singer!",
 
 

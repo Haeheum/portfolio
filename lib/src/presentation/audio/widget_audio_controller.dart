@@ -3,12 +3,12 @@ import 'dart:collection';
 import 'dart:developer' as dev;
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/audio_repository.dart';
 import '../../util/global_constants.dart';
 import '../../util/global_methods.dart';
-import 'background_music.dart';
+import '../../model/background_music.dart';
 
 class WidgetAudioController extends StatefulWidget {
   const WidgetAudioController({super.key, required this.child});
@@ -54,15 +54,6 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
   }
 
   void initializeAudio() async {
-    AudioCache(prefix: '');
-    List<String> loadList = backgroundMusics
-        .map((music) => 'sounds/bgm/${music.filename}')
-        .toList();
-
-    for (String fileName in loadList) {
-      AudioCache.instance.loadPath(fileName);
-    }
-
     _bgmPlayer = AudioPlayer(playerId: _bgmPlayerId)..setVolume(kDefaultVolume);
     _bgmPlaylist =
         Queue.of(List<BackgroundMusic>.of(backgroundMusics)..shuffle());
