@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/material.dart';
 
 import '../model/background_music.dart';
 
@@ -10,14 +11,13 @@ class AudioRepository{
   factory AudioRepository() => instance;
 
   Future<void> preCacheAudios() async {
-    List<String> musicFilenames = backgroundMusics
-        .map((music) => music.filename)
+    List<String> musicFilePaths = backgroundMusics
+        .map((music) => 'sounds/bgm/${music.filename}')
         .toList();
 
-    for(String fileName in musicFilenames){
-      AudioCache.instance.loadPath('assets/sounds/bgm/$fileName');
+    List<Uri> loadedList = await AudioCache.instance.loadAll(musicFilePaths);
+    debugPrint(loadedList.toString());
 
-    }
   }
 }
 
