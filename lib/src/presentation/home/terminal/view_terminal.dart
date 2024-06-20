@@ -109,8 +109,8 @@ class _ViewTerminalState extends State<ViewTerminal> {
                           children: [
                             Image.asset(
                                 _onHover
-                                    ? 'images/folder_colored.png'
-                                    : 'images/folder_disabled.png',
+                                    ? 'assets/images/folder_colored.png'
+                                    : 'assets/images/folder_disabled.png',
                                 width: 14,
                                 height: 14),
                             const SizedBox(width: 6),
