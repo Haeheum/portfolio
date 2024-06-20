@@ -60,9 +60,7 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
         .toList();
 
     for (String fileName in loadList) {
-      AudioCache.instance.loadPath(fileName).whenComplete(() {
-        debugPrint('$fileName loaded');
-      });
+      AudioCache.instance.loadPath(fileName);
     }
 
     _bgmPlayer = AudioPlayer(playerId: _bgmPlayerId)..setVolume(kDefaultVolume);
