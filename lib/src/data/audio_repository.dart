@@ -15,7 +15,7 @@ class AudioRepository{
         .toList();
 
     for(String fileName in musicFilenames){
-      AudioCache.instance.loadPath('sounds/bgm/$fileName');
+      AudioCache.instance.loadPath('assets/sounds/bgm/$fileName');
 
     }
   }
