@@ -47,9 +47,13 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     proceedTo(context: context, stageLevel: _currentStageLevel);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Stack(
       children: [
         Scaffold(
@@ -71,8 +75,8 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                               child: AnimatedOpacity(
                                 opacity: _showOptions ? 1.0 : 0.0,
                                 duration: const Duration(milliseconds: 300),
-                                child:
-                                    StatefulBuilder(builder: (context, setState) {
+                                child: StatefulBuilder(
+                                    builder: (context, setState) {
                                   return FittedBox(
                                     child: Column(
                                       crossAxisAlignment:
@@ -146,14 +150,14 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                                               setState(() {
                                                 _optionPressed = false;
                                               });
-
                                               _consoleMessage.value =
                                                   _defaultMessage;
                                             },
                                             child: AnimatedContainer(
                                               width: 350,
                                               height: 100,
-                                              padding: const EdgeInsets.all(12.0),
+                                              padding:
+                                                  const EdgeInsets.all(12.0),
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(12),
@@ -166,16 +170,18 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                                                             blurRadius: 4.0,
                                                             offset:
                                                                 Offset(-2, -2),
-                                                            color: Colors.white38,
+                                                            color:
+                                                                Colors.white38,
                                                           ),
                                                           BoxShadow(
                                                             blurRadius: 4.0,
-                                                            offset: const Offset(
-                                                                2, 2),
-                                                            color:
-                                                                Theme.of(context)
-                                                                    .colorScheme
-                                                                    .shadow,
+                                                            offset:
+                                                                const Offset(
+                                                                    2, 2),
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .colorScheme
+                                                                .shadow,
                                                           ),
                                                         ]),
                                               duration: const Duration(
@@ -183,7 +189,8 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                                               child: AnimatedSwitcher(
                                                 duration: const Duration(
                                                     milliseconds: 250),
-                                                layoutBuilder: (widget, widgets) {
+                                                layoutBuilder:
+                                                    (widget, widgets) {
                                                   if (widget != null) {
                                                     widgets = widgets.toList()
                                                       ..add(widget);
@@ -201,7 +208,8 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                                                       .textTheme
                                                       .headlineMedium
                                                       ?.copyWith(
-                                                          color: Theme.of(context)
+                                                          color: Theme.of(
+                                                                  context)
                                                               .extension<
                                                                   ExtensionColors>()!
                                                               .terminalTextColor),
@@ -210,7 +218,7 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(height: 4.0),
+                                        const SizedBox(height: 12.0),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -223,6 +231,7 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                                                         (_currentIndex + 2) % 3;
                                                   });
                                                 }),
+                                            const SizedBox(width: 12),
                                             ButtonOptionMenuControl(
                                                 isLeft: false,
                                                 onTap: () {
@@ -326,7 +335,7 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
           _defaultMessage = S.of(context).messageLevelOne;
           _consoleMessage.value = _defaultMessage;
         case StageLevel.heroArrives:
-          _heroOffset = const Offset(0.1,0);
+          _heroOffset = const Offset(0.1, 0);
           _heroOpacity = 1.0;
           _defaultMessage = S.of(context).messageLevelTwo;
           _consoleMessage.value = _defaultMessage;

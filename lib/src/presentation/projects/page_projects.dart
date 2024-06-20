@@ -20,7 +20,7 @@ class PageProjects extends StatelessWidget {
                 maxCrossAxisExtent: 600,
                 mainAxisSpacing: 12.0,
                 crossAxisSpacing: 12.0,
-                children: [],
+                children: const [],
               ),
             ],
           ),

@@ -22,12 +22,26 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(date) => "${date}";
 
+  static String m1(date) => "${date}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutMe": MessageLookupByLibrary.simpleMessage("내정보"),
+        "achievementDate": m0,
+        "armyDescription": MessageLookupByLibrary.simpleMessage("육군 전역"),
+        "birthdayDescription": MessageLookupByLibrary.simpleMessage("해흠 탄생"),
+        "companyDescription":
+            MessageLookupByLibrary.simpleMessage("플러터 개발자 첫 입사"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("생일"),
         "developer": MessageLookupByLibrary.simpleMessage("개발자"),
+        "flutterDescription": MessageLookupByLibrary.simpleMessage("플러터 입문"),
+        "gisaDescription": MessageLookupByLibrary.simpleMessage("정보처리기사 취득"),
+        "headerChronicle": MessageLookupByLibrary.simpleMessage("연대기"),
+        "knuDescription":
+            MessageLookupByLibrary.simpleMessage("경북대학교 컴퓨터학부 졸업"),
         "language": MessageLookupByLibrary.simpleMessage("언어"),
+        "lolDescription":
+            MessageLookupByLibrary.simpleMessage("리그오브레전드 마스터 티어 딜성"),
         "messageLevelOne": MessageLookupByLibrary.simpleMessage(
             "> 저의 포트폴리오 웹사이트를 방문해 주셔서 감사합니다. 이 포트폴리오는 데스크탑 웹 환경에 최적화되어 있습니다. 보다 나은 사용자 경험을 위해 데스크탑 웹에서 접속해 주시기 바랍니다. [클릭]"),
         "messageLevelThree":
@@ -40,15 +54,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("> 당신과 함께하고 싶은 저에 대해 알려드리죠."),
         "messageOption2Hover": MessageLookupByLibrary.simpleMessage(
             "> 앱 제작에 필요한 다양한 스킬을 가지고 있고 설계부터 배포까지의 경험을 가지고 있습니다. 요즘은 인터렉션에 관심을 가지고 있습니다. 제가 구현한 몇가지 아름다운 뷰들을 보여드리죠."),
-        "messageOption3Hover": MessageLookupByLibrary.simpleMessage(
-            "> 제 프로젝트 경험을 간단히 소개드리겠습니다. 상세 내용은 이력서를 참고해주시기 바랍니다."),
-        "myBirthdate": m0,
+        "messageOption3Hover":
+            MessageLookupByLibrary.simpleMessage("> 제 프로젝트 경험을 간단히 소개드리겠습니다."),
+        "myBirthdate": m1,
         "myName": MessageLookupByLibrary.simpleMessage("조해흠"),
         "name": MessageLookupByLibrary.simpleMessage("이름"),
         "option1": MessageLookupByLibrary.simpleMessage("너에 대해 알고싶어"),
         "option2": MessageLookupByLibrary.simpleMessage("너의 플러터 스킬이 궁금해"),
         "option3": MessageLookupByLibrary.simpleMessage("어떤 프로젝트들을 해봤니?"),
         "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
-        "skillSet": MessageLookupByLibrary.simpleMessage("스킬셋")
+        "skillSet": MessageLookupByLibrary.simpleMessage("스킬셋"),
+        "ybmDescription":
+            MessageLookupByLibrary.simpleMessage("그랜드슬래머 Advanced 등급 달성")
       };
 }

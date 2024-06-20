@@ -14,7 +14,7 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: leading(context),
+      leading: const _AppBarHomeLeading(),
       backgroundColor: Colors.transparent,
       shape: Border(
         bottom: BorderSide(
@@ -27,7 +27,15 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget leading(BuildContext context) {
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _AppBarHomeLeading extends StatelessWidget {
+  const _AppBarHomeLeading();
+
+  @override
+  Widget build(BuildContext context) {
     return Row(children: [
       const SizedBox(width: 12.0),
       Padding(
@@ -77,7 +85,4 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
       const SizedBox(width: 12.0),
     ]);
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

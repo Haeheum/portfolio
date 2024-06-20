@@ -30,10 +30,30 @@
 
   "messageOption1Hover": "> 당신과 함께하고 싶은 저에 대해 알려드리죠.",
   "messageOption2Hover": "> 앱 제작에 필요한 다양한 스킬을 가지고 있고 설계부터 배포까지의 경험을 가지고 있습니다. 요즘은 인터렉션에 관심을 가지고 있습니다. 제가 구현한 몇가지 아름다운 뷰들을 보여드리죠.",
-  "messageOption3Hover": "> 제 프로젝트 경험을 간단히 소개드리겠습니다. 상세 내용은 이력서를 참고해주시기 바랍니다.",
+  "messageOption3Hover": "> 제 프로젝트 경험을 간단히 소개드리겠습니다.",
 
 
   "aboutMeMessage": "내정보 보기",
   "skillSetMessage": "스킬셋 보기",
-  "projectsMessage": "프로젝트 경험 보기"
+  "projectsMessage": "프로젝트 경험 보기",
+
+  "achievementDate": "{date}",
+  "@achievementDate": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yM"
+      }
+    }
+  },
+  "headerChronicle": "연대기",
+
+  "birthdayDescription": "해흠 탄생",
+  "armyDescription": "육군 전역",
+  "knuDescription" : "경북대학교 컴퓨터학부 졸업",
+  "flutterDescription" : "플러터 입문",
+  "companyDescription" : "플러터 개발자 첫 입사",
+  "ybmDescription" : "그랜드슬래머 Advanced 등급 달성",
+  "lolDescription" : "리그오브레전드 마스터 티어 딜성",
+  "gisaDescription" : "정보처리기사 취득"
 }

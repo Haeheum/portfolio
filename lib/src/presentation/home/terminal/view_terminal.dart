@@ -19,7 +19,6 @@ class ViewTerminal extends StatefulWidget {
 }
 
 class _ViewTerminalState extends State<ViewTerminal> {
-
   late String _consoleMessage;
   late bool _clickable;
   late VoidCallback _onTap;
@@ -35,6 +34,8 @@ class _ViewTerminalState extends State<ViewTerminal> {
     return GestureDetector(
       onTap: _clickable ? _onTap : null,
       child: MouseRegion(
+        cursor:
+            _clickable ? SystemMouseCursors.click : SystemMouseCursors.basic,
         onEnter: (_) {
           setState(() {
             _onHover = true;
@@ -45,8 +46,6 @@ class _ViewTerminalState extends State<ViewTerminal> {
             _onHover = false;
           });
         },
-        cursor:
-            _clickable ? SystemMouseCursors.click : SystemMouseCursors.basic,
         child: Hero(
           tag: 'hero',
           child: Card(
@@ -164,8 +163,7 @@ class _ViewTerminalState extends State<ViewTerminal> {
                           );
                         },
                         child: Text(
-                          key: ValueKey<String>(
-                              '${DateTime.now()}'),
+                          key: ValueKey<String>('${DateTime.now()}'),
                           _consoleMessage,
                           style: Theme.of(context)
                               .textTheme

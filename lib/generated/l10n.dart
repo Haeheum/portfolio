@@ -163,10 +163,10 @@ class S {
     );
   }
 
-  /// `> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume on top appbar. You can also edit language and theme mode. [Press]`
+  /// `> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume, edit language and theme mode on the top app bar. [Press]`
   String get messageLevelTwo {
     return Intl.message(
-      '> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume on top appbar. You can also edit language and theme mode. [Press]',
+      '> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume, edit language and theme mode on the top app bar. [Press]',
       name: 'messageLevelTwo',
       desc: '',
       args: [],
@@ -233,11 +233,114 @@ class S {
     );
   }
 
-  /// `> I will show you my project experiences. Please check my resume for details.`
+  /// `> I will share you my project experiences briefly.`
   String get messageOption3Hover {
     return Intl.message(
-      '> I will show you my project experiences. Please check my resume for details.',
+      '> I will share you my project experiences briefly.',
       name: 'messageOption3Hover',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{date}`
+  String achievementDate(DateTime date) {
+    final DateFormat dateDateFormat = DateFormat.yM(Intl.getCurrentLocale());
+    final String dateString = dateDateFormat.format(date);
+
+    return Intl.message(
+      '$dateString',
+      name: 'achievementDate',
+      desc: '',
+      args: [dateString],
+    );
+  }
+
+  /// `Chronicle`
+  String get headerChronicle {
+    return Intl.message(
+      'Chronicle',
+      name: 'headerChronicle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birth`
+  String get birthdayDescription {
+    return Intl.message(
+      'Birth',
+      name: 'birthdayDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Military discharge`
+  String get armyDescription {
+    return Intl.message(
+      'Military discharge',
+      name: 'armyDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bachelor's degree in computer science at KNU`
+  String get knuDescription {
+    return Intl.message(
+      'Bachelor\'s degree in computer science at KNU',
+      name: 'knuDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start learning flutter`
+  String get flutterDescription {
+    return Intl.message(
+      'Start learning flutter',
+      name: 'flutterDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First job with flutter`
+  String get companyDescription {
+    return Intl.message(
+      'First job with flutter',
+      name: 'companyDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Toeic grand slammer advanced tier`
+  String get ybmDescription {
+    return Intl.message(
+      'Toeic grand slammer advanced tier',
+      name: 'ybmDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `League of legends master tier`
+  String get lolDescription {
+    return Intl.message(
+      'League of legends master tier',
+      name: 'lolDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information processing technician certified`
+  String get gisaDescription {
+    return Intl.message(
+      'Information processing technician certified',
+      name: 'gisaDescription',
       desc: '',
       args: [],
     );
