@@ -20,7 +20,11 @@ class AudioRepository {
 
 const Set<BackgroundMusic> backgroundMusics = {
   BackgroundMusic(
-      filename: 'bgm1.mp3', artistName: '별은', musicName: '생일 축하해 (With. 정유빈)'),
-  BackgroundMusic(filename: 'bgm2.mp3', artistName: '별은', musicName: 'Quest'),
-  BackgroundMusic(filename: 'bgm3.mp3', artistName: '별은', musicName: '꼭'),
+      filename: 'bgm1.m4a', artistName: '별은', musicName: '다시 시작된 꿈처럼'),
+  BackgroundMusic(
+      filename: 'bgm2.m4a',
+      artistName: '어쿠레인',
+      musicName: '내게도 봄이 올까요 (Feat. 은비 (별은))'),
+  BackgroundMusic(
+      filename: 'bgm3.m4a', artistName: '별은', musicName: '생일 축하해 (With. 정유빈)'),
 };
