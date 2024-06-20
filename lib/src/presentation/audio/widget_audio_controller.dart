@@ -53,10 +53,18 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
     );
   }
 
-  void initializeAudio() {
-    AudioCache.instance.loadAll(backgroundMusics
+  void initializeAudio() async {
+    AudioCache(prefix: '');
+    List<String> loadList = backgroundMusics
         .map((music) => 'sounds/bgm/${music.filename}')
-        .toList());
+        .toList();
+
+    for (String fileName in loadList) {
+      AudioCache.instance.loadPath(fileName).whenComplete(() {
+        debugPrint('$fileName loaded');
+      });
+    }
+
     _bgmPlayer = AudioPlayer(playerId: _bgmPlayerId)..setVolume(kDefaultVolume);
     _bgmPlaylist =
         Queue.of(List<BackgroundMusic>.of(backgroundMusics)..shuffle());
