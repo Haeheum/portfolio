@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../main.dart';
+import 'package:portfolio/src/presentation/state_management/app_state_scope.dart';
 
 class ButtonThemeToggle extends StatefulWidget {
   const ButtonThemeToggle({super.key});
@@ -15,7 +14,7 @@ class _ButtonThemeToggleState extends State<ButtonThemeToggle> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: MainApp.of(context).toggleThemeMode,
+      onTap: AppStateScope.of(context).toggleThemeMode,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         onEnter: (_) {

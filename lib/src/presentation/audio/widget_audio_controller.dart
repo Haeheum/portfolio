@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'dart:collection';
-import 'dart:developer' as dev;
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/util/debounce_manager.dart';
 
 import '../../data/audio_repository.dart';
 import '../../util/global_constants.dart';
-import '../../util/global_methods.dart';
 import '../../model/background_music.dart';
+import '../state_management/audio_state_scope.dart';
 
 class WidgetAudioController extends StatefulWidget {
   const WidgetAudioController({super.key, required this.child});
@@ -24,24 +25,38 @@ class WidgetAudioController extends StatefulWidget {
 }
 
 class WidgetAudioControllerState extends State<WidgetAudioController> {
-  static const _bgmPlayerId = 'bgmPlayer';
-
   late final AppLifecycleListener _appLifecycleListener;
   late final AudioPlayer _bgmPlayer;
   late Queue<BackgroundMusic> _bgmPlaylist;
 
-  bool shouldPlay = false;
-  ValueNotifier<String> artistName = ValueNotifier('');
-  ValueNotifier<String> musicName = ValueNotifier('');
-  ValueNotifier<double> volume = ValueNotifier(kDefaultVolume);
+  final ValueNotifier<bool> shouldPlay = ValueNotifier(false);
+  final ValueNotifier<String> artistName = ValueNotifier('');
+  final ValueNotifier<String> musicName = ValueNotifier('');
+  final ValueNotifier<double> volume = ValueNotifier(kDefaultVolume);
 
   bool _isRunning = false;
-  Timer? _debounceTimer;
 
-  void attachLifecycleChangeHandler() {
+  void _syncAudioInfo() {
+    artistName.value = _bgmPlaylist.first.artistName;
+    musicName.value = _bgmPlaylist.first.musicName;
+  }
+
+  void _initializeAudio() {
+    AudioRepository().preCacheAudios();
+
+    _bgmPlayer = AudioPlayer()..setVolume(kDefaultVolume);
+    _bgmPlayer.onPlayerComplete.listen(nextBgm);
+
+    _bgmPlaylist =
+        Queue.of(List<BackgroundMusic>.of(backgroundMusics)..shuffle());
+
+    _syncAudioInfo();
+  }
+
+  void _attachLifecycleChangeHandler() {
     _appLifecycleListener = AppLifecycleListener(
       onResume: () {
-        if (shouldPlay) {
+        if (shouldPlay.value) {
           _bgmPlayer.resume();
         }
       },
@@ -53,22 +68,11 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
     );
   }
 
-  void initializeAudio() async {
-    _bgmPlayer = AudioPlayer(playerId: _bgmPlayerId)..setVolume(kDefaultVolume);
-    _bgmPlaylist =
-        Queue.of(List<BackgroundMusic>.of(backgroundMusics)..shuffle());
-
-    artistName.value = _bgmPlaylist.first.artistName;
-    musicName.value = _bgmPlaylist.first.musicName;
-
-    _bgmPlayer.onPlayerComplete.listen(nextBgm);
-  }
-
   @override
   void initState() {
     super.initState();
-    attachLifecycleChangeHandler();
-    initializeAudio();
+    _initializeAudio();
+    _attachLifecycleChangeHandler();
   }
 
   @override
@@ -81,7 +85,7 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
   Future<void> _playFirstBgm(String filename) async {
     if (!_isRunning) {
       _isRunning = true;
-      shouldPlay = true;
+      shouldPlay.value = true;
       await _bgmPlayer
           .play(AssetSource('sounds/bgm/$filename'))
           .whenComplete(() {
@@ -97,15 +101,14 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
     _bgmPlayer.stop();
 
     _bgmPlaylist.addLast(_bgmPlaylist.removeFirst());
-    artistName.value = _bgmPlaylist.first.artistName;
-    musicName.value = _bgmPlaylist.first.musicName;
+    _syncAudioInfo();
 
-    if (shouldPlay) {
-      kDebounce(
-          action: () {
-            _playFirstBgm(_bgmPlaylist.first.filename);
-          },
-          debounceTimer: _debounceTimer);
+    if (shouldPlay.value) {
+      DebounceManager.run(
+        action: () {
+          _playFirstBgm(_bgmPlaylist.first.filename);
+        },
+      );
     }
   }
 
@@ -116,16 +119,15 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
     if (currentPosition == null ||
         currentPosition.compareTo(const Duration(seconds: 2)) <= 0) {
       _bgmPlaylist.addFirst(_bgmPlaylist.removeLast());
-      artistName.value = _bgmPlaylist.first.artistName;
-      musicName.value = _bgmPlaylist.first.musicName;
+      _syncAudioInfo();
     }
 
-    if (shouldPlay) {
-      kDebounce(
-          action: () {
-            _playFirstBgm(_bgmPlaylist.first.filename);
-          },
-          debounceTimer: _debounceTimer);
+    if (shouldPlay.value) {
+      DebounceManager.run(
+        action: () {
+          _playFirstBgm(_bgmPlaylist.first.filename);
+        },
+      );
     }
   }
 
@@ -133,36 +135,21 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
     if (_bgmPlayer.state == PlayerState.playing) {
       _bgmPlayer.pause();
     }
-    shouldPlay = false;
+    shouldPlay.value = false;
   }
 
   Future<void> playBgm() async {
     switch (_bgmPlayer.state) {
       case PlayerState.paused:
-        try {
-          await _bgmPlayer.resume();
-          shouldPlay = true;
-        } catch (e) {
-          dev.log(name: 'AudioError', 'Failed to resume bgm');
-          kDebounce(
-              action: () {
-                _playFirstBgm(_bgmPlaylist.first.filename);
-              },
-              debounceTimer: _debounceTimer);
-        }
-        break;
+        await _bgmPlayer.resume();
+        shouldPlay.value = true;
       case PlayerState.stopped:
       case PlayerState.completed:
-        kDebounce(
-            action: () {
-              _playFirstBgm(_bgmPlaylist.first.filename);
-            },
-            debounceTimer: _debounceTimer);
+        _playFirstBgm(_bgmPlaylist.first.filename);
         break;
       case PlayerState.playing:
       case PlayerState.disposed:
-        dev.log(name: 'AudioError', 'Bad audio player state');
-        break;
+        StateError('Wrong audio player state');
     }
   }
 
@@ -181,6 +168,12 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.child;
+    return AudioStateScope(
+      shouldPlay: shouldPlay,
+      artistName: artistName,
+      musicName: musicName,
+      volume: volume,
+      child: widget.child,
+    );
   }
 }

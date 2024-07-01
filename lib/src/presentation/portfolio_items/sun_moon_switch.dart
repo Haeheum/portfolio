@@ -47,7 +47,6 @@ class _SunMoonSwitchState extends State<SunMoonSwitch>
   void dispose() {
     _sunController.dispose();
     _moonController.dispose();
-
     super.dispose();
   }
 
@@ -56,43 +55,45 @@ class _SunMoonSwitchState extends State<SunMoonSwitch>
     return AspectRatio(
       aspectRatio: 369 / 145,
       child: LayoutBuilder(builder: (context, constraints) {
-        return Material(
+        return ClipRRect(
           borderRadius: BorderRadius.circular(constraints.maxHeight / 2),
-          child: GestureDetector(
-            onTap: () async {
-              if (_isSun) {
-                _moonController.reverse();
-              } else {
-                _moonController.forward();
-              }
-              setState(() {
-                _isSun = !_isSun;
-              });
-              widget.onChanged(_isSun);
-            },
-            child: MouseRegion(
-              onEnter: (_) {
+          clipBehavior: Clip.antiAlias,
+          child: Material(
+            borderRadius: BorderRadius.circular(constraints.maxHeight / 2),
+            child: GestureDetector(
+              onTap: () async {
                 if (_isSun) {
-                  _sunController.repeat(
-                    max: 0.20,
-                    reverse: true,
-                  );
+                  _moonController.reverse();
                 } else {
-                  _moonController.repeat(
-                    max: 0.20,
-                    reverse: true,
-                  );
+                  _moonController.forward();
                 }
+                setState(() {
+                  _isSun = !_isSun;
+                });
+                widget.onChanged(_isSun);
               },
-              onExit: (_) {
-                if (_isSun) {
-                  _sunController.animateTo(0);
-                } else {
-                  _moonController.animateTo(0);
-                }
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(constraints.maxHeight / 2),
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                onEnter: (_) {
+                  if (_isSun) {
+                    _sunController.repeat(
+                      max: 0.20,
+                      reverse: true,
+                    );
+                  } else {
+                    _moonController.repeat(
+                      max: 0.20,
+                      reverse: true,
+                    );
+                  }
+                },
+                onExit: (_) {
+                  if (_isSun) {
+                    _sunController.animateTo(0);
+                  } else {
+                    _moonController.animateTo(0);
+                  }
+                },
                 child: AnimatedContainer(
                   color: _isSun ? Colors.blue : const Color(0xFF062938),
                   duration: const Duration(milliseconds: 400),
@@ -135,11 +136,122 @@ class SunMoonSwitchPainter extends CustomPainter {
     _drawShadow(canvas, size);
   }
 
+  void _drawCloudBehind(Canvas canvas, Size size, double animationValue) {
+    canvas.save();
+    final cloudPaint = Paint()
+      ..color = const Color(0xFFA6C5DD)
+      ..style = PaintingStyle.fill;
+
+    if (animationValue > 0.2) {
+      canvas.translate(0,
+          animationValue * animationValue * animationValue * size.height * 2.5);
+    }
+    canvas.drawCircle(Offset(size.width * 0.125, size.height * 0.925),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.24, size.height * 0.95),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.39, size.height * 1.01),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.52, size.height * 0.85),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.65, size.height * 0.88),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.73, size.height * 0.73),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.89, size.height * 0.59),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.89, size.height * 0.10),
+        size.height * 59 / 145, cloudPaint);
+    canvas.restore();
+  }
+
+  void _drawStars(Canvas canvas, Size size, double animationValue) {
+    canvas.save();
+    final starPaint = Paint()
+      ..color = const Color(0xfff3f4f5)
+      ..style = PaintingStyle.fill;
+
+    canvas.translate(
+        0,
+        -1 *
+            (1 - animationValue) *
+            (1 - animationValue) *
+            (1 - animationValue) *
+            (1 - animationValue) *
+            (1 - animationValue) *
+            size.height *
+            550);
+
+    final stars = [
+      [Offset(size.width * 0.505, size.height * 0.44), size.width * 0.013],
+      [Offset(size.width * 0.48, size.height * 0.68), size.width * 0.020],
+      [Offset(size.width * 0.42, size.height * 0.475), size.width * 0.005],
+      [Offset(size.width * 0.345, size.height * 0.66), size.width * 0.010],
+      [Offset(size.width * 0.325, size.height * 0.39), size.width * 0.010],
+      [Offset(size.width * 0.205, size.height * 0.23), size.width * 0.018],
+      [Offset(size.width * 0.215, size.height * 0.55), size.width * 0.004],
+      [Offset(size.width * 0.14, size.height * 0.68), size.width * 0.009],
+      [Offset(size.width * 0.09, size.height * 0.31), size.width * 0.009],
+    ];
+
+    for (final star in stars) {
+      final Offset starOffset = star[0] as Offset;
+      final double starSize = star[1] as double;
+
+      canvas.drawPath(_getStarPath(starOffset, starSize), starPaint);
+    }
+    canvas.restore();
+  }
+
+  Path _getStarPath(Offset startAt, double starSize) {
+    final Path starPath = Path();
+
+    starPath.moveTo(startAt.dx, startAt.dy);
+    starPath.arcToPoint(startAt + Offset(starSize, starSize),
+        radius: Radius.circular(starSize));
+    starPath.arcToPoint(startAt + Offset(2 * starSize, 0),
+        radius: Radius.circular(starSize));
+    starPath.arcToPoint(startAt + Offset(starSize, -starSize),
+        radius: Radius.circular(starSize));
+    starPath.arcToPoint(startAt, radius: Radius.circular(starSize));
+    starPath.close();
+    return starPath;
+  }
+
   void _drawRays(Canvas canvas, Offset offset, double sunMoonRadius) {
     final rayPaint = Paint()..color = Colors.white.withOpacity(0.1);
     canvas.drawCircle(offset, sunMoonRadius * 51 / 30, rayPaint);
     canvas.drawCircle(offset, sunMoonRadius * 12 / 5, rayPaint);
     canvas.drawCircle(offset, sunMoonRadius * 19 / 6, rayPaint);
+  }
+
+  void _drawCloudFront(Canvas canvas, Size size, double animationValue) {
+    canvas.save();
+    final cloudPaint = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
+
+    if (animationValue > 0.2) {
+      canvas.translate(0,
+          animationValue * animationValue * animationValue * size.height * 2.0);
+    }
+    canvas.drawCircle(Offset(size.width * 0.15, size.height),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.3, size.height * 1.13),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.41, size.height * 1.11),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.565, size.height * 0.99),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.68, size.height * 1.1),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.785, size.height * 0.99),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.92, size.height * 0.78),
+        size.height * 8 / 29, cloudPaint);
+    canvas.drawCircle(Offset(size.width * 0.99, size.height * 0.26),
+        size.height * 53 / 145, cloudPaint);
+    canvas.restore();
   }
 
   void _drawSun(Canvas canvas, Offset offset, double sunMoonRadius,
@@ -207,117 +319,6 @@ class SunMoonSwitchPainter extends CustomPainter {
         }
       }
     }
-  }
-
-  void _drawCloudBehind(Canvas canvas, Size size, double animationValue) {
-    canvas.save();
-    final cloudPaint = Paint()
-      ..color = const Color(0xFFA6C5DD)
-      ..style = PaintingStyle.fill;
-
-    if (animationValue > 0.2) {
-      canvas.translate(0,
-          animationValue * animationValue * animationValue * size.height * 2.5);
-    }
-    canvas.drawCircle(Offset(size.width * 0.125, size.height * 0.925),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.24, size.height * 0.95),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.39, size.height * 1.01),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.52, size.height * 0.85),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.65, size.height * 0.88),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.73, size.height * 0.73),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.89, size.height * 0.59),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.89, size.height * 0.10),
-        size.height * 59 / 145, cloudPaint);
-    canvas.restore();
-  }
-
-  void _drawCloudFront(Canvas canvas, Size size, double animationValue) {
-    canvas.save();
-    final cloudPaint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.fill;
-
-    if (animationValue > 0.2) {
-      canvas.translate(0,
-          animationValue * animationValue * animationValue * size.height * 2.0);
-    }
-    canvas.drawCircle(Offset(size.width * 0.15, size.height),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.3, size.height * 1.13),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.41, size.height * 1.11),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.565, size.height * 0.99),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.68, size.height * 1.1),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.785, size.height * 0.99),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.92, size.height * 0.78),
-        size.height * 8 / 29, cloudPaint);
-    canvas.drawCircle(Offset(size.width * 0.99, size.height * 0.26),
-        size.height * 53 / 145, cloudPaint);
-    canvas.restore();
-  }
-
-  void _drawStars(Canvas canvas, Size size, double animationValue) {
-    canvas.save();
-    final starPaint = Paint()
-      ..color = const Color(0xfff3f4f5)
-      ..style = PaintingStyle.fill;
-
-    canvas.translate(
-        0,
-        -1 *
-            (1 - animationValue) *
-            (1 - animationValue) *
-            (1 - animationValue) *
-            (1 - animationValue) *
-            (1 - animationValue) *
-            size.height *
-            550);
-
-    final stars = [
-      [Offset(size.width * 0.505, size.height * 0.44), size.width * 0.013],
-      [Offset(size.width * 0.48, size.height * 0.68), size.width * 0.020],
-      [Offset(size.width * 0.42, size.height * 0.475), size.width * 0.005],
-      [Offset(size.width * 0.345, size.height * 0.66), size.width * 0.010],
-      [Offset(size.width * 0.325, size.height * 0.39), size.width * 0.010],
-      [Offset(size.width * 0.205, size.height * 0.23), size.width * 0.018],
-      [Offset(size.width * 0.215, size.height * 0.55), size.width * 0.004],
-      [Offset(size.width * 0.14, size.height * 0.68), size.width * 0.009],
-      [Offset(size.width * 0.09, size.height * 0.31), size.width * 0.009],
-    ];
-
-    for (final star in stars) {
-      final Offset starOffset = star[0] as Offset;
-      final double starSize = star[1] as double;
-
-      canvas.drawPath(_getStarPath(starOffset, starSize), starPaint);
-    }
-    canvas.restore();
-  }
-
-  Path _getStarPath(Offset startAt, double starSize) {
-    final Path starPath = Path();
-
-    starPath.moveTo(startAt.dx, startAt.dy);
-    starPath.arcToPoint(startAt + Offset(starSize, starSize),
-        radius: Radius.circular(starSize));
-    starPath.arcToPoint(startAt + Offset(2 * starSize, 0),
-        radius: Radius.circular(starSize));
-    starPath.arcToPoint(startAt + Offset(starSize, -starSize),
-        radius: Radius.circular(starSize));
-    starPath.arcToPoint(startAt, radius: Radius.circular(starSize));
-    starPath.close();
-    return starPath;
   }
 
   void _drawShadow(Canvas canvas, Size size) {

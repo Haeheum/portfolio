@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../audio/widget_audio_controller.dart';
-
+import '../../state_management/audio_state_scope.dart';
 
 class ButtonAnimatedPlayPause extends StatefulWidget {
   const ButtonAnimatedPlayPause({super.key});
 
   @override
-  State<ButtonAnimatedPlayPause> createState() => _ButtonAnimatedPlayPauseState();
+  State<ButtonAnimatedPlayPause> createState() =>
+      _ButtonAnimatedPlayPauseState();
 }
 
 class _ButtonAnimatedPlayPauseState extends State<ButtonAnimatedPlayPause>
@@ -21,7 +22,14 @@ class _ButtonAnimatedPlayPauseState extends State<ButtonAnimatedPlayPause>
       duration: const Duration(milliseconds: 400),
       vsync: this,
     );
-    if(WidgetAudioController.of(context).shouldPlay){
+
+  }
+
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (AudioStateScope.of(context).shouldPlay.value) {
       _animationController.animateTo(1.0, duration: const Duration(seconds: 0));
     }
   }
@@ -38,7 +46,7 @@ class _ButtonAnimatedPlayPauseState extends State<ButtonAnimatedPlayPause>
       icon: AnimatedIcon(
           icon: AnimatedIcons.play_pause, progress: _animationController),
       onPressed: () {
-        if (WidgetAudioController.of(context).shouldPlay) {
+        if (AudioStateScope.of(context).shouldPlay.value) {
           _animationController.reverse();
           WidgetAudioController.of(context).pauseBgm();
         } else {

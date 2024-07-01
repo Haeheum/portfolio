@@ -3,12 +3,9 @@ import 'dart:math';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/home/enum_stage_level.dart';
 
 class SittingMe extends StatefulWidget {
-  const SittingMe({super.key, required this.stageLevel});
-
-  final StageLevel stageLevel;
+  const SittingMe({super.key});
 
   @override
   State<SittingMe> createState() => _SittingMeState();
@@ -28,7 +25,7 @@ class _SittingMeState extends State<SittingMe> {
       opaque: false,
       onHover: (event) {
         setState(() {
-          _mouseOffset = event.position;
+          _mouseOffset = event.localPosition;
         });
       },
       child: FutureBuilder<ui.Image>(
@@ -80,11 +77,10 @@ class SittingMePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final heroHeight = size.height / 3;
+    final heroHeight = size.height / 2;
     final heroWidth = heroHeight * 28 / 40;
     final heroOffsetX = size.width / 2 - heroWidth;
-    final heroOffsetY =
-        size.height - (size.height - kToolbarHeight) / 2 - heroHeight;
+    final heroOffsetY = size.height - heroHeight;
     if (_canvasSize == null || _canvasSize != size) {
       dstRect = Offset(heroOffsetX, heroOffsetY) & Size(heroWidth, heroHeight);
     }

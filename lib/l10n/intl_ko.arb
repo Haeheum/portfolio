@@ -1,60 +1,21 @@
 {
-  "language": "언어",
-  "developer": "개발자",
-  "name": "이름",
-  "myName": "조해흠",
-  "aboutMe": "내정보",
-  "skillSet": "스킬셋",
-  "projects": "프로젝트",
-  "dateOfBirth": "생일",
-  "myBirthdate": "{date}",
-  "@myBirthdate": {
-    "description": "내 생일날",
-    "placeholders": {
-      "date": {
-        "type": "DateTime",
-        "format": "yMd"
-      }
-    }
-  },
-  "messageLoading" : "로딩중",
+  "messageLoading": "배경음악 로딩 중",
 
-  "messageMusicHover": "> 제가 좋아하는 가수의 노래를 들려드리죠!",
+  "introTitle": "해흠 입맛 포트폴리오",
+  "introBody": "제 포트폴리오에 온 것을 환영해요. 우측 하단에서 제가 좋아하는 노래들이 재생 가능해요. 로딩 시간이 있을 수 있지만 들으면 기분이 좋아질 거에요.",
 
-  "messageLevelOne": "> 저의 포트폴리오 웹사이트를 방문해 주셔서 감사합니다. 이 포트폴리오는 데스크탑 웹 환경에 최적화되어 있습니다. 보다 나은 사용자 경험을 위해 데스크탑 웹에서 접속해 주시기 바랍니다. [클릭]",
-  "messageLevelTwo": "> 안녕하세요 저는 개발자 조해흠입니다. 화면 우측 하단 음표 아이콘을 통해 노래를 들을 수 있습니다. 상단에서 언어 설정, 밝기 모드 토글, 볼륨 조절이 가능합니다. [클릭]",
-  "messageLevelThree": "> 무엇에 대해 알고 싶으신가요?",
+  "sunMoonSwitchTitle" : "커스텀 위젯",
+  "sunMoonSwitchBody" : "우연히 유튜브 쇼츠를 보다가 개발과 관련된 재밌는 영상을 보았어요. 영상이 너무 재밌어서 영상 속 개발자의 고뇌를 느껴보기 위해 직접 구현 해봤습니다. 커스텀 위젯은 시간 소요가 크지만 그 만큼의 매력이 있는 것 같아요! [클릭하여 쇼츠로 이동]",
 
-  "option1": "너에 대해 알고싶어",
-  "option2": "너의 플러터 스킬이 궁금해",
-  "option3": "어떤 프로젝트들을 해봤니?",
+  "shimmerEffectTitle" : "Skeleton UI",
+  "shimmerEffectBody" : "아직 화면을 보여줄 준비가 되지 않았을 때, Skeleton UI를 보고 있으면 금방 로딩이 될것만 같은 느낌이 들어요. 이런 섬세함이 모이면 유저에게 닿을거에요.",
 
-  "messageOption1Hover": "> 당신과 함께하고 싶은 저에 대해 알려드리죠.",
-  "messageOption2Hover": "> 앱 제작에 필요한 다양한 스킬을 가지고 있고 설계부터 배포까지의 경험을 가지고 있습니다. 요즘은 인터렉션에 관심을 가지고 있습니다. 제가 구현한 몇가지 아름다운 뷰들을 보여드리죠.",
-  "messageOption3Hover": "> 제 프로젝트 경험을 간단히 소개드리겠습니다.",
+  "confettiTitle" : "흩날리는 색종이 효과",
+  "confettiBody" : "커스텀 페인트로 정말 다양한게 가능한 것 같아요. 색종이마다 가진 다른 여러 속성들이 현실감을 더해주네요.",
 
+  "circleCollisionTitle" : "원 충돌 감지",
+  "circleCollisionBody" : "원 충돌 감지를 구현해 봤어요. 이 원리의 대표적인 예가 벽돌깨기 게임이에요. 저는 이 원리를 이미지 위에 반짝임 효과를 기기의 중력 센서와 연동해 사용한 적이 있어요.",
 
-  "aboutMeMessage": "내정보 보기",
-  "skillSetMessage": "스킬셋 보기",
-  "projectsMessage": "프로젝트 경험 보기",
-
-  "achievementDate": "{date}",
-  "@achievementDate": {
-    "placeholders": {
-      "date": {
-        "type": "DateTime",
-        "format": "yM"
-      }
-    }
-  },
-  "headerChronicle": "연대기",
-
-  "birthdayDescription": "해흠 탄생",
-  "armyDescription": "육군 전역",
-  "knuDescription" : "경북대학교 컴퓨터학부 졸업",
-  "flutterDescription" : "플러터 입문",
-  "companyDescription" : "플러터 개발자 첫 입사",
-  "ybmDescription" : "그랜드슬래머 Advanced 등급 달성",
-  "lolDescription" : "리그오브레전드 마스터 티어 딜성",
-  "gisaDescription" : "정보처리기사 취득"
+  "shaderWaterTitle" : "그래픽 효과",
+  "shaderWaterBody" : "쉐이더의 시각적 효과는 끝판왕인 것 같아요. 그래픽 언어는 어렵지만 멋진 그래픽 효과를 포기 할수는 없잖아요?"
 }

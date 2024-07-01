@@ -51,14 +51,13 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  LinearGradient get gradient =>
-      LinearGradient(
+  LinearGradient get gradient => LinearGradient(
         colors: widget.linearGradient.colors,
         stops: widget.linearGradient.stops,
         begin: widget.linearGradient.begin,
         end: widget.linearGradient.end,
         transform:
-        _SlidingGradientTransform(slidePercent: _shimmerController.value),
+            _SlidingGradientTransform(slidePercent: _shimmerController.value),
       );
 
   bool get isSized =>
@@ -114,9 +113,7 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _shimmerChanges?.removeListener(_onShimmerChange);
-    _shimmerChanges = Shimmer
-        .of(context)
-        ?.shimmerChanges;
+    _shimmerChanges = Shimmer.of(context)?.shimmerChanges;
     if (_shimmerChanges != null) {
       _shimmerChanges!.addListener(_onShimmerChange);
     }
@@ -170,37 +167,49 @@ class WidgetSampleShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer(
-      child: Container(
+      child: FittedBox(
+        child: Container(
           alignment: Alignment.center,
+          width: 500,
+          height: 500,
           child: GridView.builder(
             itemCount: 4,
+            padding: const EdgeInsets.all(16.0),
+            shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2),
+              crossAxisCount: 2,
+              mainAxisSpacing: 16.0,
+              crossAxisSpacing: 16.0,
+              childAspectRatio: 1.0,
+            ),
             itemBuilder: (BuildContext context, int index) {
               return ShimmerLoading(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Flexible(flex: 3, child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25.0)
-                        ),
-                      )),
-                      const SizedBox(height: 24.0),
-                      Flexible(flex: 1, child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      flex: 3,
+                      child: Container(
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(25.0)
-                        ),
-                      )),
-                    ],
-                  ),
+                            borderRadius: BorderRadius.circular(25.0)),
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    Flexible(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(25.0)),
+                      ),
+                    ),
+                  ],
                 ),
               );
             },
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

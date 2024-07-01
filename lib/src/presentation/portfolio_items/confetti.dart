@@ -1,7 +1,9 @@
 import 'dart:collection';
 import 'dart:math';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:portfolio/src/config/theme_extension.dart';
 
 import '../../model/vector.dart';
 
@@ -14,13 +16,10 @@ class Confetti extends StatefulWidget {
     Color(0xff1d75fb),
   ];
 
-  final bool isStopped;
-
   final List<Color> colors;
 
   const Confetti({
     this.colors = _defaultColors,
-    this.isStopped = false,
     super.key,
   });
 
@@ -32,26 +31,53 @@ class _ConfettiState extends State<Confetti>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
+  int _confettiCount = 10;
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: ConfettiPainter(
+        count: _confettiCount,
         colors: widget.colors,
         animation: _controller,
       ),
       willChange: true,
-      child: const SizedBox.expand(),
+      child: SizedBox.expand(
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {
+                  if (_confettiCount > 0) {
+                    setState(() {
+                      _confettiCount -= 1;
+                    });
+                  }
+                },
+                icon: const Icon(Icons.remove),
+              ),
+              Text(
+                _confettiCount.toString(),
+                style: TextStyle(
+                  color:
+                      Theme.of(context).extension<ExtensionColors>()!.textColor,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    _confettiCount += 1;
+                  });
+                },
+                icon: const Icon(Icons.add),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
-  }
-
-  @override
-  void didUpdateWidget(covariant Confetti oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.isStopped && !widget.isStopped) {
-      _controller.repeat();
-    } else if (!oldWidget.isStopped && widget.isStopped) {
-      _controller.stop(canceled: false);
-    }
   }
 
   @override
@@ -66,18 +92,14 @@ class _ConfettiState extends State<Confetti>
     _controller = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
-    );
-
-    if (!widget.isStopped) {
-      _controller.repeat();
-    }
+    )..repeat();
   }
 }
 
 class ConfettiPainter extends CustomPainter {
   final defaultPaint = Paint();
 
-  final int _snippingCount = 100;
+  late final int _snippingCount;
 
   late final List<_PaperSnipping> _snippings;
 
@@ -87,15 +109,17 @@ class ConfettiPainter extends CustomPainter {
 
   final UnmodifiableListView<Color> colors;
 
-  ConfettiPainter(
-      {required Listenable animation, required Iterable<Color> colors})
-      : colors = UnmodifiableListView(colors),
+  ConfettiPainter({
+    required int count,
+    required Listenable animation,
+    required Iterable<Color> colors,
+  })  : _snippingCount = count,
+        colors = UnmodifiableListView(colors),
         super(repaint: animation);
 
   @override
   void paint(Canvas canvas, Size size) {
     if (_size == null) {
-      // First time we have a size.
       _snippings = List.generate(
           _snippingCount,
           (i) => _PaperSnipping(
@@ -150,7 +174,7 @@ class _PaperSnipping {
   final double _ySpeed = 50 + _random.nextDouble() * 60;
 
   late final List<Vector> _corners = List.generate(4, (i) {
-    final angle = _angle + _degToRad * (45 + i * 90);
+    final angle = _angle + _degToRad * (i * 90);
     return Vector(cos(angle), sin(angle));
   });
 
@@ -162,8 +186,7 @@ class _PaperSnipping {
   _PaperSnipping({
     required this.frontColor,
     required Size bounds,
-  })  :
-        _bounds = bounds;
+  }) : _bounds = bounds;
 
   void draw(Canvas canvas) {
     if (_cosA > 0) {
@@ -177,8 +200,8 @@ class _PaperSnipping {
         List.generate(
             4,
             (index) => Offset(
-              _position.x + _corners[index].x * _size,
-              _position.y + _corners[index].y * _size * _cosA,
+                  _position.x + _corners[index].x * _size,
+                  _position.y + _corners[index].y * _size * _cosA,
                 )),
         true,
       );

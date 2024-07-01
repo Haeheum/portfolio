@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../generated/l10n.dart';
-import '../../../../main.dart';
 import '../../../config/theme_extension.dart';
 import '../../../model/enum/language_options.dart';
 import '../../state_management/app_state_scope.dart';
@@ -15,13 +13,13 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: const _AppBarHomeLeading(),
-      backgroundColor: Colors.transparent,
       shape: Border(
         bottom: BorderSide(
           color: Theme.of(context).dividerColor,
           width: 1,
         ),
       ),
+      backgroundColor: Colors.transparent,
       leadingWidth: MediaQuery.sizeOf(context).width,
       forceMaterialTransparency: true,
     );
@@ -43,14 +41,6 @@ class _AppBarHomeLeading extends StatelessWidget {
         child: FittedBox(
           child: DropdownMenu(
             width: 120,
-            label: Text(
-              S.of(context).language,
-              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: Theme.of(context)
-                        .extension<ExtensionColors>()!
-                        .textColor,
-                  ),
-            ),
             initialSelection: switch (
                 AppStateScope.of(context).appLocale.languageCode) {
               'en' => LanguageOptions.english,
@@ -59,7 +49,7 @@ class _AppBarHomeLeading extends StatelessWidget {
             },
             onSelected: (LanguageOptions? language) {
               if (language != null) {
-                MainApp.of(context).setLanguageCode(language.code);
+                AppStateScope.of(context).setLanguageCode(language.code);
               }
             },
             requestFocusOnTap: false,

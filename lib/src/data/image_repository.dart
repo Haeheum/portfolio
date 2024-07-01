@@ -15,18 +15,11 @@ class ImageRepository {
 }
 
 const List<String> rawImageData = [
-  'america_flag.png',
-  'army.png',
-  'baby.png',
-  'company.webp',
-  'flutter.png',
+  'flag_america.png',
+  'flag_korea.png',
   'folder_colored.png',
   'folder_disabled.png',
-  'gisa.png',
   'hero.png',
-  'knu.png',
-  'korea_flag.png',
-  'lol.png',
-  'me.png',
-  'toeic.png'
+  'me.jpeg',
+  'singer.webp',
 ];

@@ -50,307 +50,131 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `language`
-  String get language {
+  /// `Loading background musics`
+  String get messageAudioLoading {
     return Intl.message(
-      'language',
-      name: 'language',
+      'Loading background musics',
+      name: 'messageAudioLoading',
       desc: '',
       args: [],
     );
   }
 
-  /// `DEVELOPER`
-  String get developer {
+  /// `Portfolio of Haeheum's taste`
+  String get introTitle {
     return Intl.message(
-      'DEVELOPER',
-      name: 'developer',
+      'Portfolio of Haeheum\'s taste',
+      name: 'introTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Name`
-  String get name {
+  /// `Welcome to my portfolio. You can play some of my favorite songs at the bottom end of the screen. Loading might require some time but it will bring joy.`
+  String get introBody {
     return Intl.message(
-      'Name',
-      name: 'name',
+      'Welcome to my portfolio. You can play some of my favorite songs at the bottom end of the screen. Loading might require some time but it will bring joy.',
+      name: 'introBody',
       desc: '',
       args: [],
     );
   }
 
-  /// `HAEHEUM JO`
-  String get myName {
+  /// `Custom widget`
+  String get sunMoonSwitchTitle {
     return Intl.message(
-      'HAEHEUM JO',
-      name: 'myName',
+      'Custom widget',
+      name: 'sunMoonSwitchTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `About me`
-  String get aboutMe {
+  /// `While watching YouTube Shorts, I came across to a funny video related to development. The video was so hilarious that I decided to implement it to experience the anguish myself. Custom widget takes a lot of effort, but they are certainly worth it [Click to see the video]`
+  String get sunMoonSwitchBody {
     return Intl.message(
-      'About me',
-      name: 'aboutMe',
+      'While watching YouTube Shorts, I came across to a funny video related to development. The video was so hilarious that I decided to implement it to experience the anguish myself. Custom widget takes a lot of effort, but they are certainly worth it [Click to see the video]',
+      name: 'sunMoonSwitchBody',
       desc: '',
       args: [],
     );
   }
 
-  /// `Skill set`
-  String get skillSet {
+  /// `Skeleton UI`
+  String get shimmerEffectTitle {
     return Intl.message(
-      'Skill set',
-      name: 'skillSet',
+      'Skeleton UI',
+      name: 'shimmerEffectTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Projects`
-  String get projects {
+  /// `When a screen is loading, Skeleton UI makes me feel like its almost there. Delicate details like this will reach the user`
+  String get shimmerEffectBody {
     return Intl.message(
-      'Projects',
-      name: 'projects',
+      'When a screen is loading, Skeleton UI makes me feel like its almost there. Delicate details like this will reach the user',
+      name: 'shimmerEffectBody',
       desc: '',
       args: [],
     );
   }
 
-  /// `Date of birth`
-  String get dateOfBirth {
+  /// `Confetti`
+  String get confettiTitle {
     return Intl.message(
-      'Date of birth',
-      name: 'dateOfBirth',
+      'Confetti',
+      name: 'confettiTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `{date}`
-  String myBirthdate(DateTime date) {
-    final DateFormat dateDateFormat = DateFormat.yMd(Intl.getCurrentLocale());
-    final String dateString = dateDateFormat.format(date);
-
+  /// `With custom paint, so many things are possible. Various attributes for each falling paper make it seems very realistic.`
+  String get confettiBody {
     return Intl.message(
-      '$dateString',
-      name: 'myBirthdate',
-      desc: 'My birthdate',
-      args: [dateString],
-    );
-  }
-
-  /// `loading`
-  String get messageLoading {
-    return Intl.message(
-      'loading',
-      name: 'messageLoading',
+      'With custom paint, so many things are possible. Various attributes for each falling paper make it seems very realistic.',
+      name: 'confettiBody',
       desc: '',
       args: [],
     );
   }
 
-  /// `> Let me introduce you my favorite singer!`
-  String get messageMusicHover {
+  /// `Circle collision detection`
+  String get circleCollisionTitle {
     return Intl.message(
-      '> Let me introduce you my favorite singer!',
-      name: 'messageMusicHover',
+      'Circle collision detection',
+      name: 'circleCollisionTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `> Good day. Thank you for visiting my portfolio website. This portfolio has been designed and optimized for the desktop web environment. In order to provide you with the best user experience, please access from a desktop web browser. [Press]`
-  String get messageLevelOne {
+  /// `I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have used this concept to show shiny effect over a card image with the gravity sensor of a device. `
+  String get circleCollisionBody {
     return Intl.message(
-      '> Good day. Thank you for visiting my portfolio website. This portfolio has been designed and optimized for the desktop web environment. In order to provide you with the best user experience, please access from a desktop web browser. [Press]',
-      name: 'messageLevelOne',
+      'I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have used this concept to show shiny effect over a card image with the gravity sensor of a device. ',
+      name: 'circleCollisionBody',
       desc: '',
       args: [],
     );
   }
 
-  /// `> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume, edit language and theme mode on the top app bar. [Press]`
-  String get messageLevelTwo {
+  /// `Graphic effect`
+  String get shaderWaterTitle {
     return Intl.message(
-      '> Hi I am developer Haeheum Jo. You can play music by clicking the music note icon below. You can adjust volume, edit language and theme mode on the top app bar. [Press]',
-      name: 'messageLevelTwo',
+      'Graphic effect',
+      name: 'shaderWaterTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `> What would you like to know?`
-  String get messageLevelThree {
+  /// `I think Shaders are the final boss for visual effects. Graphic language is hard but you cannot give up the cool effects.`
+  String get shaderWaterBody {
     return Intl.message(
-      '> What would you like to know?',
-      name: 'messageLevelThree',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Tell me about you`
-  String get option1 {
-    return Intl.message(
-      'Tell me about you',
-      name: 'option1',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Show some flutter skills`
-  String get option2 {
-    return Intl.message(
-      'Show some flutter skills',
-      name: 'option2',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Project experience?`
-  String get option3 {
-    return Intl.message(
-      'Project experience?',
-      name: 'option3',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `> I would like to be with you. Let me tell you more. `
-  String get messageOption1Hover {
-    return Intl.message(
-      '> I would like to be with you. Let me tell you more. ',
-      name: 'messageOption1Hover',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `> I have a diverse set of skills required for app development, and I have experience in the entire process from system design to deployment. Lately, I have been particularly interested in interaction design. I would be happy to show you some of the beautiful UI views I have implemented.`
-  String get messageOption2Hover {
-    return Intl.message(
-      '> I have a diverse set of skills required for app development, and I have experience in the entire process from system design to deployment. Lately, I have been particularly interested in interaction design. I would be happy to show you some of the beautiful UI views I have implemented.',
-      name: 'messageOption2Hover',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `> I will share you my project experiences briefly.`
-  String get messageOption3Hover {
-    return Intl.message(
-      '> I will share you my project experiences briefly.',
-      name: 'messageOption3Hover',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{date}`
-  String achievementDate(DateTime date) {
-    final DateFormat dateDateFormat = DateFormat.yM(Intl.getCurrentLocale());
-    final String dateString = dateDateFormat.format(date);
-
-    return Intl.message(
-      '$dateString',
-      name: 'achievementDate',
-      desc: '',
-      args: [dateString],
-    );
-  }
-
-  /// `Chronicle`
-  String get headerChronicle {
-    return Intl.message(
-      'Chronicle',
-      name: 'headerChronicle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Birth`
-  String get birthdayDescription {
-    return Intl.message(
-      'Birth',
-      name: 'birthdayDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Military discharge`
-  String get armyDescription {
-    return Intl.message(
-      'Military discharge',
-      name: 'armyDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Bachelor's degree in computer science at KNU`
-  String get knuDescription {
-    return Intl.message(
-      'Bachelor\'s degree in computer science at KNU',
-      name: 'knuDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Start learning flutter`
-  String get flutterDescription {
-    return Intl.message(
-      'Start learning flutter',
-      name: 'flutterDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `First job with flutter`
-  String get companyDescription {
-    return Intl.message(
-      'First job with flutter',
-      name: 'companyDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Toeic grand slammer advanced tier`
-  String get ybmDescription {
-    return Intl.message(
-      'Toeic grand slammer advanced tier',
-      name: 'ybmDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `League of legends master tier`
-  String get lolDescription {
-    return Intl.message(
-      'League of legends master tier',
-      name: 'lolDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Information processing technician certified`
-  String get gisaDescription {
-    return Intl.message(
-      'Information processing technician certified',
-      name: 'gisaDescription',
+      'I think Shaders are the final boss for visual effects. Graphic language is hard but you cannot give up the cool effects.',
+      name: 'shaderWaterBody',
       desc: '',
       args: [],
     );

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class ButtonOptionMenuControl extends StatefulWidget {
-  const ButtonOptionMenuControl(
+class ButtonPageNavigation extends StatefulWidget {
+  const ButtonPageNavigation(
       {super.key, required this.isLeft, required this.onTap});
 
   final bool isLeft;
   final VoidCallback onTap;
 
   @override
-  State<ButtonOptionMenuControl> createState() =>
-      _ButtonOptionMenuControlState();
+  State<ButtonPageNavigation> createState() =>
+      _ButtonPageNavigationState();
 }
 
-class _ButtonOptionMenuControlState extends State<ButtonOptionMenuControl> {
+class _ButtonPageNavigationState extends State<ButtonPageNavigation> {
   bool _isHover = false;
 
   @override

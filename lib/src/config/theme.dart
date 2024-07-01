@@ -13,7 +13,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     backgroundColor: Color(0xFFF5CE56),
   ),
   iconTheme: const IconThemeData(color: Color(0xFF2F2E36)),
-  scaffoldBackgroundColor: const Color(0xFFCFCFCF),
+  scaffoldBackgroundColor: const Color(0xFFFFE9A6),
   sliderTheme: const SliderThemeData(
     activeTrackColor: Color(0xFFF5CE56),
     inactiveTrackColor: Color(0xFFA9A9A9),
@@ -73,7 +73,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       skyColor: Color(0xFF152F52),
       rainColor: Color(0x99F4F4F5),
       cardBackgroundColor: Color(0xFF466C93),
-      backgroundColor: Color(0xFF151319),
+      backgroundColor: Color(0xFF323232),
       textColor: Color(0xFFEDEBEE),
       warningColor: Color(0xFFEF9A9A),
       terminalAppBarColor: Color(0xFF43403B),
