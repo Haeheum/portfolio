@@ -60,20 +60,20 @@ class S {
     );
   }
 
-  /// `Portfolio of Haeheum's taste`
+  /// `Haeheum's portfolio`
   String get introTitle {
     return Intl.message(
-      'Portfolio of Haeheum\'s taste',
+      'Haeheum\'s portfolio',
       name: 'introTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Welcome to my portfolio. You can play some of my favorite songs at the bottom end of the screen. Loading might require some time but it will bring joy.`
+  /// `Welcome to my portfolio. You can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen.`
   String get introBody {
     return Intl.message(
-      'Welcome to my portfolio. You can play some of my favorite songs at the bottom end of the screen. Loading might require some time but it will bring joy.',
+      'Welcome to my portfolio. You can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen.',
       name: 'introBody',
       desc: '',
       args: [],
@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `While watching YouTube Shorts, I came across to a funny video related to development. The video was so hilarious that I decided to implement it to experience the anguish myself. Custom widget takes a lot of effort, but they are certainly worth it [Click to see the video]`
+  /// `I ended up making it after watching a video on youtube. Click to see the video. As a developer, I think making custom widgets is one of the toughest works. Its time cost is hard to predict and development process is hard. But it does look amazing.`
   String get sunMoonSwitchBody {
     return Intl.message(
-      'While watching YouTube Shorts, I came across to a funny video related to development. The video was so hilarious that I decided to implement it to experience the anguish myself. Custom widget takes a lot of effort, but they are certainly worth it [Click to see the video]',
+      'I ended up making it after watching a video on youtube. Click to see the video. As a developer, I think making custom widgets is one of the toughest works. Its time cost is hard to predict and development process is hard. But it does look amazing.',
       name: 'sunMoonSwitchBody',
       desc: '',
       args: [],
@@ -110,20 +110,20 @@ class S {
     );
   }
 
-  /// `When a screen is loading, Skeleton UI makes me feel like its almost there. Delicate details like this will reach the user`
+  /// `Skeleton UI has power to make waiting less burdensome.`
   String get shimmerEffectBody {
     return Intl.message(
-      'When a screen is loading, Skeleton UI makes me feel like its almost there. Delicate details like this will reach the user',
+      'Skeleton UI has power to make waiting less burdensome.',
       name: 'shimmerEffectBody',
       desc: '',
       args: [],
     );
   }
 
-  /// `Confetti`
+  /// `Custom paint`
   String get confettiTitle {
     return Intl.message(
-      'Confetti',
+      'Custom paint',
       name: 'confettiTitle',
       desc: '',
       args: [],
@@ -150,10 +150,10 @@ class S {
     );
   }
 
-  /// `I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have used this concept to show shiny effect over a card image with the gravity sensor of a device. `
+  /// `I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have applied this concept in a project. `
   String get circleCollisionBody {
     return Intl.message(
-      'I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have used this concept to show shiny effect over a card image with the gravity sensor of a device. ',
+      'I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have applied this concept in a project. ',
       name: 'circleCollisionBody',
       desc: '',
       args: [],
@@ -170,11 +170,31 @@ class S {
     );
   }
 
-  /// `I think Shaders are the final boss for visual effects. Graphic language is hard but you cannot give up the cool effects.`
+  /// `Shaders can make cool graphics like games. So I started studying shader language.`
   String get shaderWaterBody {
     return Intl.message(
-      'I think Shaders are the final boss for visual effects. Graphic language is hard but you cannot give up the cool effects.',
+      'Shaders can make cool graphics like games. So I started studying shader language.',
       name: 'shaderWaterBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interactive plate`
+  String get interactivePlateTitle {
+    return Intl.message(
+      'Interactive plate',
+      name: 'interactivePlateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rotate on hover.`
+  String get interactivePlateBody {
+    return Intl.message(
+      'Rotate on hover.',
+      name: 'interactivePlateBody',
       desc: '',
       args: [],
     );

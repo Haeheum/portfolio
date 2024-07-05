@@ -23,28 +23,32 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "circleCollisionBody": MessageLookupByLibrary.simpleMessage(
-            "I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have used this concept to show shiny effect over a card image with the gravity sensor of a device. "),
+            "I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have applied this concept in a project. "),
         "circleCollisionTitle":
             MessageLookupByLibrary.simpleMessage("Circle collision detection"),
         "confettiBody": MessageLookupByLibrary.simpleMessage(
             "With custom paint, so many things are possible. Various attributes for each falling paper make it seems very realistic."),
-        "confettiTitle": MessageLookupByLibrary.simpleMessage("Confetti"),
+        "confettiTitle": MessageLookupByLibrary.simpleMessage("Custom paint"),
+        "interactivePlateBody":
+            MessageLookupByLibrary.simpleMessage("Rotate on hover."),
+        "interactivePlateTitle":
+            MessageLookupByLibrary.simpleMessage("Interactive plate"),
         "introBody": MessageLookupByLibrary.simpleMessage(
-            "Welcome to my portfolio. You can play some of my favorite songs at the bottom end of the screen. Loading might require some time but it will bring joy."),
-        "introTitle": MessageLookupByLibrary.simpleMessage(
-            "Portfolio of Haeheum\'s taste"),
+            "Welcome to my portfolio. You can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen."),
+        "introTitle":
+            MessageLookupByLibrary.simpleMessage("Haeheum\'s portfolio"),
         "messageAudioLoading":
             MessageLookupByLibrary.simpleMessage("Loading background musics"),
         "shaderWaterBody": MessageLookupByLibrary.simpleMessage(
-            "I think Shaders are the final boss for visual effects. Graphic language is hard but you cannot give up the cool effects."),
+            "Shaders can make cool graphics like games. So I started studying shader language."),
         "shaderWaterTitle":
             MessageLookupByLibrary.simpleMessage("Graphic effect"),
         "shimmerEffectBody": MessageLookupByLibrary.simpleMessage(
-            "When a screen is loading, Skeleton UI makes me feel like its almost there. Delicate details like this will reach the user"),
+            "Skeleton UI has power to make waiting less burdensome."),
         "shimmerEffectTitle":
             MessageLookupByLibrary.simpleMessage("Skeleton UI"),
         "sunMoonSwitchBody": MessageLookupByLibrary.simpleMessage(
-            "While watching YouTube Shorts, I came across to a funny video related to development. The video was so hilarious that I decided to implement it to experience the anguish myself. Custom widget takes a lot of effort, but they are certainly worth it [Click to see the video]"),
+            "I ended up making it after watching a video on youtube. Click to see the video. As a developer, I think making custom widgets is one of the toughest works. Its time cost is hard to predict and development process is hard. But it does look amazing."),
         "sunMoonSwitchTitle":
             MessageLookupByLibrary.simpleMessage("Custom widget")
       };

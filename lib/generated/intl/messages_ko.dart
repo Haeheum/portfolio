@@ -23,23 +23,27 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "circleCollisionBody": MessageLookupByLibrary.simpleMessage(
-            "원 충돌 감지를 구현해 봤어요. 이 원리의 대표적인 예가 벽돌깨기 게임이에요. 저는 이 원리를 이미지 위에 반짝임 효과를 기기의 중력 센서와 연동해 사용한 적이 있어요."),
+            "원 충돌 감지를 구현해 봤어요. 이 원리의 대표적인 예가 벽돌깨기 게임이에요. 이 원리를 응용해 프로젝트에 적용한 적이 있어요."),
         "circleCollisionTitle": MessageLookupByLibrary.simpleMessage("원 충돌 감지"),
         "confettiBody": MessageLookupByLibrary.simpleMessage(
             "커스텀 페인트로 정말 다양한게 가능한 것 같아요. 색종이마다 가진 다른 여러 속성들이 현실감을 더해주네요."),
-        "confettiTitle": MessageLookupByLibrary.simpleMessage("흩날리는 색종이 효과"),
+        "confettiTitle": MessageLookupByLibrary.simpleMessage("커스텀 페인트"),
+        "interactivePlateBody":
+            MessageLookupByLibrary.simpleMessage("마우스를 올리면 흐느적."),
+        "interactivePlateTitle":
+            MessageLookupByLibrary.simpleMessage("흐느적 인터렉션"),
         "introBody": MessageLookupByLibrary.simpleMessage(
-            "제 포트폴리오에 온 것을 환영해요. 우측 하단에서 제가 좋아하는 노래들이 재생 가능해요. 로딩 시간이 있을 수 있지만 들으면 기분이 좋아질 거에요."),
-        "introTitle": MessageLookupByLibrary.simpleMessage("해흠 입맛 포트폴리오"),
+            "제 포트폴리오에 온 것을 환영해요. 우측 하단에서 제가 좋아하는 노래들이 재생 가능해요. 로딩이 필요하지만 들어주면 좋겠어요."),
+        "introTitle": MessageLookupByLibrary.simpleMessage("해흠의 포트폴리오"),
         "shaderWaterBody": MessageLookupByLibrary.simpleMessage(
-            "쉐이더의 시각적 효과는 끝판왕인 것 같아요. 그래픽 언어는 어렵지만 멋진 그래픽 효과를 포기 할수는 없잖아요?"),
+            "쉐이더로 게임과 같은 멋진 그래픽 효과를 낼 수 있어요. 그래서 요즘 공부하고 있습니다."),
         "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("그래픽 효과"),
         "shimmerEffectBody": MessageLookupByLibrary.simpleMessage(
-            "아직 화면을 보여줄 준비가 되지 않았을 때, Skeleton UI를 보고 있으면 금방 로딩이 될것만 같은 느낌이 들어요. 이런 섬세함이 모이면 유저에게 닿을거에요."),
+            "Skeleton UI는 기다림을 덜 불편하게 해주는 것 같아요."),
         "shimmerEffectTitle":
             MessageLookupByLibrary.simpleMessage("Skeleton UI"),
         "sunMoonSwitchBody": MessageLookupByLibrary.simpleMessage(
-            "우연히 유튜브 쇼츠를 보다가 개발과 관련된 재밌는 영상을 보았어요. 영상이 너무 재밌어서 영상 속 개발자의 고뇌를 느껴보기 위해 직접 구현 해봤습니다. 커스텀 위젯은 시간 소요가 크지만 그 만큼의 매력이 있는 것 같아요! [클릭하여 쇼츠로 이동]"),
+            "유튜브 영상을 보다가 만들었어요. 클릭하면 제가 본 영상으로 이동해요. 커스텀 위젯은 개발자 입장에서 정말 힘든 일 중 하나인 것 같아요. 어느 정도 걸릴지 가늠도 어렵고 만들기도 어려워요. 그래도 예쁘네요."),
         "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("커스텀 위젯")
       };
 }

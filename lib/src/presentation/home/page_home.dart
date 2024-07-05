@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:portfolio/src/presentation/portfolio_items/confetti.dart';
+import 'package:portfolio/src/presentation/portfolio_items/interactive_plate.dart';
 import 'package:portfolio/src/presentation/portfolio_items/shader_water.dart';
 import 'package:portfolio/src/presentation/portfolio_items/shimmer_effect.dart';
 import 'package:portfolio/src/presentation/portfolio_items/sitting_me.dart';
@@ -98,6 +99,16 @@ class _PageHomeState extends State<PageHome> {
                   },
                 ),
                 const SizedBox(width: 12),
+                Text(
+                  '${_toPage + 1}/${_portfolioItems.length}',
+                  style: TextStyle(
+                    color: Theme.of(context)
+                        .extension<ExtensionColors>()!
+                        .textColor,
+                    fontSize: 24,
+                  ),
+                ),
+                const SizedBox(width: 12),
                 ButtonPageNavigation(
                   isLeft: false,
                   onTap: () {
@@ -162,8 +173,11 @@ class _PageHomeState extends State<PageHome> {
           onTap: () {
             launchUrl(Uri.parse('https://www.youtube.com/watch?v=5qHHm7ooavo'));
           },
-          child: SunMoonSwitch(
-            onChanged: (_) {},
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: SunMoonSwitch(
+              onChanged: (_) {},
+            ),
           ),
         ),
       )
@@ -193,6 +207,13 @@ class _PageHomeState extends State<PageHome> {
           title: S.of(context).shaderWaterTitle,
           body: S.of(context).shaderWaterBody,
           child: const ShaderWater(),
+        ),
+      )
+      ..add(
+        FramePortfolioItem(
+          title: S.of(context).interactivePlateTitle,
+          body: S.of(context).interactivePlateBody,
+          child: const InteractivePlate(),
         ),
       );
   }

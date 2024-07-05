@@ -167,24 +167,24 @@ class WidgetSampleShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer(
-      child: FittedBox(
-        child: Container(
-          alignment: Alignment.center,
-          width: 500,
-          height: 500,
-          child: GridView.builder(
-            itemCount: 4,
-            padding: const EdgeInsets.all(16.0),
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 16.0,
-              crossAxisSpacing: 16.0,
-              childAspectRatio: 1.0,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return ShimmerLoading(
-                child: Column(
+      child: ShimmerLoading(
+        child: FittedBox(
+          child: Container(
+            alignment: Alignment.center,
+            width: 500,
+            height: 500,
+            child: GridView.builder(
+              itemCount: 4,
+              padding: const EdgeInsets.all(16.0),
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 16.0,
+                crossAxisSpacing: 16.0,
+                childAspectRatio: 1.0,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Flexible(
@@ -204,9 +204,9 @@ class WidgetSampleShimmer extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),
