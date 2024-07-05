@@ -14,10 +14,10 @@
   "confettiBody" : "커스텀 페인트로 정말 다양한게 가능한 것 같아요. 색종이마다 가진 다른 여러 속성들이 현실감을 더해주네요.",
 
   "circleCollisionTitle" : "원 충돌 감지",
-  "circleCollisionBody" : "원 충돌 감지를 구현해 봤어요. 이 원리의 대표적인 예가 벽돌깨기 게임이에요. 이 원리를 응용해 프로젝트에 적용한 적이 있어요.",
+  "circleCollisionBody" : "원 충돌 감지를 구현해봤어요. 이 원리의 대표적인 예가 벽돌깨기 게임이에요. 이 원리를 응용해 프로젝트에 적용한 적이 있어요.",
 
   "shaderWaterTitle" : "그래픽 효과",
-  "shaderWaterBody" : "쉐이더로 게임과 같은 멋진 그래픽 효과를 낼 수 있어요. 그래서 요즘 공부하고 있습니다.",
+  "shaderWaterBody" : "쉐이더로 게임과 같은 멋진 그래픽 효과를 낼 수 있어요.",
 
   "interactivePlateTitle" : "흐느적 인터렉션",
   "interactivePlateBody": "마우스를 올리면 흐느적."

@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "circleCollisionBody": MessageLookupByLibrary.simpleMessage(
-            "원 충돌 감지를 구현해 봤어요. 이 원리의 대표적인 예가 벽돌깨기 게임이에요. 이 원리를 응용해 프로젝트에 적용한 적이 있어요."),
+            "원 충돌 감지를 구현해봤어요. 이 원리의 대표적인 예가 벽돌깨기 게임이에요. 이 원리를 응용해 프로젝트에 적용한 적이 있어요."),
         "circleCollisionTitle": MessageLookupByLibrary.simpleMessage("원 충돌 감지"),
         "confettiBody": MessageLookupByLibrary.simpleMessage(
             "커스텀 페인트로 정말 다양한게 가능한 것 같아요. 색종이마다 가진 다른 여러 속성들이 현실감을 더해주네요."),
@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "제 포트폴리오에 온 것을 환영해요. 우측 하단에서 제가 좋아하는 노래들이 재생 가능해요. 로딩이 필요하지만 들어주면 좋겠어요."),
         "introTitle": MessageLookupByLibrary.simpleMessage("해흠의 포트폴리오"),
         "shaderWaterBody": MessageLookupByLibrary.simpleMessage(
-            "쉐이더로 게임과 같은 멋진 그래픽 효과를 낼 수 있어요. 그래서 요즘 공부하고 있습니다."),
+            "쉐이더로 게임과 같은 멋진 그래픽 효과를 낼 수 있어요."),
         "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("그래픽 효과"),
         "shimmerEffectBody": MessageLookupByLibrary.simpleMessage(
             "Skeleton UI는 기다림을 덜 불편하게 해주는 것 같아요."),

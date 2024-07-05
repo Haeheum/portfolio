@@ -170,10 +170,10 @@ class S {
     );
   }
 
-  /// `Shaders can make cool graphics like games. So I started studying shader language.`
+  /// `Shaders can make cool graphic effects like games.`
   String get shaderWaterBody {
     return Intl.message(
-      'Shaders can make cool graphics like games. So I started studying shader language.',
+      'Shaders can make cool graphic effects like games.',
       name: 'shaderWaterBody',
       desc: '',
       args: [],

@@ -17,7 +17,7 @@
   "circleCollisionBody" : "I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have applied this concept in a project. ",
 
   "shaderWaterTitle" : "Graphic effect",
-  "shaderWaterBody" : "Shaders can make cool graphics like games. So I started studying shader language.",
+  "shaderWaterBody" : "Shaders can make cool graphic effects like games.",
 
   "interactivePlateTitle" : "Interactive plate",
   "interactivePlateBody": "Rotate on hover."

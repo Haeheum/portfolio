@@ -40,7 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "messageAudioLoading":
             MessageLookupByLibrary.simpleMessage("Loading background musics"),
         "shaderWaterBody": MessageLookupByLibrary.simpleMessage(
-            "Shaders can make cool graphics like games. So I started studying shader language."),
+            "Shaders can make cool graphic effects like games."),
         "shaderWaterTitle":
             MessageLookupByLibrary.simpleMessage("Graphic effect"),
         "shimmerEffectBody": MessageLookupByLibrary.simpleMessage(
