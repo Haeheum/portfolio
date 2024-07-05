@@ -43,7 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "shimmerEffectTitle":
             MessageLookupByLibrary.simpleMessage("Skeleton UI"),
         "sunMoonSwitchBody": MessageLookupByLibrary.simpleMessage(
-            "유튜브 영상을 보다가 만들었어요. 클릭하면 제가 본 영상으로 이동해요. 커스텀 위젯은 개발자 입장에서 정말 힘든 일 중 하나인 것 같아요. 어느 정도 걸릴지 가늠도 어렵고 만들기도 어려워요. 그래도 예쁘네요."),
+            "유튜브에서 우연히 재밌는 영상을 보고 만들었어요. 여기를 클릭하면 해당 영상으로 이동해요. 커스텀 위젯은 개발자 입장에서 힘든 일 중 하나인 것 같아요. 그래도 그만큼 예쁘네요."),
         "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("커스텀 위젯")
       };
 }

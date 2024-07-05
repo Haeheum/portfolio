@@ -48,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "shimmerEffectTitle":
             MessageLookupByLibrary.simpleMessage("Skeleton UI"),
         "sunMoonSwitchBody": MessageLookupByLibrary.simpleMessage(
-            "I ended up making it after watching a video on youtube. Click to see the video. As a developer, I think making custom widgets is one of the toughest works. Its time cost is hard to predict and development process is hard. But it does look amazing."),
+            "I made this widget after watching a funny video on youtube. Click here to see the video. As a developer, making custom widget is one of the toughest tasks. But it does look amazing."),
         "sunMoonSwitchTitle":
             MessageLookupByLibrary.simpleMessage("Custom widget")
       };
