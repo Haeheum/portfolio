@@ -2,7 +2,7 @@
   "messageAudioLoading" : "Loading background musics",
 
   "introTitle": "Haeheum's portfolio",
-  "introBody": "Welcome to my portfolio. Each page has a special item implemented. If you move your mouse, The character will stare at you. Oh, and you can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen.",
+  "introBody": "Welcome to my portfolio. Each page has a special item implemented. If you move your mouse with in the area, The character will stare. Oh, and you can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen.",
 
   "sunMoonSwitchTitle" : "Custom widget",
   "sunMoonSwitchBody" : "I made this widget after watching a funny video on youtube. Click here to see the video. As a developer, making custom widget is one of the toughest tasks. But it does look amazing.",

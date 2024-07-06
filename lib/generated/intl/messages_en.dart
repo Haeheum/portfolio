@@ -41,7 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "interactivePlateTitle":
             MessageLookupByLibrary.simpleMessage("Interactive plate"),
         "introBody": MessageLookupByLibrary.simpleMessage(
-            "Welcome to my portfolio. Each page has a special item implemented. If you move your mouse, The character will stare at you. Oh, and you can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen."),
+            "Welcome to my portfolio. Each page has a special item implemented. If you move your mouse with in the area, The character will stare. Oh, and you can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen."),
         "introTitle":
             MessageLookupByLibrary.simpleMessage("Haeheum\'s portfolio"),
         "messageAudioLoading":

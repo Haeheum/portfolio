@@ -15,14 +15,17 @@ class _FetchImageState extends State<FetchImage> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Center(
-            child: FutureBuilder(
-              future: _loadImage(willSucceed: _willSucceed),
-              builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
-                return AnimatedSwitcher(
+    return FittedBox(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FutureBuilder(
+            future: _loadImage(willSucceed: _willSucceed),
+            builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
+              return SizedBox(
+                width: 200,
+                height: 300,
+                child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 500),
                     child: switch (snapshot.connectionState) {
                       ConnectionState.none ||
@@ -41,29 +44,34 @@ class _FetchImageState extends State<FetchImage> {
                             Text(S.of(context).fetchImageErrorText),
                           ],
                         ),
-                    });
-              },
-            ),
+                    }),
+              );
+            },
           ),
-        ),
-        const SizedBox(width: 4),
-        StatefulBuilder(builder: (context, setState) {
-          return Switch(
-              value: _willSucceed,
-              onChanged: (willSucceed) {
-                setState(() {
-                  _willSucceed = willSucceed;
-                });
-              });
-        }),
-        const SizedBox(width: 4),
-        TextButton(
-          onPressed: () {
-            setState(() {});
-          },
-          child: Text(S.of(context).fetchImage),
-        )
-      ],
+          const SizedBox(width: 4),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              StatefulBuilder(builder: (context, setState) {
+                return Switch(
+                    value: _willSucceed,
+                    onChanged: (willSucceed) {
+                      setState(() {
+                        _willSucceed = willSucceed;
+                      });
+                    });
+              }),
+              const SizedBox(height: 4),
+              TextButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                child: Text(S.of(context).fetchImage),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 

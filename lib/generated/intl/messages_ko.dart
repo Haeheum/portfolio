@@ -39,7 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "interactivePlateTitle":
             MessageLookupByLibrary.simpleMessage("흐느적 인터렉션"),
         "introBody": MessageLookupByLibrary.simpleMessage(
-            "제 포트폴리오에 온 것을 환영해요. 페이지마다 아이템이 하나씩 구현되어 있어요. 마우스를 움직이면 캐릭터가 노려볼 거에요. 그리고 우측 하단에서 제가 좋아하는 노래들이 재생 가능해요. 로딩이 필요하지만 들어주면 좋겠어요."),
+            "제 포트폴리오에 온 것을 환영해요. 페이지마다 아이템이 하나씩 구현되어 있어요. 영역 내부에서 마우스를 움직이면 캐릭터가 쳐다볼 거에요. 그리고 우측 하단에서 제가 좋아하는 노래들이 재생 가능해요. 로딩이 필요하지만 들어주면 좋겠어요."),
         "introTitle": MessageLookupByLibrary.simpleMessage("해흠의 포트폴리오"),
         "shaderWaterBody": MessageLookupByLibrary.simpleMessage(
             "쉐이더로 게임과 같은 멋진 그래픽 효과를 낼 수 있어요."),
