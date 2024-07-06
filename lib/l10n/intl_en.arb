@@ -20,5 +20,12 @@
   "shaderWaterBody" : "Shaders can make cool graphic effects like games.",
 
   "interactivePlateTitle" : "Interactive plate",
-  "interactivePlateBody": "Rotate on hover."
+  "interactivePlateBody": "Rotate on hover.",
+
+  "fetchImageTitle" : "Network image loading",
+  "fetchImageBody": "Network image loading simulation. You can set the result with the switch.",
+
+  "fetchImageErrorText" : "Failed to load image.",
+  "fetchImage" : "Load image"
+
 }

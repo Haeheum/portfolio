@@ -1,13 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/portfolio_items/confetti.dart';
-import 'package:portfolio/src/presentation/portfolio_items/interactive_plate.dart';
-import 'package:portfolio/src/presentation/portfolio_items/shader_water.dart';
-import 'package:portfolio/src/presentation/portfolio_items/shimmer_effect.dart';
-import 'package:portfolio/src/presentation/portfolio_items/sitting_me.dart';
-import 'package:portfolio/src/presentation/portfolio_items/sun_moon_switch.dart';
-import 'package:portfolio/src/presentation/portfolio_items/target_plate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../generated/l10n.dart';
@@ -15,7 +8,15 @@ import '../../config/theme_extension.dart';
 import '../../data/image_repository.dart';
 import '../../util/debounce_manager.dart';
 import '../common_widgets/button_page_navigation.dart';
+import '../portfolio_items/confetti.dart';
+import '../portfolio_items/fetch_image.dart';
 import '../portfolio_items/frame_portfolio_item.dart';
+import '../portfolio_items/interactive_plate.dart';
+import '../portfolio_items/shader_water.dart';
+import '../portfolio_items/shimmer_effect.dart';
+import '../portfolio_items/sitting_me.dart';
+import '../portfolio_items/sun_moon_switch.dart';
+import '../portfolio_items/target_plate.dart';
 import 'app_bar/app_bar_home.dart';
 import 'music_control/view_music_control.dart';
 
@@ -161,11 +162,13 @@ class _PageHomeState extends State<PageHome> {
   void _loadPortfolioItems() async {
     _portfolioItems
       ..clear()
-      ..add(FramePortfolioItem(
-        title: S.of(context).introTitle,
-        body: S.of(context).introBody,
-        child: const SittingMe(),
-      ))
+      ..add(
+        FramePortfolioItem(
+          title: S.of(context).introTitle,
+          body: S.of(context).introBody,
+          child: const SittingMe(),
+        ),
+      )
       ..add(
         FramePortfolioItem(
           title: S.of(context).sunMoonSwitchTitle,
@@ -215,6 +218,13 @@ class _PageHomeState extends State<PageHome> {
           body: S.of(context).interactivePlateBody,
           child: const InteractivePlate(),
         ),
-      );
+      )..add(
+      FramePortfolioItem(
+        title: S.of(context).fetchImageTitle,
+        body: S.of(context).fetchImageBody,
+        child: const FetchImage(),
+      ),
+    )
+    ;
   }
 }

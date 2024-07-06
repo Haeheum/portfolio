@@ -29,6 +29,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "confettiBody": MessageLookupByLibrary.simpleMessage(
             "With custom paint, so many things are possible. Various attributes for each falling paper make it seems very realistic."),
         "confettiTitle": MessageLookupByLibrary.simpleMessage("Custom paint"),
+        "fetchImage": MessageLookupByLibrary.simpleMessage("Load image"),
+        "fetchImageBody": MessageLookupByLibrary.simpleMessage(
+            "Network image loading simulation. You can set the result with the switch."),
+        "fetchImageErrorText":
+            MessageLookupByLibrary.simpleMessage("Failed to load image."),
+        "fetchImageTitle":
+            MessageLookupByLibrary.simpleMessage("Network image loading"),
         "interactivePlateBody":
             MessageLookupByLibrary.simpleMessage("Rotate on hover."),
         "interactivePlateTitle":

@@ -28,6 +28,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "confettiBody": MessageLookupByLibrary.simpleMessage(
             "커스텀 페인트로 정말 다양한게 가능한 것 같아요. 색종이마다 가진 다른 여러 속성들이 현실감을 더해주네요."),
         "confettiTitle": MessageLookupByLibrary.simpleMessage("커스텀 페인트"),
+        "fetchImage": MessageLookupByLibrary.simpleMessage("이미지 불러오기"),
+        "fetchImageBody": MessageLookupByLibrary.simpleMessage(
+            "네트워크에서 이미지를 로딩을 연출했습니다. 스위치를 통해서 실패 또는 성공을 설정할 수 있습니다."),
+        "fetchImageErrorText":
+            MessageLookupByLibrary.simpleMessage("이미지 로딩에 실패했습니다."),
+        "fetchImageTitle": MessageLookupByLibrary.simpleMessage("네트워크 이미지 로딩"),
         "interactivePlateBody":
             MessageLookupByLibrary.simpleMessage("마우스를 올리면 흐느적."),
         "interactivePlateTitle":

@@ -199,6 +199,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Network image loading`
+  String get fetchImageTitle {
+    return Intl.message(
+      'Network image loading',
+      name: 'fetchImageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Network image loading simulation. You can set the result with the switch.`
+  String get fetchImageBody {
+    return Intl.message(
+      'Network image loading simulation. You can set the result with the switch.',
+      name: 'fetchImageBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load image.`
+  String get fetchImageErrorText {
+    return Intl.message(
+      'Failed to load image.',
+      name: 'fetchImageErrorText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Load image`
+  String get fetchImage {
+    return Intl.message(
+      'Load image',
+      name: 'fetchImage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
