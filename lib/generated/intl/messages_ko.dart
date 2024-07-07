@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("이미지 로딩에 실패했습니다."),
         "fetchImageTitle": MessageLookupByLibrary.simpleMessage("네트워크 이미지 로딩"),
         "flashEffectBody": MessageLookupByLibrary.simpleMessage(
-            "마우스 커서 위치에 배경 이미지에 대해 반전 효과를 적용 했습니다. 이 외에도 다른 색, 이미지, 다른 효과 적용이 가능합니다. "),
+            "마우스 커서 위치에 배경 이미지에 대해 반전 효과를 적용 했습니다. 이 외에도 색상, 이미지, 또는 다른 다양한 효과 적용이 가능합니다. "),
         "flashEffectTitle": MessageLookupByLibrary.simpleMessage("구역 반전 효과"),
         "interactivePlateBody":
             MessageLookupByLibrary.simpleMessage("마우스를 올리면 흐느적."),
