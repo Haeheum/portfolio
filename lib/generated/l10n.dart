@@ -250,10 +250,10 @@ class S {
     );
   }
 
-  /// `Inversion effect is applied on the background image along to the mouse pointer. Besides inversion, different color, or image can be over drawn.`
+  /// `Inversion effect is applied on the background image along to the mouse pointer. Besides inversion effect, different colors, images and other various effects can be applied.`
   String get flashEffectBody {
     return Intl.message(
-      'Inversion effect is applied on the background image along to the mouse pointer. Besides inversion, different color, or image can be over drawn.',
+      'Inversion effect is applied on the background image along to the mouse pointer. Besides inversion effect, different colors, images and other various effects can be applied.',
       name: 'flashEffectBody',
       desc: '',
       args: [],
