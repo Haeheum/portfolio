@@ -36,6 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Failed to load image."),
         "fetchImageTitle":
             MessageLookupByLibrary.simpleMessage("Network image loading"),
+        "flashEffectBody": MessageLookupByLibrary.simpleMessage(
+            "Inversion effect is applied on the background image along to the mouse pointer. Besides inversion, different color, or image can be over drawn."),
+        "flashEffectTitle":
+            MessageLookupByLibrary.simpleMessage("Area inversion effect"),
         "interactivePlateBody":
             MessageLookupByLibrary.simpleMessage("Rotate on hover."),
         "interactivePlateTitle":

@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "fetchImageErrorText":
             MessageLookupByLibrary.simpleMessage("이미지 로딩에 실패했습니다."),
         "fetchImageTitle": MessageLookupByLibrary.simpleMessage("네트워크 이미지 로딩"),
+        "flashEffectBody": MessageLookupByLibrary.simpleMessage(
+            "마우스 커서 위치에 배경 이미지에 대해 반전 효과를 적용 했습니다. 반전 외에도 다른 색 또는 이미지를 덧 씌울 수 있습니다. "),
+        "flashEffectTitle": MessageLookupByLibrary.simpleMessage("구역 반전 효과"),
         "interactivePlateBody":
             MessageLookupByLibrary.simpleMessage("마우스를 올리면 흐느적."),
         "interactivePlateTitle":

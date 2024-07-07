@@ -17,7 +17,7 @@ class ImageRepository {
 
   Future<Image> fetchImage({required bool willSucceed}) async {
 
-    // Mock http request delay
+    // Mock networking delay
     await Future.delayed(const Duration(seconds: 1));
 
     if (willSucceed) {
@@ -30,6 +30,7 @@ class ImageRepository {
 }
 
 const List<String> rawImageData = [
+  'bee_sad.webp',
   'flag_america.png',
   'flag_korea.png',
   'folder_colored.png',

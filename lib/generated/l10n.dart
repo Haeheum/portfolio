@@ -239,6 +239,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Area inversion effect`
+  String get flashEffectTitle {
+    return Intl.message(
+      'Area inversion effect',
+      name: 'flashEffectTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inversion effect is applied on the background image along to the mouse pointer. Besides inversion, different color, or image can be over drawn.`
+  String get flashEffectBody {
+    return Intl.message(
+      'Inversion effect is applied on the background image along to the mouse pointer. Besides inversion, different color, or image can be over drawn.',
+      name: 'flashEffectBody',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

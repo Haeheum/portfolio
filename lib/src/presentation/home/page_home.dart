@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/presentation/portfolio_items/flash_effect.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../generated/l10n.dart';
@@ -162,6 +163,7 @@ class _PageHomeState extends State<PageHome> {
   void _loadPortfolioItems() async {
     _portfolioItems
       ..clear()
+
       ..add(
         FramePortfolioItem(
           title: S.of(context).introTitle,
@@ -223,6 +225,12 @@ class _PageHomeState extends State<PageHome> {
         title: S.of(context).fetchImageTitle,
         body: S.of(context).fetchImageBody,
         child: const FetchImage(),
+      ),
+    )..add(
+      FramePortfolioItem(
+        title: S.of(context).flashEffectTitle,
+        body: S.of(context).flashEffectBody,
+        child: const FlashEffect(),
       ),
     )
     ;
