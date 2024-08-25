@@ -1,238 +1,369 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/portfolio_items/flash_effect.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
-import '../../data/image_repository.dart';
-import '../../util/debounce_manager.dart';
-import '../common_widgets/button_page_navigation.dart';
-import '../portfolio_items/confetti.dart';
-import '../portfolio_items/fetch_image.dart';
-import '../portfolio_items/frame_portfolio_item.dart';
-import '../portfolio_items/interactive_plate.dart';
-import '../portfolio_items/shader_water.dart';
-import '../portfolio_items/shimmer_effect.dart';
-import '../portfolio_items/sitting_me.dart';
-import '../portfolio_items/sun_moon_switch.dart';
-import '../portfolio_items/target_plate.dart';
+import '../inventory_items/card_flip.dart';
+import '../inventory_items/confetti.dart';
+import '../inventory_items/fetch_image.dart';
+import '../inventory_items/flash_effect.dart';
+import '../inventory_items/frame_inventory_item.dart';
+import '../inventory_items/interactive_plate.dart';
+import '../inventory_items/shader_water.dart';
+import '../inventory_items/shimmer_effect.dart';
+import '../inventory_items/sun_moon_switch.dart';
+import '../inventory_items/target_plate.dart';
 import 'app_bar/app_bar_home.dart';
 import 'music_control/view_music_control.dart';
+import 'page_menu.dart';
+import 'sliver_intro.dart';
 
 class PageHome extends StatefulWidget {
   const PageHome({super.key});
 
+  static PageHomeState of(BuildContext context) {
+    return context.findAncestorStateOfType<PageHomeState>()!;
+  }
+
   @override
-  State<PageHome> createState() => _PageHomeState();
+  State<PageHome> createState() => PageHomeState();
 }
 
-class _PageHomeState extends State<PageHome> {
-  final PageController _pageController = PageController(viewportFraction: 0.7);
-  double _currentPage = 0.0;
-  int _toPage = 0;
+class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
+  final ScrollController _scrollController = ScrollController();
 
-  final List<Widget> _portfolioItems = [];
+  static const _pictureRatio = 3 / 4;
+  final List<Widget> _inventoryItems = [];
+
+  bool _openMenu = false;
 
   @override
   void initState() {
     super.initState();
-    _pageController.addListener(_listener);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    ImageRepository().preCacheImages(context);
-    _loadPortfolioItems();
+    _inventoryItems
+      ..clear()
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).sunMoonSwitchTitle,
+          child: SunMoonSwitch(onChanged: (onChanged) {}),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).shimmerEffectTitle,
+          child: const WidgetSampleShimmer(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).confettiTitle,
+          child: const Confetti(),
+        ),
+      )
+
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).shaderWaterTitle,
+          child: const ShaderWater(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).cardFlipTitle,
+          child: const CardFlip(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).interactivePlateTitle,
+          child: const InteractivePlate(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).fetchImageTitle,
+          child: const FetchImage(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).circleCollisionTitle,
+          child: const TargetPlate(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).flashEffectTitle,
+          child: const FlashEffect(),
+        ),
+      );
   }
 
   @override
   void dispose() {
-    _pageController.removeListener(_listener);
-    _pageController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarHome(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                controller: _pageController,
-                itemBuilder: (BuildContext context, int index) {
-                  double angle = (index - _currentPage) * 45;
-                  return Transform(
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.01)
-                      ..rotateZ(angle * pi / 180)
-                      ..scale(max(1 - (index - _currentPage).abs(), 0.5)),
-                    alignment: FractionalOffset.bottomCenter,
-                    child: _portfolioItems[index],
-                  );
-                },
-                itemCount: _portfolioItems.length,
-              ),
-            ),
-            const SizedBox(height: 24.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
+          PageMenu(animateTo: animateTo, toggleMenu: toggleMenu),
+          _menuTransitionAnimation(
+            transitionBody: Stack(
               children: [
-                ButtonPageNavigation(
-                  isLeft: true,
-                  onTap: () {
-                    if (_toPage == 0) {
-                      return;
-                    }
-                    _toPage = _toPage - 1;
-                    DebounceManager.run(action: () {
-                      _pageController
-                          .animateToPage(_toPage,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut)
-                          .then((_) {});
-                    });
-                  },
+                CustomScrollView(
+                  controller: _scrollController,
+                  slivers: [
+                    SliverIntro(
+                      child: SizedBox(
+                        height: MediaQuery.sizeOf(context).height,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Container(
+                        color: Theme.of(context)
+                            .extension<ExtensionColors>()
+                            ?.backgroundColor,
+                        height: MediaQuery.sizeOf(context).height,
+                        alignment: Alignment.center,
+                        child: ListenableBuilder(
+                          listenable: _scrollController,
+                          builder: (context, child) {
+                            double screenRatio =
+                                MediaQuery.sizeOf(context).width /
+                                    MediaQuery.sizeOf(context).height;
+
+                            return SizedBox(
+                              height: MediaQuery.sizeOf(context).height,
+                              child: ClipRect(
+                                child: AnimatedContainer(
+                                  width: screenRatio < _pictureRatio
+                                      ? MediaQuery.sizeOf(context).width *
+                                          (1.0 -
+                                              (0.2 *
+                                                  (min(
+                                                          _scrollController
+                                                              .offset,
+                                                          MediaQuery.sizeOf(context)
+                                                              .height) /
+                                                      (MediaQuery.sizeOf(context)
+                                                          .height))))
+                                      : MediaQuery.sizeOf(context).width *
+                                              (1 -
+                                                  (min(
+                                                          _scrollController
+                                                              .offset,
+                                                          MediaQuery.sizeOf(context)
+                                                              .height) /
+                                                      (MediaQuery.sizeOf(context)
+                                                          .height))) +
+                                          (MediaQuery.sizeOf(context).height *
+                                              (min(_scrollController.offset,
+                                                      MediaQuery.sizeOf(context).height) /
+                                                  (MediaQuery.sizeOf(context).height)) *
+                                              _pictureRatio),
+                                  height: screenRatio < _pictureRatio
+                                      ? MediaQuery.sizeOf(context).height *
+                                              (1 -
+                                                  (min(
+                                                          _scrollController
+                                                              .offset,
+                                                          MediaQuery.sizeOf(context)
+                                                              .height) /
+                                                      (MediaQuery.sizeOf(context)
+                                                          .height))) +
+                                          (MediaQuery.sizeOf(context).width *
+                                              (min(
+                                                      _scrollController.offset,
+                                                      MediaQuery.sizeOf(context)
+                                                          .height) /
+                                                  (MediaQuery.sizeOf(context)
+                                                      .height)) /
+                                              _pictureRatio)
+                                      : MediaQuery.sizeOf(context).height *
+                                          (1.0 -
+                                              (0.2 *
+                                                  (min(_scrollController.offset,
+                                                          MediaQuery.sizeOf(context).height) /
+                                                      (MediaQuery.sizeOf(context).height)))),
+                                  duration: const Duration(milliseconds: 200),
+                                  child: OverflowBox(
+                                    maxWidth: MediaQuery.sizeOf(context).width,
+                                    maxHeight:
+                                        MediaQuery.sizeOf(context).height,
+                                    child: SizedBox(
+                                      width: MediaQuery.sizeOf(context).width,
+                                      height: MediaQuery.sizeOf(context).height,
+                                      child: AnimatedScale(
+                                        scale: 1.0 -
+                                            ((screenRatio < _pictureRatio
+                                                    ? 1 -
+                                                        (MediaQuery.sizeOf(
+                                                                    context)
+                                                                .width *
+                                                            0.9 *
+                                                            1 /
+                                                            _pictureRatio /
+                                                            MediaQuery.sizeOf(
+                                                                    context)
+                                                                .height)
+                                                    : 1 -
+                                                        (MediaQuery.sizeOf(
+                                                                    context)
+                                                                .height *
+                                                            0.9 *
+                                                            _pictureRatio /
+                                                            MediaQuery.sizeOf(
+                                                                    context)
+                                                                .width)) *
+                                                (min(
+                                                        _scrollController
+                                                            .offset,
+                                                        MediaQuery.sizeOf(
+                                                                context)
+                                                            .height) /
+                                                    (MediaQuery.sizeOf(context)
+                                                        .height))),
+                                        duration:
+                                            const Duration(milliseconds: 200),
+                                        child: child,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          child: FittedBox(
+                            fit: BoxFit.cover,
+                            child: Image.asset(
+                              'assets/images/me.jpeg',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SliverMainAxisGroup(slivers: [
+                      SliverAppBar(
+                        backgroundColor: Theme.of(context)
+                            .extension<ExtensionColors>()!
+                            .backgroundColor,
+                        title: Text(S.of(context).inventory),
+                        pinned: true,
+                        surfaceTintColor: Colors.transparent,
+                      ),
+                      SliverGrid(
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 500,
+                          mainAxisSpacing: 50.0,
+                          crossAxisSpacing: 50.0,
+                        ),
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext _, int index) {
+                            return _inventoryItems[index];
+                          },
+                          childCount: _inventoryItems.length,
+                        ),
+                      ),
+                    ]),
+                  ],
                 ),
-                const SizedBox(width: 12),
-                Text(
-                  '${_toPage + 1}/${_portfolioItems.length}',
-                  style: TextStyle(
-                    color: Theme.of(context)
-                        .extension<ExtensionColors>()!
-                        .textColor,
-                    fontSize: 24,
+                const ViewMusicControl(),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  height: 40,
+                  bottom: 16,
+                  child: Center(
+                    child: ListenableBuilder(
+                      listenable: _scrollController,
+                      builder: (context, child) {
+                        return AnimatedOpacity(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.fastOutSlowIn,
+                          opacity: _scrollController.offset == 0 ? 1.0 : 0.0,
+                          child: child,
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context)
+                              .extension<ExtensionColors>()!
+                              .cardBackgroundColor,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: const Icon(
+                            Icons.keyboard_double_arrow_down_rounded),
+                      ),
+                    ),
                   ),
                 ),
-                const SizedBox(width: 12),
-                ButtonPageNavigation(
-                  isLeft: false,
-                  onTap: () {
-                    if (_toPage == _portfolioItems.length - 1) {
-                      return;
-                    }
-                    _toPage = _toPage + 1;
-                    DebounceManager.run(action: () {
-                      _pageController
-                          .animateToPage(_toPage,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut)
-                          .then((_) {});
-                    });
-                  },
-                )
               ],
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            enableDrag: false,
-            builder: (BuildContext context) {
-              return const ViewMusicControl();
-            },
-            backgroundColor: Theme.of(context)
-                .extension<ExtensionColors>()!
-                .cardBackgroundColor,
-          );
-        },
-        child: const Icon(Icons.music_note_rounded),
+          ),
+          const AppBarHome(),
+        ],
       ),
     );
   }
 
-  void _listener() {
+  Widget _menuTransitionAnimation({required Widget transitionBody}) {
+    return TweenAnimationBuilder(
+      tween: Tween<double>(begin: 0, end: _openMenu ? 20 * pi / 180 : 0),
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+      builder: (context, value, child) {
+        return Transform(
+          alignment: Alignment.centerRight,
+          transform: Matrix4.identity()
+            ..setEntry(3, 2, 0.001)
+            ..rotateY(value),
+          child: AnimatedContainer(
+            transformAlignment: Alignment.centerRight,
+            transform: Matrix4.identity()
+              ..translate(_openMenu ? -20.0 : 0, 0)
+              ..scale(_openMenu ? 0.7 : 1),
+            curve: Curves.easeInOut,
+            duration: const Duration(milliseconds: 300),
+            child: child,
+          ),
+        );
+      },
+      child: ClipRect(
+        clipBehavior: Clip.antiAlias,
+        child: ColoredBox(
+          color:
+              Theme.of(context).extension<ExtensionColors>()!.backgroundColor!,
+          child: transitionBody,
+        ),
+      ),
+    );
+  }
+
+  void toggleMenu() {
     setState(() {
-      if (_pageController.hasClients) {
-        setState(() {
-          _currentPage = _pageController.page!;
-        });
-      }
+      _openMenu = !_openMenu;
     });
   }
 
-  void _loadPortfolioItems() async {
-    _portfolioItems
-      ..clear()
-
-      ..add(
-        FramePortfolioItem(
-          title: S.of(context).introTitle,
-          body: S.of(context).introBody,
-          child: const SittingMe(),
-        ),
-      )
-      ..add(
-        FramePortfolioItem(
-          title: S.of(context).sunMoonSwitchTitle,
-          body: S.of(context).sunMoonSwitchBody,
-          onTap: () {
-            launchUrl(Uri.parse('https://www.youtube.com/watch?v=5qHHm7ooavo'));
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: SunMoonSwitch(
-              onChanged: (_) {},
-            ),
-          ),
-        ),
-      )
-      ..add(
-        FramePortfolioItem(
-          title: S.of(context).shimmerEffectTitle,
-          body: S.of(context).shimmerEffectBody,
-          child: const WidgetSampleShimmer(),
-        ),
-      )
-      ..add(
-        FramePortfolioItem(
-          title: S.of(context).confettiTitle,
-          body: S.of(context).confettiBody,
-          child: const Confetti(),
-        ),
-      )
-      ..add(
-        FramePortfolioItem(
-          title: S.of(context).circleCollisionTitle,
-          body: S.of(context).circleCollisionBody,
-          child: const TargetPlate(),
-        ),
-      )
-      ..add(
-        FramePortfolioItem(
-          title: S.of(context).shaderWaterTitle,
-          body: S.of(context).shaderWaterBody,
-          child: const ShaderWater(),
-        ),
-      )
-      ..add(
-        FramePortfolioItem(
-          title: S.of(context).interactivePlateTitle,
-          body: S.of(context).interactivePlateBody,
-          child: const InteractivePlate(),
-        ),
-      )..add(
-      FramePortfolioItem(
-        title: S.of(context).fetchImageTitle,
-        body: S.of(context).fetchImageBody,
-        child: const FetchImage(),
-      ),
-    )..add(
-      FramePortfolioItem(
-        title: S.of(context).flashEffectTitle,
-        body: S.of(context).flashEffectBody,
-        child: const FlashEffect(),
-      ),
-    )
-    ;
+  void animateTo(double targetOffset) async {
+    toggleMenu();
+    if (_scrollController.hasClients) {
+      debugPrint('target $targetOffset');
+      await _scrollController.animateTo(targetOffset,
+          duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+    }
   }
 }

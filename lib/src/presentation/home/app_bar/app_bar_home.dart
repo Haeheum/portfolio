@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/presentation/home/app_bar/button_menu.dart';
 
 import '../../../config/theme_extension.dart';
 import '../../../model/enum/language_options.dart';
@@ -6,31 +7,25 @@ import '../../state_management/app_state_scope.dart';
 import 'button_audio_volume_control.dart';
 import 'button_theme_toggle.dart';
 
-class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
+class AppBarHome extends StatelessWidget {
   const AppBarHome({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      leading: const _AppBarHomeLeading(),
-      shape: Border(
-        bottom: BorderSide(
-          color: Theme.of(context).dividerColor,
-          width: 1,
-        ),
+    return Positioned(
+      top: 0,
+      child: Container(
+        height: kToolbarHeight,
+        width: MediaQuery.sizeOf(context).width,
+        color: Colors.transparent,
+        child: const _AppBarHomeBody(),
       ),
-      backgroundColor: Colors.transparent,
-      leadingWidth: MediaQuery.sizeOf(context).width,
-      forceMaterialTransparency: true,
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-class _AppBarHomeLeading extends StatelessWidget {
-  const _AppBarHomeLeading();
+class _AppBarHomeBody extends StatelessWidget {
+  const _AppBarHomeBody();
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +66,10 @@ class _AppBarHomeLeading extends StatelessWidget {
       ),
       const SizedBox(width: 4.0),
       const ButtonThemeToggle(),
+      const SizedBox(width: 4.0),
       const Expanded(child: ButtonAudioVolumeControl()),
+      const SizedBox(width: 4.0),
+      const ButtonMenu(),
       const SizedBox(width: 12.0),
     ]);
   }

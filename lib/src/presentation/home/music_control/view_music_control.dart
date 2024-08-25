@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/data/audio_repository.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../config/theme_extension.dart';
+import '../../../data/audio_repository.dart';
 import '../../audio/widget_audio_controller.dart';
 import '../../state_management/audio_state_scope.dart';
 import 'button_animated_play_pause.dart';
@@ -16,6 +16,8 @@ class ViewMusicControl extends StatefulWidget {
 
 class _ViewMusicControlState extends State<ViewMusicControl> {
   late Widget _animatedWidget;
+  ScrollNotificationObserverState? _scrollNotificationObserver;
+  bool _isShowing = true;
 
   @override
   void didChangeDependencies() {
@@ -23,16 +25,81 @@ class _ViewMusicControlState extends State<ViewMusicControl> {
     _animatedWidget = AudioRepository().preCacheProgress.value != 100
         ? _loadingView()
         : _controlView();
+
+    _scrollNotificationObserver?.removeListener(_handleScrollNotification);
+    _scrollNotificationObserver = ScrollNotificationObserver.maybeOf(context);
+    _scrollNotificationObserver?.addListener(_handleScrollNotification);
+  }
+
+  @override
+  void dispose() {
+    if (_scrollNotificationObserver != null) {
+      _scrollNotificationObserver!.removeListener(_handleScrollNotification);
+      _scrollNotificationObserver = null;
+    }
+    super.dispose();
+  }
+
+  void _handleScrollNotification(ScrollNotification notification) {
+    if (notification is ScrollUpdateNotification &&
+        defaultScrollNotificationPredicate(notification)) {
+      switch (notification.scrollDelta) {
+        case null:
+          break;
+        case < 0:
+          if (!_isShowing) {
+            setState(() {
+              _isShowing = true;
+            });
+          }
+        case > 0:
+          if (_isShowing) {
+            setState(() {
+              _isShowing = false;
+            });
+          }
+        default:
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20.0),
-      height: 120,
-      child: AnimatedSwitcher(
-        duration: const Duration(seconds: 1),
-        child: _animatedWidget,
+    return AnimatedPositioned(
+      left: 0,
+      top: _isShowing ? kToolbarHeight : 0,
+      right: 0,
+      curve: Curves.fastOutSlowIn,
+      duration: const Duration(milliseconds: 500),
+      child: AnimatedOpacity(
+        opacity: _isShowing ? 1.0 : 0.0,
+        curve: Curves.fastOutSlowIn,
+        duration: const Duration(milliseconds: 500),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+          height: 120,
+          child: AnimatedAlign(
+            alignment: MediaQuery.sizeOf(context).width < 1200
+                ? Alignment.center
+                : Alignment.centerRight,
+            curve: Curves.fastEaseInToSlowEaseOut,
+            duration: const Duration(milliseconds: 500),
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: Theme.of(context)
+                    .extension<ExtensionColors>()!
+                    .cardBackgroundColor,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              constraints: const BoxConstraints(maxWidth: 450),
+              child: AnimatedSwitcher(
+                duration: const Duration(seconds: 1),
+                child: _animatedWidget,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -44,7 +111,7 @@ class _ViewMusicControlState extends State<ViewMusicControl> {
       children: [
         ValueListenableBuilder(
             valueListenable: AudioRepository().preCacheProgress,
-            builder: (context, progress, __) {
+            builder: (_, progress, __) {
               if (progress == 100) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
                   setState(() {
@@ -71,6 +138,7 @@ class _ViewMusicControlState extends State<ViewMusicControl> {
       key: const ValueKey<int>(1),
       mainAxisSize: MainAxisSize.max,
       children: [
+        const SizedBox(width: 4.0),
         ClipRRect(
           borderRadius: BorderRadius.circular(12.0),
           child: Image.asset(
@@ -127,6 +195,7 @@ class _ViewMusicControlState extends State<ViewMusicControl> {
           },
           icon: const Icon(Icons.skip_next),
         ),
+        const SizedBox(width: 4.0),
       ],
     );
   }

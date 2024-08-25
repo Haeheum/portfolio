@@ -6,6 +6,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
     required this.rainColor,
     required this.cardBackgroundColor,
     required this.backgroundColor,
+    required this.backgroundColor2,
     required this.textColor,
     required this.warningColor,
     required this.terminalAppBarColor,
@@ -21,6 +22,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
   final Color? rainColor;
   final Color? cardBackgroundColor;
   final Color? backgroundColor;
+  final Color? backgroundColor2;
   final Color? textColor;
   final Color? warningColor;
 
@@ -39,6 +41,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
     Color? rainColor,
     Color? cardBackgroundColor,
     Color? backgroundColor,
+    Color? backgroundColor2,
     Color? textColor,
     Color? matrixShadowColor,
     Color? warningColor,
@@ -55,6 +58,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
       rainColor: rainColor ?? this.rainColor,
       cardBackgroundColor: cardBackgroundColor ?? this.cardBackgroundColor,
       backgroundColor: backgroundColor ?? this.backgroundColor,
+      backgroundColor2: backgroundColor2 ?? this.backgroundColor2,
       textColor: textColor ?? this.textColor,
       warningColor: warningColor ?? this.warningColor,
       terminalAppBarColor: terminalAppBarColor ?? this.terminalAppBarColor,
@@ -82,6 +86,7 @@ class ExtensionColors extends ThemeExtension<ExtensionColors> {
       cardBackgroundColor:
           Color.lerp(cardBackgroundColor, other.cardBackgroundColor, t),
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      backgroundColor2: Color.lerp(backgroundColor2, other.backgroundColor2, t),
       textColor: Color.lerp(textColor, other.textColor, t),
       warningColor: Color.lerp(warningColor, other.warningColor, t),
       terminalAppBarColor:

@@ -1,22 +1,18 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/find_locale.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/intl_browser.dart';
 
 import 'generated/l10n.dart';
 import 'src/config/theme.dart';
+import 'src/data/shader_repository.dart';
 import 'src/model/app_state_model.dart';
 import 'src/presentation/audio/widget_audio_controller.dart';
 import 'src/presentation/home/page_home.dart';
 import 'src/presentation/state_management/app_state_scope.dart';
 
-late FragmentProgram fragmentProgram;
-
 Future<void> main() async {
-  fragmentProgram =
-      await FragmentProgram.fromAsset('assets/shaders/water.frag');
+  await ShaderRepository().preLoadShaders();
   await findSystemLocale();
   runApp(
     const MainApp(),
@@ -37,7 +33,7 @@ class MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     _appState = AppStateModel(
-      appLocale: getLocaleFromLocaleInfo(Intl.systemLocale),
+      appLocale: _getLocaleFromLocaleInfo(Intl.systemLocale),
       themeMode: ThemeMode.system,
     );
   }
@@ -68,7 +64,7 @@ class MainAppState extends State<MainApp> {
     );
   }
 
-  Locale getLocaleFromLocaleInfo(String localeInfo) {
+  Locale _getLocaleFromLocaleInfo(String localeInfo) {
     List<String> parts = localeInfo.split('_');
     // parts[0] => languageCode, parts[1] => countryCode
     if (parts.length == 2) {

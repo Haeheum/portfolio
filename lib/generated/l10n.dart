@@ -60,21 +60,51 @@ class S {
     );
   }
 
-  /// `Haeheum's portfolio`
-  String get introTitle {
+  /// `Home`
+  String get home {
     return Intl.message(
-      'Haeheum\'s portfolio',
-      name: 'introTitle',
+      'Home',
+      name: 'home',
       desc: '',
       args: [],
     );
   }
 
-  /// `Welcome to my portfolio. Each page has a special item implemented. If you move your mouse with in the area, The character will stare. Oh, and you can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen.`
-  String get introBody {
+  /// `Skills`
+  String get skills {
     return Intl.message(
-      'Welcome to my portfolio. Each page has a special item implemented. If you move your mouse with in the area, The character will stare. Oh, and you can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen.',
-      name: 'introBody',
+      'Skills',
+      name: 'skills',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inventory`
+  String get inventory {
+    return Intl.message(
+      'Inventory',
+      name: 'inventory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Projects`
+  String get projects {
+    return Intl.message(
+      'Projects',
+      name: 'projects',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get contact {
+    return Intl.message(
+      'Contact',
+      name: 'contact',
       desc: '',
       args: [],
     );
@@ -90,31 +120,11 @@ class S {
     );
   }
 
-  /// `I made this widget after watching a funny video on youtube. Click here to see the video. As a developer, making custom widget is one of the toughest tasks. But it does look amazing.`
-  String get sunMoonSwitchBody {
-    return Intl.message(
-      'I made this widget after watching a funny video on youtube. Click here to see the video. As a developer, making custom widget is one of the toughest tasks. But it does look amazing.',
-      name: 'sunMoonSwitchBody',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Skeleton UI`
   String get shimmerEffectTitle {
     return Intl.message(
       'Skeleton UI',
       name: 'shimmerEffectTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Skeleton UI has power to make waiting less burdensome.`
-  String get shimmerEffectBody {
-    return Intl.message(
-      'Skeleton UI has power to make waiting less burdensome.',
-      name: 'shimmerEffectBody',
       desc: '',
       args: [],
     );
@@ -130,36 +140,6 @@ class S {
     );
   }
 
-  /// `With custom paint, so many things are possible. Various attributes for each falling paper make it seems very realistic.`
-  String get confettiBody {
-    return Intl.message(
-      'With custom paint, so many things are possible. Various attributes for each falling paper make it seems very realistic.',
-      name: 'confettiBody',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Circle collision detection`
-  String get circleCollisionTitle {
-    return Intl.message(
-      'Circle collision detection',
-      name: 'circleCollisionTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have applied this concept in a project. `
-  String get circleCollisionBody {
-    return Intl.message(
-      'I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have applied this concept in a project. ',
-      name: 'circleCollisionBody',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Graphic effect`
   String get shaderWaterTitle {
     return Intl.message(
@@ -170,11 +150,11 @@ class S {
     );
   }
 
-  /// `Shaders can make cool graphic effects like games.`
-  String get shaderWaterBody {
+  /// `Card flip`
+  String get cardFlipTitle {
     return Intl.message(
-      'Shaders can make cool graphic effects like games.',
-      name: 'shaderWaterBody',
+      'Card flip',
+      name: 'cardFlipTitle',
       desc: '',
       args: [],
     );
@@ -190,31 +170,11 @@ class S {
     );
   }
 
-  /// `Rotate on hover.`
-  String get interactivePlateBody {
-    return Intl.message(
-      'Rotate on hover.',
-      name: 'interactivePlateBody',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Network image loading`
   String get fetchImageTitle {
     return Intl.message(
       'Network image loading',
       name: 'fetchImageTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Network image loading simulation. You can set the result with the switch.`
-  String get fetchImageBody {
-    return Intl.message(
-      'Network image loading simulation. You can set the result with the switch.',
-      name: 'fetchImageBody',
       desc: '',
       args: [],
     );
@@ -240,6 +200,16 @@ class S {
     );
   }
 
+  /// `Circle collision detection`
+  String get circleCollisionTitle {
+    return Intl.message(
+      'Circle collision detection',
+      name: 'circleCollisionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Area inversion effect`
   String get flashEffectTitle {
     return Intl.message(
@@ -250,11 +220,51 @@ class S {
     );
   }
 
-  /// `Inversion effect is applied on the background image along to the mouse pointer. Besides inversion effect, different colors, images and other various effects can be applied.`
-  String get flashEffectBody {
+  /// `Address`
+  String get address {
     return Intl.message(
-      'Inversion effect is applied on the background image along to the mouse pointer. Besides inversion effect, different colors, images and other various effects can be applied.',
-      name: 'flashEffectBody',
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daegu, South Korea`
+  String get addressInfo {
+    return Intl.message(
+      'Daegu, South Korea',
+      name: 'addressInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get phone {
+    return Intl.message(
+      'Phone',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call me!`
+  String get contactMe {
+    return Intl.message(
+      'Call me!',
+      name: 'contactMe',
       desc: '',
       args: [],
     );

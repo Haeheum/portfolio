@@ -1,5 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 
 import '../model/background_music.dart';
 
@@ -18,7 +18,7 @@ class AudioRepository {
         .toList();
 
     for (String path in musicFilePaths) {
-      AudioCache.instance.load(path).whenComplete(() {
+      AudioCache.instance.load(path).then((_) {
         preCacheProgress.value += 100 / musicFilePaths.length;
       });
     }

@@ -10,8 +10,8 @@ class InteractivePlate extends StatefulWidget {
 }
 
 class _InteractivePlateState extends State<InteractivePlate> {
-  static const double _defaultScale = 0.9;
-  static const double _targetScale = 1.0;
+  static const double _defaultScale = 1.0;
+  static const double _targetScale = 1.05;
 
   double _x = 0;
   double _y = 0;

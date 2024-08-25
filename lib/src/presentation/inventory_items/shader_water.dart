@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
-import 'package:portfolio/main.dart';
 import 'package:portfolio/src/util/ticking_builder.dart';
 
 import '../../config/theme_extension.dart';
+import '../../data/shader_repository.dart';
 
 class ShaderWater extends StatefulWidget {
   const ShaderWater({super.key});
 
   @override
-  State<ShaderWater> createState() => _RainingTextsState();
+  State<ShaderWater> createState() => _ShaderWaterState();
 }
 
-class _RainingTextsState extends State<ShaderWater>
+class _ShaderWaterState extends State<ShaderWater>
     with SingleTickerProviderStateMixin {
-  late final FragmentShader _shader;
+  late FragmentShader _shader;
 
   @override
-  void initState() {
-    super.initState();
-    _shader = fragmentProgram.fragmentShader();
-  }
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _shader = ShaderRepository().shaders.water;
 
-  @override
-  void dispose() {
-    _shader.dispose();
-    super.dispose();
   }
 
   @override
@@ -34,7 +29,7 @@ class _RainingTextsState extends State<ShaderWater>
       color: Theme.of(context).extension<ExtensionColors>()!.skyColor!,
       child: TickingBuilder(builder: (context, time) {
         return AnimatedSampler(
-              (image, size, canvas) {
+          (image, size, canvas) {
             _shader
               ..setFloat(0, size.width)
               ..setFloat(1, size.height)

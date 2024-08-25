@@ -77,7 +77,7 @@ class FlashEffectPainter extends CustomPainter {
   Future<void> paint(Canvas canvas, Size size) async {
     _dstRect = Rect.fromCenter(
       center: Offset(size.width / 2, size.height / 2),
-      width: size.height * 72 / 92,
+      width: size.height * 3 / 4,
       height: size.height,
     );
     canvas.drawImageRect(

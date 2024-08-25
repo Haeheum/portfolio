@@ -116,6 +116,7 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
     Duration? currentPosition = await _bgmPlayer.getCurrentPosition();
     _bgmPlayer.stop();
 
+    // 현재 곡 재생 위치가 2초 이하 일때 이전 곡을 큐의 첫번째 항목으로 가져옴.
     if (currentPosition == null ||
         currentPosition.compareTo(const Duration(seconds: 2)) <= 0) {
       _bgmPlaylist.addFirst(_bgmPlaylist.removeLast());
@@ -146,10 +147,9 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
       case PlayerState.stopped:
       case PlayerState.completed:
         _playFirstBgm(_bgmPlaylist.first.filename);
-        break;
       case PlayerState.playing:
       case PlayerState.disposed:
-        StateError('Wrong audio player state');
+        AudioPlayerException(_bgmPlayer, cause: 'Wrong state to play Bgm.');
     }
   }
 

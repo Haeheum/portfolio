@@ -16,10 +16,7 @@ class AudioStateScope extends InheritedWidget {
   final ValueNotifier<double> volume;
 
   static AudioStateScope of(BuildContext context) {
-    final AudioStateScope? result =
-        context.dependOnInheritedWidgetOfExactType<AudioStateScope>();
-    assert(result != null, 'No AudioStateScope found in context');
-    return result!;
+    return context.dependOnInheritedWidgetOfExactType<AudioStateScope>()!;
   }
 
   @override

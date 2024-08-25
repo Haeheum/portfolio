@@ -1,34 +1,34 @@
 {
   "messageAudioLoading" : "Loading background musics",
 
-  "introTitle": "Haeheum's portfolio",
-  "introBody": "Welcome to my portfolio. Each page has a special item implemented. If you move your mouse with in the area, The character will stare. Oh, and you can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen.",
+  "home" : "Home",
+  "skills" : "Skills",
+  "inventory" : "Inventory",
+  "projects" : "Projects",
+  "contact" : "Contact",
 
   "sunMoonSwitchTitle" : "Custom widget",
-  "sunMoonSwitchBody" : "I made this widget after watching a funny video on youtube. Click here to see the video. As a developer, making custom widget is one of the toughest tasks. But it does look amazing.",
 
   "shimmerEffectTitle" : "Skeleton UI",
-  "shimmerEffectBody" : "Skeleton UI has power to make waiting less burdensome.",
 
   "confettiTitle" : "Custom paint",
-  "confettiBody" : "With custom paint, so many things are possible. Various attributes for each falling paper make it seems very realistic.",
 
-  "circleCollisionTitle" : "Circle collision detection",
-  "circleCollisionBody" : "I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have applied this concept in a project. ",
 
   "shaderWaterTitle" : "Graphic effect",
-  "shaderWaterBody" : "Shaders can make cool graphic effects like games.",
+  "cardFlipTitle": "Card flip",
 
   "interactivePlateTitle" : "Interactive plate",
-  "interactivePlateBody": "Rotate on hover.",
 
   "fetchImageTitle" : "Network image loading",
-  "fetchImageBody": "Network image loading simulation. You can set the result with the switch.",
 
   "fetchImageErrorText" : "Failed to load image.",
   "fetchImage" : "Load image",
-
+  "circleCollisionTitle" : "Circle collision detection",
   "flashEffectTitle" : "Area inversion effect",
-  "flashEffectBody" : "Inversion effect is applied on the background image along to the mouse pointer. Besides inversion effect, different colors, images and other various effects can be applied."
 
+  "address" : "Address",
+  "addressInfo" : "Daegu, South Korea",
+  "email" : "Email",
+  "phone" : "Phone",
+  "contactMe" : "Call me!"
 }

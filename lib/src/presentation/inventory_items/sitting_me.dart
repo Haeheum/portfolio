@@ -4,6 +4,9 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
+import '../../../generated/l10n.dart';
+import '../../config/theme_extension.dart';
+
 class SittingMe extends StatefulWidget {
   const SittingMe({super.key});
 
@@ -37,7 +40,29 @@ class _SittingMeState extends State<SittingMe> {
                   mouseOffset: _mouseOffset,
                   heroImage: snapshot.data!,
                 ),
-                child: const SizedBox.expand());
+                child: SizedBox.expand(
+                  child: Align(
+                    alignment: const Alignment(0.4, 0.6),
+                    child: Card(
+                      color: Theme.of(context)
+                          .extension<ExtensionColors>()!
+                          .backgroundColor2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(
+                          S.of(context).contactMe,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(
+                                  color: Theme.of(context)
+                                      .extension<ExtensionColors>()!
+                                      .textColor),
+                        ),
+                      ),
+                    ),
+                  ),
+                ));
           } else {
             return const SizedBox.expand();
           }
@@ -77,7 +102,7 @@ class SittingMePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final heroHeight = size.height / 2;
+    final heroHeight = size.height / 3;
     final heroWidth = heroHeight * 28 / 40;
     final heroOffsetX = size.width / 2 - heroWidth;
     final heroOffsetY = size.height - heroHeight;

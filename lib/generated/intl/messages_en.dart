@@ -22,44 +22,36 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "circleCollisionBody": MessageLookupByLibrary.simpleMessage(
-            "I have implemented circle collision detection. Well known example of this concept is the game brick breaker. I have applied this concept in a project. "),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "addressInfo":
+            MessageLookupByLibrary.simpleMessage("Daegu, South Korea"),
+        "cardFlipTitle": MessageLookupByLibrary.simpleMessage("Card flip"),
         "circleCollisionTitle":
             MessageLookupByLibrary.simpleMessage("Circle collision detection"),
-        "confettiBody": MessageLookupByLibrary.simpleMessage(
-            "With custom paint, so many things are possible. Various attributes for each falling paper make it seems very realistic."),
         "confettiTitle": MessageLookupByLibrary.simpleMessage("Custom paint"),
+        "contact": MessageLookupByLibrary.simpleMessage("Contact"),
+        "contactMe": MessageLookupByLibrary.simpleMessage("Call me!"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
         "fetchImage": MessageLookupByLibrary.simpleMessage("Load image"),
-        "fetchImageBody": MessageLookupByLibrary.simpleMessage(
-            "Network image loading simulation. You can set the result with the switch."),
         "fetchImageErrorText":
             MessageLookupByLibrary.simpleMessage("Failed to load image."),
         "fetchImageTitle":
             MessageLookupByLibrary.simpleMessage("Network image loading"),
-        "flashEffectBody": MessageLookupByLibrary.simpleMessage(
-            "Inversion effect is applied on the background image along to the mouse pointer. Besides inversion effect, different colors, images and other various effects can be applied."),
         "flashEffectTitle":
             MessageLookupByLibrary.simpleMessage("Area inversion effect"),
-        "interactivePlateBody":
-            MessageLookupByLibrary.simpleMessage("Rotate on hover."),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "interactivePlateTitle":
             MessageLookupByLibrary.simpleMessage("Interactive plate"),
-        "introBody": MessageLookupByLibrary.simpleMessage(
-            "Welcome to my portfolio. Each page has a special item implemented. If you move your mouse with in the area, The character will stare. Oh, and you can play my favorite songs from the bottom end button. Loading is required, but it would be great if you could listen."),
-        "introTitle":
-            MessageLookupByLibrary.simpleMessage("Haeheum\'s portfolio"),
+        "inventory": MessageLookupByLibrary.simpleMessage("Inventory"),
         "messageAudioLoading":
             MessageLookupByLibrary.simpleMessage("Loading background musics"),
-        "shaderWaterBody": MessageLookupByLibrary.simpleMessage(
-            "Shaders can make cool graphic effects like games."),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "projects": MessageLookupByLibrary.simpleMessage("Projects"),
         "shaderWaterTitle":
             MessageLookupByLibrary.simpleMessage("Graphic effect"),
-        "shimmerEffectBody": MessageLookupByLibrary.simpleMessage(
-            "Skeleton UI has power to make waiting less burdensome."),
         "shimmerEffectTitle":
             MessageLookupByLibrary.simpleMessage("Skeleton UI"),
-        "sunMoonSwitchBody": MessageLookupByLibrary.simpleMessage(
-            "I made this widget after watching a funny video on youtube. Click here to see the video. As a developer, making custom widget is one of the toughest tasks. But it does look amazing."),
+        "skills": MessageLookupByLibrary.simpleMessage("Skills"),
         "sunMoonSwitchTitle":
             MessageLookupByLibrary.simpleMessage("Custom widget")
       };
