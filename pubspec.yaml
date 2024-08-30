@@ -17,6 +17,7 @@ dependencies:
   http: ^1.2.1
   intl: any
   url_launcher: ^6.3.0
+  transparent_image: ^2.0.1
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
+import '../../config/theme_extension.dart';
 import '../../data/image_repository.dart';
 
 class FetchImage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _FetchImageState extends State<FetchImage> {
         children: [
           FutureBuilder(
             future: _loadImage(willSucceed: _willSucceed),
-            builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
               return SizedBox(
                 width: 200,
                 height: 300,
@@ -34,14 +35,22 @@ class _FetchImageState extends State<FetchImage> {
                       ConnectionState.active ||
                       ConnectionState.done when snapshot.hasData =>
                         Center(
-                          key: ValueKey<String>(DateTime.now.toString()),
                           child: snapshot.data,
                         ),
-                      ConnectionState.active || ConnectionState.done => Column(
+                      _ => Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset('assets/images/bee_sad.webp'),
-                            Text(S.of(context).fetchImageErrorText),
+                            Text(
+                              S.of(context).fetchImageErrorText,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .extension<ExtensionColors>()!
+                                          .textColor),
+                            ),
                           ],
                         ),
                     }),
@@ -75,7 +84,7 @@ class _FetchImageState extends State<FetchImage> {
     );
   }
 
-  Future<Image> _loadImage({required bool willSucceed}) async {
+  Future _loadImage({required bool willSucceed}) async {
     return await ImageRepository().fetchImage(willSucceed: _willSucceed);
   }
 }

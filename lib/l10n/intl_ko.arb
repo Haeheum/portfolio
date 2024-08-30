@@ -1,4 +1,6 @@
 {
+
+  "abc": "가나다",
   "messageAudioLoading": "배경음악 준비 중",
 
   "home" : "홈",
@@ -26,6 +28,8 @@
   "circleCollisionTitle" : "원 충돌 감지",
 
   "flashEffectTitle" : "구역 반전 효과",
+
+  "shaderMaskTitle" : "쉐이더 마스크",
 
   "address" : "주소",
   "addressInfo" : "대구, 대한민국",

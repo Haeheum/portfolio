@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `ABC`
+  String get abc {
+    return Intl.message(
+      'ABC',
+      name: 'abc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Loading background musics`
   String get messageAudioLoading {
     return Intl.message(
@@ -215,6 +225,16 @@ class S {
     return Intl.message(
       'Area inversion effect',
       name: 'flashEffectTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shader mask`
+  String get shaderMaskTitle {
+    return Intl.message(
+      'Shader mask',
+      name: 'shaderMaskTitle',
       desc: '',
       args: [],
     );

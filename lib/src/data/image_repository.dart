@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ImageRepository {
   static final ImageRepository instance = ImageRepository._();
@@ -15,14 +16,13 @@ class ImageRepository {
     }
   }
 
-  Future<Image> fetchImage({required bool willSucceed}) async {
-
-    // Mock networking delay
-    await Future.delayed(const Duration(seconds: 1));
-
+  Future fetchImage({required bool willSucceed}) async {
     if (willSucceed) {
       int seed = Random().nextInt(100);
-      return Image.network('https://picsum.photos/seed/$seed/200/300');
+
+      return FadeInImage.memoryNetwork(
+          placeholder: kTransparentImage,
+          image: 'https://picsum.photos/seed/$seed/200/300');
     } else {
       throw Exception('Failed to load image');
     }

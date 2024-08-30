@@ -10,6 +10,7 @@ import '../inventory_items/fetch_image.dart';
 import '../inventory_items/flash_effect.dart';
 import '../inventory_items/frame_inventory_item.dart';
 import '../inventory_items/interactive_plate.dart';
+import '../inventory_items/shader_plate.dart';
 import '../inventory_items/shader_water.dart';
 import '../inventory_items/shimmer_effect.dart';
 import '../inventory_items/sun_moon_switch.dart';
@@ -66,7 +67,6 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
           child: const Confetti(),
         ),
       )
-
       ..add(
         FrameInventoryItem(
           title: S.of(context).shaderWaterTitle,
@@ -83,6 +83,12 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
         FrameInventoryItem(
           title: S.of(context).interactivePlateTitle,
           child: const InteractivePlate(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).shaderMaskTitle,
+          child: const ShaderPlate(),
         ),
       )
       ..add(
@@ -259,6 +265,7 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                             .extension<ExtensionColors>()!
                             .backgroundColor,
                         title: Text(S.of(context).inventory),
+                        centerTitle: true,
                         pinned: true,
                         surfaceTintColor: Colors.transparent,
                       ),

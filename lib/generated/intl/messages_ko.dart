@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "abc": MessageLookupByLibrary.simpleMessage("가나다"),
         "address": MessageLookupByLibrary.simpleMessage("주소"),
         "addressInfo": MessageLookupByLibrary.simpleMessage("대구, 대한민국"),
         "cardFlipTitle": MessageLookupByLibrary.simpleMessage("카드 뒤집기"),
@@ -43,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("배경음악 준비 중"),
         "phone": MessageLookupByLibrary.simpleMessage("휴대폰"),
         "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
+        "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("쉐이더 마스크"),
         "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("그래픽 효과"),
         "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("로딩 UI"),
         "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("커스텀 위젯")

@@ -23,7 +23,7 @@ class _CardFlipState extends State<CardFlip> {
             return Transform(
               alignment: Alignment.center,
               transform: Matrix4.identity()
-                ..rotateY(value * pi/180),
+                ..rotateY(value * pi / 180),
               child: child,
             );
           },

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "abc": MessageLookupByLibrary.simpleMessage("ABC"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "addressInfo":
             MessageLookupByLibrary.simpleMessage("Daegu, South Korea"),
@@ -47,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Loading background musics"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),
+        "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("Shader mask"),
         "shaderWaterTitle":
             MessageLookupByLibrary.simpleMessage("Graphic effect"),
         "shimmerEffectTitle":
