@@ -33,5 +33,6 @@ flutter:
     - assets/sounds/bgm/
   shaders:
     - assets/shaders/water.frag
+    - assets/shaders/glitch.frag
 flutter_intl:
   enabled: true

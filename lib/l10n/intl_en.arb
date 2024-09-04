@@ -13,17 +13,19 @@
   "shimmerEffectTitle" : "Skeleton UI",
 
   "confettiTitle" : "Custom paint",
+  "digitalRainTitle" : "Rain",
 
+  "shaderWaterTitle" : "Water graphic effect",
+  "shaderGlitchTitle" : "Glitch graphic effect",
 
-  "shaderWaterTitle" : "Graphic effect",
   "cardFlipTitle": "Card flip",
 
   "interactivePlateTitle" : "Interactive plate",
 
   "fetchImageTitle" : "Network image loading",
-
-  "fetchImageErrorText" : "Failed to load image.",
+  "fetchImageErrorText" : "Loading Failed",
   "fetchImage" : "Load image",
+
   "circleCollisionTitle" : "Circle collision detection",
   "flashEffectTitle" : "Area inversion effect",
 

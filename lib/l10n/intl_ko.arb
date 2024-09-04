@@ -13,16 +13,16 @@
   "shimmerEffectTitle" : "로딩 UI",
 
   "confettiTitle" : "커스텀 페인트",
+  "digitalRainTitle" : "비",
 
-
-  "shaderWaterTitle" : "그래픽 효과",
+  "shaderWaterTitle" : "물 그래픽 효과",
+  "shaderGlitchTitle" : "치지직 그래픽 효과",
 
   "cardFlipTitle": "카드 뒤집기",
   "interactivePlateTitle" : "흐느적 인터렉션",
 
   "fetchImageTitle" : "네트워크 이미지 로딩",
-
-  "fetchImageErrorText" : "이미지 로딩에 실패했습니다.",
+  "fetchImageErrorText" : "이미지 로딩 실패",
   "fetchImage" : "이미지 불러오기",
 
   "circleCollisionTitle" : "원 충돌 감지",
@@ -35,5 +35,5 @@
   "addressInfo" : "대구, 대한민국",
   "email" : "메일",
   "phone" : "휴대폰",
-  "contactMe" : "당신을 기다립니다."
+  "contactMe" : "감사합니다."
 }

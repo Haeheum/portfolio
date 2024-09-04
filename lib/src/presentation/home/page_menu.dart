@@ -24,7 +24,6 @@ class _PageMenuState extends State<PageMenu> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // todo: add proper offset for menuItems
     _menuItems
       ..clear()
       ..add(
@@ -34,21 +33,21 @@ class _PageMenuState extends State<PageMenu> {
           offset: 0.0,
         ),
       )
+    // ..add(
+    //   MenuItem(
+    //     title: S.of(context).projects,
+    //     icon: Icons.apps_rounded,
+    //     offset: 150.0,
+    //   ),
+    // )
       ..add(
         MenuItem(
           title: S.of(context).inventory,
           icon: Icons.build,
+          offset: MediaQuery.sizeOf(context).height * 2,
+        ),
+      )
 
-          offset: 100.0,
-        ),
-      )
-      ..add(
-        MenuItem(
-          title: S.of(context).projects,
-          icon: Icons.apps_rounded,
-          offset: 150.0,
-        ),
-      )
       ..add(
         MenuItem(
           title: S.of(context).contact,

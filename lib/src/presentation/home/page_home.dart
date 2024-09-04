@@ -4,19 +4,25 @@ import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
+import '../../data/audio_repository.dart';
+import '../../data/image_repository.dart';
 import '../inventory_items/card_flip.dart';
 import '../inventory_items/confetti.dart';
+import '../inventory_items/digital_rain.dart';
 import '../inventory_items/fetch_image.dart';
 import '../inventory_items/flash_effect.dart';
 import '../inventory_items/frame_inventory_item.dart';
 import '../inventory_items/interactive_plate.dart';
+import '../inventory_items/shader_glitch.dart';
 import '../inventory_items/shader_plate.dart';
 import '../inventory_items/shader_water.dart';
 import '../inventory_items/shimmer_effect.dart';
+import '../inventory_items/sitting_me.dart';
 import '../inventory_items/sun_moon_switch.dart';
 import '../inventory_items/target_plate.dart';
 import 'app_bar/app_bar_home.dart';
 import 'music_control/view_music_control.dart';
+import 'page_contact.dart';
 import 'page_menu.dart';
 import 'sliver_intro.dart';
 
@@ -42,11 +48,16 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+
+    ImageRepository().preCacheImages(context);
+    AudioRepository().preCacheAudios();
+
     _inventoryItems
       ..clear()
       ..add(
@@ -69,8 +80,20 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
       )
       ..add(
         FrameInventoryItem(
+          title: S.of(context).digitalRainTitle,
+          child: const DigitalRain(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
           title: S.of(context).shaderWaterTitle,
           child: const ShaderWater(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).shaderGlitchTitle,
+          child: const ShaderGlitch(),
         ),
       )
       ..add(
@@ -284,6 +307,20 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                         ),
                       ),
                     ]),
+                    SliverToBoxAdapter(
+                      child: Stack(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.sizeOf(context).height,
+                            child: const PageContact(),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.sizeOf(context).height,
+                            child: const SittingMe(),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
                 const ViewMusicControl(),
@@ -368,9 +405,16 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
   void animateTo(double targetOffset) async {
     toggleMenu();
     if (_scrollController.hasClients) {
-      debugPrint('target $targetOffset');
+
+      if(targetOffset == 9999){
+        targetOffset = _scrollController.position.maxScrollExtent;
+        await _scrollController.animateTo(targetOffset,
+            duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+        return;
+      }
+
       await _scrollController.animateTo(targetOffset,
-          duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+          duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
     }
   }
 }

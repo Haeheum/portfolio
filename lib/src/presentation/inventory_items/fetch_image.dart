@@ -27,7 +27,7 @@ class _FetchImageState extends State<FetchImage> {
                 width: 200,
                 height: 300,
                 child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 500),
+                    duration: const Duration(seconds: 1),
                     child: switch (snapshot.connectionState) {
                       ConnectionState.none ||
                       ConnectionState.waiting =>
@@ -44,8 +44,7 @@ class _FetchImageState extends State<FetchImage> {
                             Text(
                               S.of(context).fetchImageErrorText,
                               style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium!
+                                  .textTheme.titleLarge!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .extension<ExtensionColors>()!

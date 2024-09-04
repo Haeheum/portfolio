@@ -32,10 +32,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "confettiTitle": MessageLookupByLibrary.simpleMessage("Custom paint"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "contactMe": MessageLookupByLibrary.simpleMessage("Call me!"),
+        "digitalRainTitle": MessageLookupByLibrary.simpleMessage("Rain"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "fetchImage": MessageLookupByLibrary.simpleMessage("Load image"),
         "fetchImageErrorText":
-            MessageLookupByLibrary.simpleMessage("Failed to load image."),
+            MessageLookupByLibrary.simpleMessage("Loading Failed"),
         "fetchImageTitle":
             MessageLookupByLibrary.simpleMessage("Network image loading"),
         "flashEffectTitle":
@@ -48,9 +49,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Loading background musics"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),
+        "shaderGlitchTitle":
+            MessageLookupByLibrary.simpleMessage("Glitch graphic effect"),
         "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("Shader mask"),
         "shaderWaterTitle":
-            MessageLookupByLibrary.simpleMessage("Graphic effect"),
+            MessageLookupByLibrary.simpleMessage("Water graphic effect"),
         "shimmerEffectTitle":
             MessageLookupByLibrary.simpleMessage("Skeleton UI"),
         "skills": MessageLookupByLibrary.simpleMessage("Skills"),

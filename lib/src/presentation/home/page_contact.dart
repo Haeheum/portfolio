@@ -44,7 +44,7 @@ class PageContact extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.mail_rounded),
               title: Text(S.of(context).email),
-              subtitle: const Text('hammizzang@naver.com'),
+              subtitle: const SelectableText('hammizzang@naver.com'),
             ),
           ),
           Card(
@@ -52,10 +52,9 @@ class PageContact extends StatelessWidget {
                 .extension<ExtensionColors>()!
                 .cardBackgroundColor,
             child: ListTile(
-              mouseCursor: SystemMouseCursors.click,
               leading: const Icon(Icons.phone_iphone_rounded),
               title: Text(S.of(context).phone),
-              subtitle: const Text('+82 10 4083 7389'),
+              subtitle: const SelectableText('+82 10 4083 7389'),
             ),
           ),
           const Spacer(),

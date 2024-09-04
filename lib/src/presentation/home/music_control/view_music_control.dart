@@ -85,6 +85,7 @@ class _ViewMusicControlState extends State<ViewMusicControl> {
             curve: Curves.fastEaseInToSlowEaseOut,
             duration: const Duration(milliseconds: 500),
             child: Container(
+              height: 96.0,
               padding: const EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 color: Theme.of(context)

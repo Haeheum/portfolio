@@ -150,11 +150,31 @@ class S {
     );
   }
 
-  /// `Graphic effect`
+  /// `Rain`
+  String get digitalRainTitle {
+    return Intl.message(
+      'Rain',
+      name: 'digitalRainTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Water graphic effect`
   String get shaderWaterTitle {
     return Intl.message(
-      'Graphic effect',
+      'Water graphic effect',
       name: 'shaderWaterTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Glitch graphic effect`
+  String get shaderGlitchTitle {
+    return Intl.message(
+      'Glitch graphic effect',
+      name: 'shaderGlitchTitle',
       desc: '',
       args: [],
     );
@@ -190,10 +210,10 @@ class S {
     );
   }
 
-  /// `Failed to load image.`
+  /// `Loading Failed`
   String get fetchImageErrorText {
     return Intl.message(
-      'Failed to load image.',
+      'Loading Failed',
       name: 'fetchImageErrorText',
       desc: '',
       args: [],

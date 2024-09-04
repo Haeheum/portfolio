@@ -42,7 +42,6 @@ class WidgetAudioControllerState extends State<WidgetAudioController> {
   }
 
   void _initializeAudio() {
-    AudioRepository().preCacheAudios();
 
     _bgmPlayer = AudioPlayer()..setVolume(kDefaultVolume);
     _bgmPlayer.onPlayerComplete.listen(nextBgm);

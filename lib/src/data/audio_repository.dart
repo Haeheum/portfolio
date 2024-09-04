@@ -13,6 +13,9 @@ class AudioRepository {
   ValueNotifier<double> preCacheProgress = ValueNotifier(0.0);
 
   Future<void> preCacheAudios() async {
+    if(preCacheProgress.value == 100){
+      return;
+    }
     List<String> musicFilePaths = backgroundMusics
         .map((music) => 'sounds/bgm/${music.filename}')
         .toList();

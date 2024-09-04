@@ -29,11 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "circleCollisionTitle": MessageLookupByLibrary.simpleMessage("원 충돌 감지"),
         "confettiTitle": MessageLookupByLibrary.simpleMessage("커스텀 페인트"),
         "contact": MessageLookupByLibrary.simpleMessage("연락처"),
-        "contactMe": MessageLookupByLibrary.simpleMessage("당신을 기다립니다."),
+        "contactMe": MessageLookupByLibrary.simpleMessage("감사합니다."),
+        "digitalRainTitle": MessageLookupByLibrary.simpleMessage("비"),
         "email": MessageLookupByLibrary.simpleMessage("메일"),
         "fetchImage": MessageLookupByLibrary.simpleMessage("이미지 불러오기"),
         "fetchImageErrorText":
-            MessageLookupByLibrary.simpleMessage("이미지 로딩에 실패했습니다."),
+            MessageLookupByLibrary.simpleMessage("이미지 로딩 실패"),
         "fetchImageTitle": MessageLookupByLibrary.simpleMessage("네트워크 이미지 로딩"),
         "flashEffectTitle": MessageLookupByLibrary.simpleMessage("구역 반전 효과"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
@@ -44,8 +45,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("배경음악 준비 중"),
         "phone": MessageLookupByLibrary.simpleMessage("휴대폰"),
         "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
+        "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage("치지직 그래픽 효과"),
         "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("쉐이더 마스크"),
-        "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("그래픽 효과"),
+        "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("물 그래픽 효과"),
         "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("로딩 UI"),
         "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("커스텀 위젯")
       };
