@@ -24,6 +24,7 @@ import 'app_bar/app_bar_home.dart';
 import 'music_control/view_music_control.dart';
 import 'page_contact.dart';
 import 'page_menu.dart';
+import 'scroll_indicator.dart';
 import 'sliver_intro.dart';
 
 class PageHome extends StatefulWidget {
@@ -48,7 +49,6 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -331,27 +331,20 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                   bottom: 16,
                   child: Center(
                     child: ListenableBuilder(
-                      listenable: _scrollController,
-                      builder: (context, child) {
-                        return AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.fastOutSlowIn,
-                          opacity: _scrollController.offset == 0 ? 1.0 : 0.0,
-                          child: child,
-                        );
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context)
-                              .extension<ExtensionColors>()!
-                              .cardBackgroundColor,
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: const Icon(
-                            Icons.keyboard_double_arrow_down_rounded),
-                      ),
-                    ),
+                        listenable: _scrollController,
+                        builder: (context, child) {
+                          if (_scrollController.offset < 500) {
+                            return AnimatedOpacity(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.fastOutSlowIn,
+                              opacity:
+                                  _scrollController.offset == 0 ? 1.0 : 0.0,
+                              child: child,
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        },
+                        child: const ScrollIndicator()),
                   ),
                 ),
               ],
@@ -405,16 +398,17 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
   void animateTo(double targetOffset) async {
     toggleMenu();
     if (_scrollController.hasClients) {
-
-      if(targetOffset == 9999){
+      if (targetOffset == 9999) {
         targetOffset = _scrollController.position.maxScrollExtent;
         await _scrollController.animateTo(targetOffset,
-            duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.decelerate);
         return;
       }
 
       await _scrollController.animateTo(targetOffset,
-          duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.decelerate);
     }
   }
 }
