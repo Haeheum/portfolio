@@ -45,7 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage("치지직 그래픽 효과"),
     "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("쉐이더 마스크"),
     "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(
-      "모자이크 graphic effect",
+      "모자이크 그래픽 효과",
     ),
     "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("물 그래픽 효과"),
     "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("로딩 UI"),
