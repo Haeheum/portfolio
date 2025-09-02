@@ -17,6 +17,7 @@
 
   "shaderWaterTitle" : "물 그래픽 효과",
   "shaderGlitchTitle" : "치지직 그래픽 효과",
+  "shaderPixelationTitle" : "모자이크 그래픽 효과",
 
   "cardFlipTitle": "카드 뒤집기",
   "interactivePlateTitle" : "흐느적 인터렉션",

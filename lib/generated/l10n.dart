@@ -18,8 +18,10 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
@@ -41,8 +43,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,12 +56,7 @@ class S {
 
   /// `ABC`
   String get abc {
-    return Intl.message(
-      'ABC',
-      name: 'abc',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('ABC', name: 'abc', desc: '', args: []);
   }
 
   /// `Loading background musics`
@@ -72,52 +71,27 @@ class S {
 
   /// `Home`
   String get home {
-    return Intl.message(
-      'Home',
-      name: 'home',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Home', name: 'home', desc: '', args: []);
   }
 
   /// `Skills`
   String get skills {
-    return Intl.message(
-      'Skills',
-      name: 'skills',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Skills', name: 'skills', desc: '', args: []);
   }
 
   /// `Inventory`
   String get inventory {
-    return Intl.message(
-      'Inventory',
-      name: 'inventory',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Inventory', name: 'inventory', desc: '', args: []);
   }
 
   /// `Projects`
   String get projects {
-    return Intl.message(
-      'Projects',
-      name: 'projects',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Projects', name: 'projects', desc: '', args: []);
   }
 
   /// `Contact`
   String get contact {
-    return Intl.message(
-      'Contact',
-      name: 'contact',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Contact', name: 'contact', desc: '', args: []);
   }
 
   /// `Custom widget`
@@ -152,12 +126,7 @@ class S {
 
   /// `Rain`
   String get digitalRainTitle {
-    return Intl.message(
-      'Rain',
-      name: 'digitalRainTitle',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Rain', name: 'digitalRainTitle', desc: '', args: []);
   }
 
   /// `Water graphic effect`
@@ -180,14 +149,19 @@ class S {
     );
   }
 
-  /// `Card flip`
-  String get cardFlipTitle {
+  /// `Pixelation graphic effect`
+  String get shaderPixelationTitle {
     return Intl.message(
-      'Card flip',
-      name: 'cardFlipTitle',
+      'Pixelation graphic effect',
+      name: 'shaderPixelationTitle',
       desc: '',
       args: [],
     );
+  }
+
+  /// `Card flip`
+  String get cardFlipTitle {
+    return Intl.message('Card flip', name: 'cardFlipTitle', desc: '', args: []);
   }
 
   /// `Interactive plate`
@@ -222,12 +196,7 @@ class S {
 
   /// `Load image`
   String get fetchImage {
-    return Intl.message(
-      'Load image',
-      name: 'fetchImage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Load image', name: 'fetchImage', desc: '', args: []);
   }
 
   /// `Circle collision detection`
@@ -262,12 +231,7 @@ class S {
 
   /// `Address`
   String get address {
-    return Intl.message(
-      'Address',
-      name: 'address',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Address', name: 'address', desc: '', args: []);
   }
 
   /// `Daegu, South Korea`
@@ -282,32 +246,17 @@ class S {
 
   /// `Email`
   String get email {
-    return Intl.message(
-      'Email',
-      name: 'email',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Email', name: 'email', desc: '', args: []);
   }
 
   /// `Phone`
   String get phone {
-    return Intl.message(
-      'Phone',
-      name: 'phone',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Phone', name: 'phone', desc: '', args: []);
   }
 
   /// `Call me!`
   String get contactMe {
-    return Intl.message(
-      'Call me!',
-      name: 'contactMe',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Call me!', name: 'contactMe', desc: '', args: []);
   }
 }
 

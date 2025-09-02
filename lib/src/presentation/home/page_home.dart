@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/presentation/inventory_items/shader_pixelation.dart';
 
 import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
@@ -94,6 +95,12 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
         FrameInventoryItem(
           title: S.of(context).shaderGlitchTitle,
           child: const ShaderGlitch(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).shaderPixelationTitle,
+          child: const ShaderPixelation(),
         ),
       )
       ..add(

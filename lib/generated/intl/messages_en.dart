@@ -22,42 +22,50 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "abc": MessageLookupByLibrary.simpleMessage("ABC"),
-        "address": MessageLookupByLibrary.simpleMessage("Address"),
-        "addressInfo":
-            MessageLookupByLibrary.simpleMessage("Daegu, South Korea"),
-        "cardFlipTitle": MessageLookupByLibrary.simpleMessage("Card flip"),
-        "circleCollisionTitle":
-            MessageLookupByLibrary.simpleMessage("Circle collision detection"),
-        "confettiTitle": MessageLookupByLibrary.simpleMessage("Custom paint"),
-        "contact": MessageLookupByLibrary.simpleMessage("Contact"),
-        "contactMe": MessageLookupByLibrary.simpleMessage("Call me!"),
-        "digitalRainTitle": MessageLookupByLibrary.simpleMessage("Rain"),
-        "email": MessageLookupByLibrary.simpleMessage("Email"),
-        "fetchImage": MessageLookupByLibrary.simpleMessage("Load image"),
-        "fetchImageErrorText":
-            MessageLookupByLibrary.simpleMessage("Loading Failed"),
-        "fetchImageTitle":
-            MessageLookupByLibrary.simpleMessage("Network image loading"),
-        "flashEffectTitle":
-            MessageLookupByLibrary.simpleMessage("Area inversion effect"),
-        "home": MessageLookupByLibrary.simpleMessage("Home"),
-        "interactivePlateTitle":
-            MessageLookupByLibrary.simpleMessage("Interactive plate"),
-        "inventory": MessageLookupByLibrary.simpleMessage("Inventory"),
-        "messageAudioLoading":
-            MessageLookupByLibrary.simpleMessage("Loading background musics"),
-        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
-        "projects": MessageLookupByLibrary.simpleMessage("Projects"),
-        "shaderGlitchTitle":
-            MessageLookupByLibrary.simpleMessage("Glitch graphic effect"),
-        "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("Shader mask"),
-        "shaderWaterTitle":
-            MessageLookupByLibrary.simpleMessage("Water graphic effect"),
-        "shimmerEffectTitle":
-            MessageLookupByLibrary.simpleMessage("Skeleton UI"),
-        "skills": MessageLookupByLibrary.simpleMessage("Skills"),
-        "sunMoonSwitchTitle":
-            MessageLookupByLibrary.simpleMessage("Custom widget")
-      };
+    "abc": MessageLookupByLibrary.simpleMessage("ABC"),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "addressInfo": MessageLookupByLibrary.simpleMessage("Daegu, South Korea"),
+    "cardFlipTitle": MessageLookupByLibrary.simpleMessage("Card flip"),
+    "circleCollisionTitle": MessageLookupByLibrary.simpleMessage(
+      "Circle collision detection",
+    ),
+    "confettiTitle": MessageLookupByLibrary.simpleMessage("Custom paint"),
+    "contact": MessageLookupByLibrary.simpleMessage("Contact"),
+    "contactMe": MessageLookupByLibrary.simpleMessage("Call me!"),
+    "digitalRainTitle": MessageLookupByLibrary.simpleMessage("Rain"),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "fetchImage": MessageLookupByLibrary.simpleMessage("Load image"),
+    "fetchImageErrorText": MessageLookupByLibrary.simpleMessage(
+      "Loading Failed",
+    ),
+    "fetchImageTitle": MessageLookupByLibrary.simpleMessage(
+      "Network image loading",
+    ),
+    "flashEffectTitle": MessageLookupByLibrary.simpleMessage(
+      "Area inversion effect",
+    ),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "interactivePlateTitle": MessageLookupByLibrary.simpleMessage(
+      "Interactive plate",
+    ),
+    "inventory": MessageLookupByLibrary.simpleMessage("Inventory"),
+    "messageAudioLoading": MessageLookupByLibrary.simpleMessage(
+      "Loading background musics",
+    ),
+    "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+    "projects": MessageLookupByLibrary.simpleMessage("Projects"),
+    "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage(
+      "Glitch graphic effect",
+    ),
+    "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("Shader mask"),
+    "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(
+      "Pixelation graphic effect",
+    ),
+    "shaderWaterTitle": MessageLookupByLibrary.simpleMessage(
+      "Water graphic effect",
+    ),
+    "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("Skeleton UI"),
+    "skills": MessageLookupByLibrary.simpleMessage("Skills"),
+    "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("Custom widget"),
+  };
 }

@@ -22,33 +22,33 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "abc": MessageLookupByLibrary.simpleMessage("가나다"),
-        "address": MessageLookupByLibrary.simpleMessage("주소"),
-        "addressInfo": MessageLookupByLibrary.simpleMessage("대구, 대한민국"),
-        "cardFlipTitle": MessageLookupByLibrary.simpleMessage("카드 뒤집기"),
-        "circleCollisionTitle": MessageLookupByLibrary.simpleMessage("원 충돌 감지"),
-        "confettiTitle": MessageLookupByLibrary.simpleMessage("커스텀 페인트"),
-        "contact": MessageLookupByLibrary.simpleMessage("연락처"),
-        "contactMe": MessageLookupByLibrary.simpleMessage("감사합니다."),
-        "digitalRainTitle": MessageLookupByLibrary.simpleMessage("비"),
-        "email": MessageLookupByLibrary.simpleMessage("메일"),
-        "fetchImage": MessageLookupByLibrary.simpleMessage("이미지 불러오기"),
-        "fetchImageErrorText":
-            MessageLookupByLibrary.simpleMessage("이미지 로딩 실패"),
-        "fetchImageTitle": MessageLookupByLibrary.simpleMessage("네트워크 이미지 로딩"),
-        "flashEffectTitle": MessageLookupByLibrary.simpleMessage("구역 반전 효과"),
-        "home": MessageLookupByLibrary.simpleMessage("홈"),
-        "interactivePlateTitle":
-            MessageLookupByLibrary.simpleMessage("흐느적 인터렉션"),
-        "inventory": MessageLookupByLibrary.simpleMessage("도구함"),
-        "messageAudioLoading":
-            MessageLookupByLibrary.simpleMessage("배경음악 준비 중"),
-        "phone": MessageLookupByLibrary.simpleMessage("휴대폰"),
-        "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
-        "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage("치지직 그래픽 효과"),
-        "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("쉐이더 마스크"),
-        "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("물 그래픽 효과"),
-        "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("로딩 UI"),
-        "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("커스텀 위젯")
-      };
+    "abc": MessageLookupByLibrary.simpleMessage("가나다"),
+    "address": MessageLookupByLibrary.simpleMessage("주소"),
+    "addressInfo": MessageLookupByLibrary.simpleMessage("대구, 대한민국"),
+    "cardFlipTitle": MessageLookupByLibrary.simpleMessage("카드 뒤집기"),
+    "circleCollisionTitle": MessageLookupByLibrary.simpleMessage("원 충돌 감지"),
+    "confettiTitle": MessageLookupByLibrary.simpleMessage("커스텀 페인트"),
+    "contact": MessageLookupByLibrary.simpleMessage("연락처"),
+    "contactMe": MessageLookupByLibrary.simpleMessage("감사합니다."),
+    "digitalRainTitle": MessageLookupByLibrary.simpleMessage("비"),
+    "email": MessageLookupByLibrary.simpleMessage("메일"),
+    "fetchImage": MessageLookupByLibrary.simpleMessage("이미지 불러오기"),
+    "fetchImageErrorText": MessageLookupByLibrary.simpleMessage("이미지 로딩 실패"),
+    "fetchImageTitle": MessageLookupByLibrary.simpleMessage("네트워크 이미지 로딩"),
+    "flashEffectTitle": MessageLookupByLibrary.simpleMessage("구역 반전 효과"),
+    "home": MessageLookupByLibrary.simpleMessage("홈"),
+    "interactivePlateTitle": MessageLookupByLibrary.simpleMessage("흐느적 인터렉션"),
+    "inventory": MessageLookupByLibrary.simpleMessage("도구함"),
+    "messageAudioLoading": MessageLookupByLibrary.simpleMessage("배경음악 준비 중"),
+    "phone": MessageLookupByLibrary.simpleMessage("휴대폰"),
+    "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
+    "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage("치지직 그래픽 효과"),
+    "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("쉐이더 마스크"),
+    "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(
+      "모자이크 graphic effect",
+    ),
+    "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("물 그래픽 효과"),
+    "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("로딩 UI"),
+    "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("커스텀 위젯"),
+  };
 }
