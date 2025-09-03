@@ -47,7 +47,7 @@ class _TargetPlateState extends State<TargetPlate> {
     );
   }
 
-  toggleBackgroundColor({required bool hasTouchedEdge}) {
+  void toggleBackgroundColor({required bool hasTouchedEdge}) {
     if (_hasTouchedEdge != hasTouchedEdge) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         setState(() {

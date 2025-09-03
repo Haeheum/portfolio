@@ -35,5 +35,6 @@ flutter:
     - assets/shaders/water.frag
     - assets/shaders/glitch.frag
     - assets/shaders/pixelation.frag
+    - assets/shaders/flashlight.frag
 flutter_intl:
   enabled: true

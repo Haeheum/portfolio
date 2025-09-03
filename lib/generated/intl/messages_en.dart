@@ -54,6 +54,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "phone": MessageLookupByLibrary.simpleMessage("Phone"),
     "projects": MessageLookupByLibrary.simpleMessage("Projects"),
+    "shaderFlashlightTitle": MessageLookupByLibrary.simpleMessage(
+      "Flashlight graphic effect",
+    ),
     "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage(
       "Glitch graphic effect",
     ),

@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageAudioLoading": MessageLookupByLibrary.simpleMessage("배경음악 준비 중"),
     "phone": MessageLookupByLibrary.simpleMessage("휴대폰"),
     "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
+    "shaderFlashlightTitle": MessageLookupByLibrary.simpleMessage("손전등 그래픽 효과"),
     "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage("치지직 그래픽 효과"),
     "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("쉐이더 마스크"),
     "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(

@@ -219,7 +219,7 @@ class SunMoonSwitchPainter extends CustomPainter {
   }
 
   void _drawRays(Canvas canvas, Offset offset, double sunMoonRadius) {
-    final rayPaint = Paint()..color = Colors.white.withOpacity(0.1);
+    final rayPaint = Paint()..color = Colors.white.withValues(alpha: 0.1);
     canvas.drawCircle(offset, sunMoonRadius * 51 / 30, rayPaint);
     canvas.drawCircle(offset, sunMoonRadius * 12 / 5, rayPaint);
     canvas.drawCircle(offset, sunMoonRadius * 19 / 6, rayPaint);
@@ -258,13 +258,14 @@ class SunMoonSwitchPainter extends CustomPainter {
       double animationValue) {
     if (animationValue <= 0.7) {
       final sunShadowPaint = Paint()
-        ..color = const Color(0xFFF1E4E4).withOpacity(1.0 - animationValue)
+        ..color =
+            const Color(0xFFF1E4E4).withValues(alpha: 1.0 - animationValue)
         ..style = PaintingStyle.fill;
       canvas.drawCircle(offset, sunMoonRadius, sunShadowPaint);
 
       final sunPaint = Paint()
-        ..color =
-            const Color(0xFFE8C32E).withOpacity(sqrt(1.0 - animationValue))
+        ..color = const Color(0xFFE8C32E)
+            .withValues(alpha: sqrt(1.0 - animationValue))
         ..maskFilter = MaskFilter.blur(BlurStyle.inner, sunMoonRadius * 0.12);
       canvas.drawCircle(offset, sunMoonRadius, sunPaint);
     }
@@ -274,25 +275,25 @@ class SunMoonSwitchPainter extends CustomPainter {
       double animationValue) {
     if (animationValue > 0.3) {
       final moonShadowPaint = Paint()
-        ..color = Colors.black.withOpacity(0.25 * animationValue)
+        ..color = Colors.black.withValues(alpha: 0.25 * animationValue)
         ..style = PaintingStyle.fill;
       canvas.drawCircle(offset, sunMoonRadius, moonShadowPaint);
 
       final moonPaint = Paint()
-        ..color =
-            const Color(0xFFC2C7CE).withOpacity(sqrt(sqrt(animationValue)))
+        ..color = const Color(0xFFC2C7CE)
+            .withValues(alpha: sqrt(sqrt(animationValue)))
         ..maskFilter = MaskFilter.blur(BlurStyle.inner, sunMoonRadius * 0.1);
       canvas.drawCircle(offset, sunMoonRadius, moonPaint);
 
       if (animationValue > 0.5) {
         final craterPaint = Paint()
-          ..color = const Color(0xFF98A2B4)
-              .withOpacity(animationValue * animationValue * animationValue)
+          ..color = const Color(0xFF98A2B4).withValues(
+              alpha: animationValue * animationValue * animationValue)
           ..maskFilter = MaskFilter.blur(BlurStyle.inner, sunMoonRadius * 0.03);
 
         final craterShadowPaint = Paint()
-          ..color = Colors.black.withOpacity(
-              0.5 * animationValue * animationValue * animationValue)
+          ..color = Colors.black.withValues(
+              alpha: 0.5 * animationValue * animationValue * animationValue)
           ..style = PaintingStyle.fill;
 
         final craters = [

@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/inventory_items/shader_pixelation.dart';
 
 import '../../../generated/l10n.dart';
 import '../../config/theme_extension.dart';
@@ -15,6 +14,8 @@ import '../inventory_items/flash_effect.dart';
 import '../inventory_items/frame_inventory_item.dart';
 import '../inventory_items/interactive_plate.dart';
 import '../inventory_items/shader_glitch.dart';
+import '../inventory_items/shader_flashlight.dart';
+import '../inventory_items/shader_pixelation.dart';
 import '../inventory_items/shader_plate.dart';
 import '../inventory_items/shader_water.dart';
 import '../inventory_items/shimmer_effect.dart';
@@ -101,6 +102,12 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
         FrameInventoryItem(
           title: S.of(context).shaderPixelationTitle,
           child: const ShaderPixelation(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).shaderFlashlightTitle,
+          child: const ShaderFlashlight(),
         ),
       )
       ..add(

@@ -6,14 +6,14 @@ class AppStateModel extends ChangeNotifier {
   Locale appLocale;
   ThemeMode themeMode = ThemeMode.light;
 
-  setLanguageCode(String newLanguageCode) {
+  void setLanguageCode(String newLanguageCode) {
     if (appLocale.languageCode != newLanguageCode) {
       appLocale = Locale(newLanguageCode);
       notifyListeners();
     }
   }
 
-  toggleThemeMode() {
+  void toggleThemeMode() {
     if (themeMode == ThemeMode.light) {
       themeMode = ThemeMode.dark;
     } else {

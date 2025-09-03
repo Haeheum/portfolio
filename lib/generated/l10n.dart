@@ -159,6 +159,16 @@ class S {
     );
   }
 
+  /// `Flashlight graphic effect`
+  String get shaderFlashlightTitle {
+    return Intl.message(
+      'Flashlight graphic effect',
+      name: 'shaderFlashlightTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Card flip`
   String get cardFlipTitle {
     return Intl.message('Card flip', name: 'cardFlipTitle', desc: '', args: []);
