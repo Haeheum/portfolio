@@ -64,6 +64,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(
       "Pixelation graphic effect",
     ),
+    "shaderRippleTitle": MessageLookupByLibrary.simpleMessage(
+      "Ripple graphic effect",
+    ),
     "shaderWaterTitle": MessageLookupByLibrary.simpleMessage(
       "Water graphic effect",
     ),

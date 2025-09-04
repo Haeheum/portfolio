@@ -19,6 +19,7 @@
   "shaderGlitchTitle" : "치지직 그래픽 효과",
   "shaderPixelationTitle" : "모자이크 그래픽 효과",
   "shaderFlashlightTitle" : "손전등 그래픽 효과",
+  "shaderRippleTitle" : "잔물결 그래픽 효과",
 
   "cardFlipTitle": "카드 뒤집기",
   "interactivePlateTitle" : "흐느적 인터렉션",

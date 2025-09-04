@@ -5,6 +5,8 @@ typedef Shaders = ({
   FragmentShader glitch,
   FragmentShader pixelation,
   FragmentShader flashlight,
+  FragmentShader ripple,
+
 // Append more shaders later on.
 });
 
@@ -20,6 +22,7 @@ class ShaderRepository {
   static const String glitchShader = '$_shaderFolderPath/glitch.frag';
   static const String pixelationShader = '$_shaderFolderPath/pixelation.frag';
   static const String burnShader = '$_shaderFolderPath/flashlight.frag';
+  static const String rippleShader = '$_shaderFolderPath/ripple.frag';
 
   late final Shaders shaders;
 
@@ -29,6 +32,7 @@ class ShaderRepository {
       glitch: await _loadShader(glitchShader),
       pixelation: await _loadShader(pixelationShader),
       flashlight: await _loadShader(burnShader),
+      ripple: await _loadShader(rippleShader),
       // Append more shaders later on.
     );
   }

@@ -169,6 +169,16 @@ class S {
     );
   }
 
+  /// `Ripple graphic effect`
+  String get shaderRippleTitle {
+    return Intl.message(
+      'Ripple graphic effect',
+      name: 'shaderRippleTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Card flip`
   String get cardFlipTitle {
     return Intl.message('Card flip', name: 'cardFlipTitle', desc: '', args: []);
