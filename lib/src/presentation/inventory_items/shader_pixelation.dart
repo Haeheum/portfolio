@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
 
-import '../../config/theme_extension.dart';
 import '../../data/shader_repository.dart';
 
 class ShaderPixelation extends StatefulWidget {
@@ -14,6 +13,7 @@ class ShaderPixelation extends StatefulWidget {
 class _ShaderPixelationState extends State<ShaderPixelation>
     with SingleTickerProviderStateMixin {
   late FragmentShader _shader;
+
   // 슬라이더 값을 저장할 상태 변수
   double _pixelationValue = 20.0;
 
@@ -28,20 +28,20 @@ class _ShaderPixelationState extends State<ShaderPixelation>
     return Column(
       children: [
         Expanded(
-          child: Container(
-            color: Theme.of(context).extension<ExtensionColors>()!.skyColor!,
-            child: AnimatedSampler(
-                  (image, size, canvas) {
-                _shader
-                  ..setFloat(0, size.width)
-                  ..setFloat(1, size.height)
-                  ..setFloat(2, _pixelationValue)
-                  ..setFloat(3, _pixelationValue)
-                  ..setImageSampler(0, image);
-                Rect rect = Rect.fromLTWH(0, 0, size.width, size.height);
-                canvas.drawRect(rect, Paint()..shader = _shader);
-              },
-              child: Image.asset('assets/images/me.jpeg'),
+          child: AnimatedSampler(
+            (image, size, canvas) {
+              _shader
+                ..setFloat(0, size.width)
+                ..setFloat(1, size.height)
+                ..setFloat(2, _pixelationValue)
+                ..setFloat(3, _pixelationValue)
+                ..setImageSampler(0, image);
+              Rect rect = Rect.fromLTWH(0, 0, size.width, size.height);
+              canvas.drawRect(rect, Paint()..shader = _shader);
+            },
+            child: Image.asset(
+              'assets/images/me.jpeg',
+              fit: BoxFit.cover,
             ),
           ),
         ),
