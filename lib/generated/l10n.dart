@@ -179,6 +179,16 @@ class S {
     );
   }
 
+  /// `Smoke graphic effect`
+  String get shaderSmokeTitle {
+    return Intl.message(
+      'Smoke graphic effect',
+      name: 'shaderSmokeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Card flip`
   String get cardFlipTitle {
     return Intl.message('Card flip', name: 'cardFlipTitle', desc: '', args: []);

@@ -49,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "모자이크 그래픽 효과",
     ),
     "shaderRippleTitle": MessageLookupByLibrary.simpleMessage("잔물결 그래픽 효과"),
+    "shaderSmokeTitle": MessageLookupByLibrary.simpleMessage("연기 그래픽 효과"),
     "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("물 그래픽 효과"),
     "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("로딩 UI"),
     "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("커스텀 위젯"),

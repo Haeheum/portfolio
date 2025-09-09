@@ -33,13 +33,6 @@ class _PageMenuState extends State<PageMenu> {
           offset: 0.0,
         ),
       )
-    // ..add(
-    //   MenuItem(
-    //     title: S.of(context).projects,
-    //     icon: Icons.apps_rounded,
-    //     offset: 150.0,
-    //   ),
-    // )
       ..add(
         MenuItem(
           title: S.of(context).inventory,
@@ -47,7 +40,6 @@ class _PageMenuState extends State<PageMenu> {
           offset: MediaQuery.sizeOf(context).height * 2,
         ),
       )
-
       ..add(
         MenuItem(
           title: S.of(context).contact,

@@ -16,6 +16,7 @@ class _ShaderFlashlightState extends State<ShaderFlashlight>
     with SingleTickerProviderStateMixin {
   late FragmentShader _shader;
   Offset _normalizedMousePosition = Offset(-1.0, -1.0); // 초기값은 화면 밖
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -23,26 +24,16 @@ class _ShaderFlashlightState extends State<ShaderFlashlight>
   }
 
   void _onHover(PointerHoverEvent event) {
-    if (mounted) {
-      setState(() {
-        // 위젯의 크기를 기준으로 마우스 위치를 정규화 (0.0 ~ 1.0)
-        final renderBox = context.findRenderObject() as RenderBox;
-        final size = renderBox.size;
-        _normalizedMousePosition = Offset(
-          event.localPosition.dx / size.width,
-          event.localPosition.dy / size.height,
-        );
-      });
-    }
+    final renderBox = context.findRenderObject() as RenderBox;
+    final size = renderBox.size;
+    _normalizedMousePosition = Offset(
+      event.localPosition.dx / size.width,
+      event.localPosition.dy / size.height,
+    );
   }
 
   void _onExit(PointerExitEvent event) {
-    if (mounted) {
-      setState(() {
-        // 마우스가 영역을 벗어나면 레이저를 숨깁니다.
-        _normalizedMousePosition = Offset(-1.0, -1.0);
-      });
-    }
+    _normalizedMousePosition = Offset(-1.0, -1.0);
   }
 
   @override
@@ -60,10 +51,7 @@ class _ShaderFlashlightState extends State<ShaderFlashlight>
                 ..setFloat(1, size.height) // uResolution.y
                 ..setFloat(2, time) // uTime
                 ..setFloat(3, _normalizedMousePosition.dx) // uMouse.x
-                ..setFloat(
-                    4,
-                    _normalizedMousePosition
-                        .dy) // uMouse.y// uIsMouseDown (boolean 대신 float 0.0 or 1.0)
+                ..setFloat(4, _normalizedMousePosition.dy) // uMouse.y
                 ..setImageSampler(0, image); // uTexture (이미지 샘플러는 항상 0번 인덱스)
 
               Rect rect = Rect.fromLTWH(0, 0, size.width, size.height);
