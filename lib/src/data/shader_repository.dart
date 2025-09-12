@@ -7,8 +7,8 @@ typedef Shaders = ({
   FragmentShader flashlight,
   FragmentShader ripple,
   FragmentShader smoke,
-
-// Append more shaders later on.
+  FragmentShader magic,
+  // Append more shaders later on.
 });
 
 class ShaderRepository {
@@ -25,6 +25,7 @@ class ShaderRepository {
   static const String burnShader = '$_shaderFolderPath/flashlight.frag';
   static const String rippleShader = '$_shaderFolderPath/ripple.frag';
   static const String smokeShader = '$_shaderFolderPath/smoke.frag';
+  static const String magicShader = '$_shaderFolderPath/magic.frag';
 
   late final Shaders shaders;
 
@@ -36,6 +37,7 @@ class ShaderRepository {
       flashlight: await _loadShader(burnShader),
       ripple: await _loadShader(rippleShader),
       smoke: await _loadShader(smokeShader),
+      magic: await _loadShader(magicShader),
       // Append more shaders later on.
     );
   }

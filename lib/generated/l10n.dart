@@ -189,6 +189,26 @@ class S {
     );
   }
 
+  /// `Maagic graphic effect`
+  String get shaderMagicTitle {
+    return Intl.message(
+      'Maagic graphic effect',
+      name: 'shaderMagicTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan graphic effect`
+  String get shaderScanTitle {
+    return Intl.message(
+      'Scan graphic effect',
+      name: 'shaderScanTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Card flip`
   String get cardFlipTitle {
     return Intl.message('Card flip', name: 'cardFlipTitle', desc: '', args: []);

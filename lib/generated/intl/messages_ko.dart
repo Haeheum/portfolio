@@ -44,11 +44,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "projects": MessageLookupByLibrary.simpleMessage("프로젝트"),
     "shaderFlashlightTitle": MessageLookupByLibrary.simpleMessage("손전등 그래픽 효과"),
     "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage("치지직 그래픽 효과"),
+    "shaderMagicTitle": MessageLookupByLibrary.simpleMessage("마법 그래픽 효과"),
     "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("쉐이더 마스크"),
     "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(
       "모자이크 그래픽 효과",
     ),
     "shaderRippleTitle": MessageLookupByLibrary.simpleMessage("잔물결 그래픽 효과"),
+    "shaderScanTitle": MessageLookupByLibrary.simpleMessage("스캔 그래픽 효과"),
     "shaderSmokeTitle": MessageLookupByLibrary.simpleMessage("연기 그래픽 효과"),
     "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("물 그래픽 효과"),
     "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("로딩 UI"),

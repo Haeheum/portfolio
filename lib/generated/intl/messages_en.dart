@@ -60,12 +60,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage(
       "Glitch graphic effect",
     ),
+    "shaderMagicTitle": MessageLookupByLibrary.simpleMessage(
+      "Maagic graphic effect",
+    ),
     "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("Shader mask"),
     "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(
       "Pixelation graphic effect",
     ),
     "shaderRippleTitle": MessageLookupByLibrary.simpleMessage(
       "Ripple graphic effect",
+    ),
+    "shaderScanTitle": MessageLookupByLibrary.simpleMessage(
+      "Scan graphic effect",
     ),
     "shaderSmokeTitle": MessageLookupByLibrary.simpleMessage(
       "Smoke graphic effect",

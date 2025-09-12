@@ -21,6 +21,8 @@
   "shaderFlashlightTitle" : "Flashlight graphic effect",
   "shaderRippleTitle" : "Ripple graphic effect",
   "shaderSmokeTitle" : "Smoke graphic effect",
+  "shaderMagicTitle" : "Maagic graphic effect",
+  "shaderScanTitle" : "Scan graphic effect",
 
   "cardFlipTitle": "Card flip",
 
