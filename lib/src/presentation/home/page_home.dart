@@ -19,6 +19,7 @@ import '../inventory_items/shader_magic.dart';
 import '../inventory_items/shader_pixelation.dart';
 import '../inventory_items/shader_plate.dart';
 import '../inventory_items/shader_ripple.dart';
+import '../inventory_items/shader_scan.dart';
 import '../inventory_items/shader_smoke.dart';
 import '../inventory_items/shader_water.dart';
 import '../inventory_items/shimmer_effect.dart';
@@ -133,26 +134,14 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
       )
       ..add(
         FrameInventoryItem(
-          title: S.of(context).cardFlipTitle,
-          child: const CardFlip(),
+          title: S.of(context).shaderScanTitle,
+          child: const ShaderScan(),
         ),
       )
       ..add(
         FrameInventoryItem(
           title: S.of(context).interactivePlateTitle,
           child: const InteractivePlate(),
-        ),
-      )
-      ..add(
-        FrameInventoryItem(
-          title: S.of(context).shaderMaskTitle,
-          child: const ShaderPlate(),
-        ),
-      )
-      ..add(
-        FrameInventoryItem(
-          title: S.of(context).fetchImageTitle,
-          child: const FetchImage(),
         ),
       )
       ..add(
@@ -165,6 +154,24 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
         FrameInventoryItem(
           title: S.of(context).flashEffectTitle,
           child: const FlashEffect(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).cardFlipTitle,
+          child: const CardFlip(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).shaderMaskTitle,
+          child: const ShaderPlate(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).fetchImageTitle,
+          child: const FetchImage(),
         ),
       );
   }
