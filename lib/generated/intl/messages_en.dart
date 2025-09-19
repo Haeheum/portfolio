@@ -64,14 +64,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "Maagic graphic effect",
     ),
     "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("Shader mask"),
+    "shaderNightVisionTitle": MessageLookupByLibrary.simpleMessage(
+      "Night Vision graphic effect",
+    ),
     "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(
       "Pixelation graphic effect",
     ),
     "shaderRippleTitle": MessageLookupByLibrary.simpleMessage(
       "Ripple graphic effect",
-    ),
-    "shaderScanTitle": MessageLookupByLibrary.simpleMessage(
-      "Scan graphic effect",
     ),
     "shaderSmokeTitle": MessageLookupByLibrary.simpleMessage(
       "Smoke graphic effect",

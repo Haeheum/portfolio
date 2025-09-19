@@ -19,7 +19,7 @@ import '../inventory_items/shader_magic.dart';
 import '../inventory_items/shader_pixelation.dart';
 import '../inventory_items/shader_plate.dart';
 import '../inventory_items/shader_ripple.dart';
-import '../inventory_items/shader_scan.dart';
+import '../inventory_items/shader_night_vision.dart';
 import '../inventory_items/shader_smoke.dart';
 import '../inventory_items/shader_water.dart';
 import '../inventory_items/shimmer_effect.dart';
@@ -92,6 +92,12 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
       )
       ..add(
         FrameInventoryItem(
+          title: S.of(context).shaderMagicTitle,
+          child: const ShaderMagic(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
           title: S.of(context).shaderWaterTitle,
           child: const ShaderWater(),
         ),
@@ -128,14 +134,8 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
       )
       ..add(
         FrameInventoryItem(
-          title: S.of(context).shaderMagicTitle,
-          child: const ShaderMagic(),
-        ),
-      )
-      ..add(
-        FrameInventoryItem(
-          title: S.of(context).shaderScanTitle,
-          child: const ShaderScan(),
+          title: S.of(context).shaderNightVisionTitle,
+          child: const ShaderNightVision(),
         ),
       )
       ..add(

@@ -4,20 +4,20 @@ import 'package:flutter_shaders/flutter_shaders.dart';
 import 'package:portfolio/src/util/ticking_builder.dart';
 import 'package:portfolio/src/data/shader_repository.dart';
 
-class ShaderScan extends StatefulWidget {
-  const ShaderScan({super.key});
+class ShaderNightVision extends StatefulWidget {
+  const ShaderNightVision({super.key});
 
   @override
-  State<ShaderScan> createState() => _ShaderScanState();
+  State<ShaderNightVision> createState() => _ShaderNightVisionState();
 }
 
-class _ShaderScanState extends State<ShaderScan> {
+class _ShaderNightVisionState extends State<ShaderNightVision> {
   late FragmentShader _shader;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _shader = ShaderRepository().shaders.scan;
+    _shader = ShaderRepository().shaders.nightVision;
   }
 
 

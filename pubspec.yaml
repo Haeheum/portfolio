@@ -39,6 +39,6 @@ flutter:
     - assets/shaders/ripple.frag
     - assets/shaders/smoke.frag
     - assets/shaders/magic.frag
-    - assets/shaders/scan.frag
+    - assets/shaders/nightVision.frag
 flutter_intl:
   enabled: true

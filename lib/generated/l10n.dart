@@ -199,11 +199,11 @@ class S {
     );
   }
 
-  /// `Scan graphic effect`
-  String get shaderScanTitle {
+  /// `Night Vision graphic effect`
+  String get shaderNightVisionTitle {
     return Intl.message(
-      'Scan graphic effect',
-      name: 'shaderScanTitle',
+      'Night Vision graphic effect',
+      name: 'shaderNightVisionTitle',
       desc: '',
       args: [],
     );
