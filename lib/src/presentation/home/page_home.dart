@@ -18,6 +18,7 @@ import '../inventory_items/shader_flashlight.dart';
 import '../inventory_items/shader_magic.dart';
 import '../inventory_items/shader_pixelation.dart';
 import '../inventory_items/shader_plate.dart';
+import '../inventory_items/shader_rain_window.dart';
 import '../inventory_items/shader_ripple.dart';
 import '../inventory_items/shader_night_vision.dart';
 import '../inventory_items/shader_smoke.dart';
@@ -136,6 +137,12 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
         FrameInventoryItem(
           title: S.of(context).shaderNightVisionTitle,
           child: const ShaderNightVision(),
+        ),
+      )
+      ..add(
+        FrameInventoryItem(
+          title: S.of(context).shaderRainWindowTitle,
+          child: const ShaderRainWindow(),
         ),
       )
       ..add(
@@ -412,8 +419,8 @@ class PageHomeState extends State<PageHome> with TickerProviderStateMixin {
           child: AnimatedContainer(
             transformAlignment: Alignment.centerRight,
             transform: Matrix4.identity()
-              ..translate(_openMenu ? -20.0 : 0, 0)
-              ..scale(_openMenu ? 0.7 : 1),
+              ..translateByDouble(_openMenu ? -20.0 : 0, 1, 1, 1)
+              ..scaleByDouble(_openMenu ? 0.7 : 1, 1, 1, 1),
             curve: Curves.easeInOut,
             duration: const Duration(milliseconds: 300),
             child: child,

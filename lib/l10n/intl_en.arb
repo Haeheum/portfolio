@@ -15,14 +15,16 @@
   "confettiTitle" : "Custom paint",
   "digitalRainTitle" : "Rain",
 
-  "shaderWaterTitle" : "Water graphic effect",
-  "shaderGlitchTitle" : "Glitch graphic effect",
-  "shaderPixelationTitle" : "Pixelation graphic effect",
-  "shaderFlashlightTitle" : "Flashlight graphic effect",
-  "shaderRippleTitle" : "Ripple graphic effect",
-  "shaderSmokeTitle" : "Smoke graphic effect",
-  "shaderMagicTitle" : "Maagic graphic effect",
-  "shaderNightVisionTitle" : "Night Vision graphic effect",
+  "shaderWaterTitle" : "Water effect",
+  "shaderGlitchTitle" : "Glitch effect",
+  "shaderPixelationTitle" : "Pixelation effect",
+  "shaderFlashlightTitle" : "Flashlight effect",
+  "shaderRippleTitle" : "Ripple effect",
+  "shaderSmokeTitle" : "Smoke effect",
+  "shaderMagicTitle" : "Magic effect",
+  "shaderNightVisionTitle" : "Night Vision effect",
+  "shaderRainWindowTitle" : "Rain Window effect",
+
 
   "cardFlipTitle": "Card flip",
 

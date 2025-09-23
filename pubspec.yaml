@@ -40,5 +40,6 @@ flutter:
     - assets/shaders/smoke.frag
     - assets/shaders/magic.frag
     - assets/shaders/nightVision.frag
+    - assets/shaders/rainWindow.frag
 flutter_intl:
   enabled: true

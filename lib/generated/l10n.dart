@@ -129,81 +129,91 @@ class S {
     return Intl.message('Rain', name: 'digitalRainTitle', desc: '', args: []);
   }
 
-  /// `Water graphic effect`
+  /// `Water effect`
   String get shaderWaterTitle {
     return Intl.message(
-      'Water graphic effect',
+      'Water effect',
       name: 'shaderWaterTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Glitch graphic effect`
+  /// `Glitch effect`
   String get shaderGlitchTitle {
     return Intl.message(
-      'Glitch graphic effect',
+      'Glitch effect',
       name: 'shaderGlitchTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Pixelation graphic effect`
+  /// `Pixelation effect`
   String get shaderPixelationTitle {
     return Intl.message(
-      'Pixelation graphic effect',
+      'Pixelation effect',
       name: 'shaderPixelationTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Flashlight graphic effect`
+  /// `Flashlight effect`
   String get shaderFlashlightTitle {
     return Intl.message(
-      'Flashlight graphic effect',
+      'Flashlight effect',
       name: 'shaderFlashlightTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Ripple graphic effect`
+  /// `Ripple effect`
   String get shaderRippleTitle {
     return Intl.message(
-      'Ripple graphic effect',
+      'Ripple effect',
       name: 'shaderRippleTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Smoke graphic effect`
+  /// `Smoke effect`
   String get shaderSmokeTitle {
     return Intl.message(
-      'Smoke graphic effect',
+      'Smoke effect',
       name: 'shaderSmokeTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Maagic graphic effect`
+  /// `Magic effect`
   String get shaderMagicTitle {
     return Intl.message(
-      'Maagic graphic effect',
+      'Magic effect',
       name: 'shaderMagicTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Night Vision graphic effect`
+  /// `Night Vision effect`
   String get shaderNightVisionTitle {
     return Intl.message(
-      'Night Vision graphic effect',
+      'Night Vision effect',
       name: 'shaderNightVisionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rain Window effect`
+  String get shaderRainWindowTitle {
+    return Intl.message(
+      'Rain Window effect',
+      name: 'shaderRainWindowTitle',
       desc: '',
       args: [],
     );

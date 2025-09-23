@@ -9,6 +9,7 @@ typedef Shaders = ({
   FragmentShader smoke,
   FragmentShader magic,
   FragmentShader nightVision,
+  FragmentShader rainWindow,
 // Append more shaders later on.
 });
 
@@ -28,6 +29,7 @@ class ShaderRepository {
   static const String smokeShader = '$_shaderFolderPath/smoke.frag';
   static const String magicShader = '$_shaderFolderPath/magic.frag';
   static const String nightVisionShader = '$_shaderFolderPath/nightVision.frag';
+  static const String rainWindowShader = '$_shaderFolderPath/rainWindow.frag';
 
   late final Shaders shaders;
 
@@ -40,7 +42,8 @@ class ShaderRepository {
       ripple: await _loadShader(rippleShader),
       smoke: await _loadShader(smokeShader),
       magic: await _loadShader(magicShader),
-      nightVision: await _loadShader(nightVisionShader)
+      nightVision: await _loadShader(nightVisionShader),
+      rainWindow: await _loadShader(rainWindowShader),
       // Append more shaders later on.
     );
   }

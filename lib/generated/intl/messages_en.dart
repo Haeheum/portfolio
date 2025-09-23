@@ -55,30 +55,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "phone": MessageLookupByLibrary.simpleMessage("Phone"),
     "projects": MessageLookupByLibrary.simpleMessage("Projects"),
     "shaderFlashlightTitle": MessageLookupByLibrary.simpleMessage(
-      "Flashlight graphic effect",
+      "Flashlight effect",
     ),
-    "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage(
-      "Glitch graphic effect",
-    ),
-    "shaderMagicTitle": MessageLookupByLibrary.simpleMessage(
-      "Maagic graphic effect",
-    ),
+    "shaderGlitchTitle": MessageLookupByLibrary.simpleMessage("Glitch effect"),
+    "shaderMagicTitle": MessageLookupByLibrary.simpleMessage("Magic effect"),
     "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("Shader mask"),
     "shaderNightVisionTitle": MessageLookupByLibrary.simpleMessage(
-      "Night Vision graphic effect",
+      "Night Vision effect",
     ),
     "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage(
-      "Pixelation graphic effect",
+      "Pixelation effect",
     ),
-    "shaderRippleTitle": MessageLookupByLibrary.simpleMessage(
-      "Ripple graphic effect",
+    "shaderRainWindowTitle": MessageLookupByLibrary.simpleMessage(
+      "Rain Window effect",
     ),
-    "shaderSmokeTitle": MessageLookupByLibrary.simpleMessage(
-      "Smoke graphic effect",
-    ),
-    "shaderWaterTitle": MessageLookupByLibrary.simpleMessage(
-      "Water graphic effect",
-    ),
+    "shaderRippleTitle": MessageLookupByLibrary.simpleMessage("Ripple effect"),
+    "shaderSmokeTitle": MessageLookupByLibrary.simpleMessage("Smoke effect"),
+    "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("Water effect"),
     "shimmerEffectTitle": MessageLookupByLibrary.simpleMessage("Skeleton UI"),
     "skills": MessageLookupByLibrary.simpleMessage("Skills"),
     "sunMoonSwitchTitle": MessageLookupByLibrary.simpleMessage("Custom widget"),
