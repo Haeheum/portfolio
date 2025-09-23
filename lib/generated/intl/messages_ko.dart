@@ -48,9 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shaderMaskTitle": MessageLookupByLibrary.simpleMessage("쉐이더 마스크"),
     "shaderNightVisionTitle": MessageLookupByLibrary.simpleMessage("야간 투시경 효과"),
     "shaderPixelationTitle": MessageLookupByLibrary.simpleMessage("모자이크 효과"),
-    "shaderRainWindowTitle": MessageLookupByLibrary.simpleMessage(
-      "비오는 날 창문 효과",
-    ),
+    "shaderRainWindowTitle": MessageLookupByLibrary.simpleMessage("빗방울 효과"),
     "shaderRippleTitle": MessageLookupByLibrary.simpleMessage("잔물결 효과"),
     "shaderSmokeTitle": MessageLookupByLibrary.simpleMessage("연기 효과"),
     "shaderWaterTitle": MessageLookupByLibrary.simpleMessage("물 효과"),
