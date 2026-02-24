@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af866eba-3bad-4ed0-939f-0153a43835e0" name="Changes" comment="deploy" />
+    <list default="true" id="af866eba-3bad-4ed0-939f-0153a43835e0" name="Changes" comment="deploy">
+      <change beforePath="$PROJECT_DIR$/assets/NOTICES" beforeDir="false" afterPath="$PROJECT_DIR$/assets/NOTICES" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/flashlight.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/flashlight.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/glitch.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/glitch.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/magic.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/magic.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/nightVision.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/nightVision.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/pixelation.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/pixelation.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/rainWindow.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/rainWindow.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/ripple.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/ripple.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/smoke.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/smoke.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/assets/shaders/water.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/assets/shaders/water.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/ink_sparkle.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/ink_sparkle.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/stretch_effect.frag" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/stretch_effect.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/canvaskit.js" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/canvaskit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/canvaskit.js.symbols" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/canvaskit.js.symbols" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/chromium/canvaskit.js" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/chromium/canvaskit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/chromium/canvaskit.js.symbols" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/chromium/canvaskit.js.symbols" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/skwasm.js" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/skwasm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/skwasm.js.symbols" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/skwasm.js.symbols" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/skwasm_heavy.js" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/skwasm_heavy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/skwasm_heavy.js.symbols" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/skwasm_heavy.js.symbols" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/wimp.js" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/wimp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvaskit/wimp.js.symbols" beforeDir="false" afterPath="$PROJECT_DIR$/canvaskit/wimp.js.symbols" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter.js" beforeDir="false" afterPath="$PROJECT_DIR$/flutter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.dart.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.dart.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +80,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "io.flutter.project.isFirstOpen": "true",
     "io.flutter.reload.alreadyRun": "true",
@@ -101,6 +128,17 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="deploy" />
